@@ -33,7 +33,7 @@ class MeetingCard extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-      margin: EdgeInsets.fromLTRB(30,0,20,20),
+      margin: EdgeInsets.fromLTRB(30,0,30,20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all( Radius.circular(24)),
         color: bgcolor,

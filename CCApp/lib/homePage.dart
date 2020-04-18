@@ -30,11 +30,19 @@ final meetingDetails = const [
     'members':'Board',
   },
   {
-    'name':'Meeting 2',
-    'time':'7:25 PM',
+    'name':'Meeting 3',
+    'time':'5:25 PM',
+    'venue':'SJT 323',
+    'date':'22th April 2020',
+    'description':'Description 3',
+    'members':'Board',
+  },
+  {
+    'name':'Meeting 4',
+    'time':'3:25 PM',
     'venue':'SMV Tank',
     'date':'22th April 2020',
-    'description':'Description 2',
+    'description':'Description 4',
     'members':'Board',
   },
 ];
@@ -67,21 +75,23 @@ class HomePageState extends State<HomePage>{
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: meetingDetails.length,
-              itemBuilder: (context,index){
-                return MeetingCard(
-                  name: meetingDetails[index]['name'],
-                  time: meetingDetails[index]['time'],
-                  date: meetingDetails[index]['date'],
-                  venue: meetingDetails[index]['venue'],
-                  description: meetingDetails[index]['description'],
-                  members: meetingDetails[index]['members'],
-                  bgcolor: getColor(index),
-                  sgcolor: getSGColor(index),
-                );
-              }
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: meetingDetails.length,
+                itemBuilder: (context,index){
+                  return MeetingCard(
+                    name: meetingDetails[index]['name'],
+                    time: meetingDetails[index]['time'],
+                    date: meetingDetails[index]['date'],
+                    venue: meetingDetails[index]['venue'],
+                    description: meetingDetails[index]['description'],
+                    members: meetingDetails[index]['members'],
+                    bgcolor: getColor(index),
+                    sgcolor: getSGColor(index),
+                  );
+                }
+              ),
             ),
           ],
         ),
