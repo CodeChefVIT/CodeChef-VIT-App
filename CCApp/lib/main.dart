@@ -1,3 +1,4 @@
+import 'package:CCApp/homePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -133,7 +134,13 @@ class LoginScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 66 / 896,
             width: 326,
             child: FlatButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => HomePage()
+                )
+              );
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(33),
               ),
