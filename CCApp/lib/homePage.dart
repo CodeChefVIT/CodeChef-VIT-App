@@ -1,5 +1,6 @@
+import 'package:CCApp/meetings.dart';
 import 'package:flutter/material.dart';
-import './meetingCard.dart';
+
 
 void main(){
   runApp(HomePage());
@@ -32,143 +33,65 @@ final meetingDetails = const [
 ];
 
 class HomePageState extends State<HomePage>{
+
+  int _currentIndex=0;
+
+  final tabs = [
+    Meetings(),
+    Center(child: Text('Projects'),),
+    Center(child: Text('About Us'),),
+  ];
+
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index){
+            setState(() {
+              _currentIndex=index;
+            });
+          },
           items: [
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                Icons.home,
-                color: Color(0xFF459AFF),
-              ),  
+            BottomNavigationBarItem( 
               icon: Icon(
                 Icons.home,
-                color: Colors.grey,
+                color: _currentIndex==0?Color(0xFF459AFF):Colors.grey,
               ),
               title: Text(
                 'Meetings',
                 style: TextStyle(
-                  color: Color(0xFF459AFF),
+                  color: _currentIndex==0?Color(0xFF459AFF):Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.book,
-                color: Color(0xFFFF6745),
+                color: _currentIndex==1?Color(0xFFFF6745):Colors.grey,
               ),
               title: Text(
                 'Projects',
                 style: TextStyle(
-                  color: Color(0xFFFF6745),
+                  color: _currentIndex==1?Color(0xFFFF6745):Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.info_outline,
-                color: Color(0xFFFF4572),
+                color: _currentIndex==2?Color(0xFFFF4572):Colors.grey,
               ),
               title: Text(
                 'About Us',
                 style: TextStyle(
-                  color: Color(0xFFFF4572),
+                  color: _currentIndex==2?Color(0xFFFF4572):Colors.grey,
                 ),
               ),
             ),
           ],
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            SizedBox(height:42),
-            Container(
-              width: double.infinity,
-              height: 54,
-              alignment: Alignment.topCenter,
-              child: Image.asset('assets/images/fulllogo.png'),
-            ),
-            SizedBox(height: 14,),
-            Container(
-              padding: EdgeInsets.only(left:30),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Meetings',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontFamily: 'SF Pro Display',
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: meetingDetails.length,
-                itemBuilder: (context,index){
-                  return MeetingCard(
-                    name: meetingDetails[index]['name'],
-                    time: meetingDetails[index]['time'],
-                    date: meetingDetails[index]['date'],
-                    venue: meetingDetails[index]['venue'],
-                    description: meetingDetails[index]['description'],
-                    members: meetingDetails[index]['members'],
-                    bgcolor: getColor(index),
-                    sgcolor: getSGColor(index),
-                  );
-                }
-            ),
-            Container(
-            margin: EdgeInsets.only(left:44, right: 44),
-            height: 52,
-            width: 259,
-            child: FlatButton(
-              onPressed: (){
-              },
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-              padding: EdgeInsets.all(0.0),
-              child: Ink(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [Color(0xFF459AFF), Color(0xFFFF6745),Color(0xFFFF4572)]),
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left:15),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 28,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Add Meeting",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontFamily: 'SF Pro Display',
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ),
-              ),
-            ),
-          )
-          ],
-        ),
+        body: tabs[_currentIndex]
       )
     );
   }
