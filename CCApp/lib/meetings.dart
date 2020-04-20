@@ -29,24 +29,31 @@ class Meetings extends StatelessWidget{
                 ),
               ),
             ),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: meetingDetails.length,
-                itemBuilder: (context,index){
-                  return MeetingCard(
-                    name: meetingDetails[index]['name'],
-                    time: meetingDetails[index]['time'],
-                    date: meetingDetails[index]['date'],
-                    venue: meetingDetails[index]['venue'],
-                    description: meetingDetails[index]['description'],
-                    members: meetingDetails[index]['members'],
-                    bgcolor: getColor(index),
-                    sgcolor: getSGColor(index),
-                  );
-                }
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(top:5),
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 600 / 896 -50,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: meetingDetails.length,
+                    itemBuilder: (context,index){
+                      return MeetingCard(
+                        name: meetingDetails[index]['name'],
+                        time: meetingDetails[index]['time'],
+                        date: meetingDetails[index]['date'],
+                        venue: meetingDetails[index]['venue'],
+                        description: meetingDetails[index]['description'],
+                        members: meetingDetails[index]['members'],
+                        bgcolor: getColor(index),
+                        sgcolor: getSGColor(index),
+                      );
+                    }
+                ),
+              ),
             ),
             Container(
-            margin: EdgeInsets.only(left:44, right: 44),
+            margin: EdgeInsets.only(left:44, right: 44, bottom:10, top: 10),
             height: 52,
             width: 259,
             child: FlatButton(
