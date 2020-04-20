@@ -29,28 +29,56 @@ final meetingDetails = const [
     'description':'Description 2',
     'members':'Board',
   },
-  {
-    'name':'Meeting 3',
-    'time':'5:25 PM',
-    'venue':'SJT 323',
-    'date':'22th April 2020',
-    'description':'Description 3',
-    'members':'Board',
-  },
-  {
-    'name':'Meeting 4',
-    'time':'3:25 PM',
-    'venue':'SMV Tank',
-    'date':'22th April 2020',
-    'description':'Description 4',
-    'members':'Board',
-  },
 ];
 
 class HomePageState extends State<HomePage>{
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              activeIcon: Icon(
+                Icons.home,
+                color: Color(0xFF459AFF),
+              ),  
+              icon: Icon(
+                Icons.home,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Meetings',
+                style: TextStyle(
+                  color: Color(0xFF459AFF),
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.book,
+                color: Color(0xFFFF6745),
+              ),
+              title: Text(
+                'Projects',
+                style: TextStyle(
+                  color: Color(0xFFFF6745),
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.info_outline,
+                color: Color(0xFFFF4572),
+              ),
+              title: Text(
+                'About Us',
+                style: TextStyle(
+                  color: Color(0xFFFF4572),
+                ),
+              ),
+            ),
+          ],
+        ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -75,8 +103,7 @@ class HomePageState extends State<HomePage>{
                 ),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
+            ListView.builder(
                 shrinkWrap: true,
                 itemCount: meetingDetails.length,
                 itemBuilder: (context,index){
@@ -91,8 +118,55 @@ class HomePageState extends State<HomePage>{
                     sgcolor: getSGColor(index),
                   );
                 }
+            ),
+            Container(
+            margin: EdgeInsets.only(left:44, right: 44),
+            height: 52,
+            width: 259,
+            child: FlatButton(
+              onPressed: (){
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+              padding: EdgeInsets.all(0.0),
+              child: Ink(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [Color(0xFF459AFF), Color(0xFFFF6745),Color(0xFFFF4572)]),
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left:15),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Add Meeting",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ),
               ),
             ),
+          )
           ],
         ),
       )
