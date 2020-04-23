@@ -30,14 +30,6 @@ final meetingDetails = const [
     'description':'Description 2',
     'members':'Board',
   },
-  {
-    'name':'Meeting 2',
-    'time':'7:25 PM',
-    'venue':'SMV Tank',
-    'date':'22th April 2020',
-    'description':'Description 2',
-    'members':'Board',
-  },
 ];
 
 class HomePageState extends State<HomePage>{
