@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import './homePage.dart';
 
-class InputForm extends StatelessWidget{
+class InputForm extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState(){
+    return InputFormState();
+  }
+}
+
+
+class InputFormState extends State<InputForm>{
+
+  String title, venue, date, time, description, members;
+
   Widget build(BuildContext context){
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        //color: Colors.amber,
       ),
       width: 400,
       height: 600,
@@ -30,7 +41,9 @@ class InputForm extends StatelessWidget{
             margin: EdgeInsets.only(left: 5, right: 5),
             width: 300,
             child: TextField(
-              keyboardType: TextInputType.emailAddress,
+              onSubmitted: (String text){
+                title = text;
+              },
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                 hintText: 'Title',
@@ -63,7 +76,9 @@ class InputForm extends StatelessWidget{
             margin: EdgeInsets.only(left: 5, right: 5),
             width: 135,
             child: TextField(
-              keyboardType: TextInputType.emailAddress,
+              onSubmitted: (String text){
+                time = text;
+              },
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                 hintText: 'Time',
@@ -94,7 +109,9 @@ class InputForm extends StatelessWidget{
             margin: EdgeInsets.only(left: 5, right: 5),
             width: 135,
             child: TextField(
-              keyboardType: TextInputType.emailAddress,
+              onSubmitted: (String text){
+                date = text;
+              },
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
                 hintText: 'Date',
@@ -127,6 +144,9 @@ class InputForm extends StatelessWidget{
             margin: EdgeInsets.only(left: 5, right: 5),
             width: 300,
             child: TextField(
+              onSubmitted: (String text){
+                venue = text;
+              },
               keyboardType: TextInputType.multiline,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
@@ -158,6 +178,9 @@ class InputForm extends StatelessWidget{
             margin: EdgeInsets.only(left: 5, right: 5),
             width: 300,
             child: TextField(
+              onChanged: (String text){
+                description = text;
+              },
               keyboardType: TextInputType.multiline,
               maxLines: 10,
               decoration: new InputDecoration(
@@ -190,6 +213,9 @@ class InputForm extends StatelessWidget{
             margin: EdgeInsets.only(left: 5, right: 5),
             width: 300,
             child: TextField(
+              onSubmitted: (String text){
+                members = text;
+              },
               keyboardType: TextInputType.multiline,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
@@ -222,6 +248,10 @@ class InputForm extends StatelessWidget{
               width: 300,
               child: FlatButton(
                 onPressed: (){
+                  setState(() {
+                  meetingDetails.add({'name':title,'time':time,'venue':venue,'date':date,'description':description,'members':members});
+                  print(meetingDetails);
+                  });
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),

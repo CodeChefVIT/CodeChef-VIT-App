@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget{
   }
 }
 
-final meetingDetails = const [
+List meetingDetails = [
   {
     'name':'Meeting 1',
     'time':'7:15 PM',
