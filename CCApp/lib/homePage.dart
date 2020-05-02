@@ -1,5 +1,6 @@
+import 'package:CCApp/meetings.dart';
 import 'package:flutter/material.dart';
-import './meetingCard.dart';
+
 
 void main(){
   runApp(HomePage());
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget{
   }
 }
 
-final meetingDetails = const [
+List meetingDetails = [
   {
     'name':'Meeting 1',
     'time':'7:15 PM',
@@ -29,72 +30,68 @@ final meetingDetails = const [
     'description':'Description 2',
     'members':'Board',
   },
-  {
-    'name':'Meeting 3',
-    'time':'5:25 PM',
-    'venue':'SJT 323',
-    'date':'22th April 2020',
-    'description':'Description 3',
-    'members':'Board',
-  },
-  {
-    'name':'Meeting 4',
-    'time':'3:25 PM',
-    'venue':'SMV Tank',
-    'date':'22th April 2020',
-    'description':'Description 4',
-    'members':'Board',
-  },
 ];
 
 class HomePageState extends State<HomePage>{
+
+  int _currentIndex=0;
+
+  final tabs = [
+    Meetings(),
+    Center(child: Text('Projects'),),
+    Center(child: Text('About Us'),),
+  ];
+
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            SizedBox(height:42),
-            Container(
-              width: double.infinity,
-              height: 54,
-              alignment: Alignment.topCenter,
-              child: Image.asset('assets/images/fulllogo.png'),
-            ),
-            SizedBox(height: 14,),
-            Container(
-              padding: EdgeInsets.only(left:30),
-              alignment: Alignment.centerLeft,
-              child: Text(
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index){
+            setState(() {
+              _currentIndex=index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem( 
+              icon: Icon(
+                Icons.home,
+                color: _currentIndex==0?Color(0xFF459AFF):Colors.grey,
+              ),
+              title: Text(
                 'Meetings',
-                textAlign: TextAlign.left,
                 style: TextStyle(
-                  fontFamily: 'SF Pro Display',
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
+                  color: _currentIndex==0?Color(0xFF459AFF):Colors.grey,
                 ),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: meetingDetails.length,
-                itemBuilder: (context,index){
-                  return MeetingCard(
-                    name: meetingDetails[index]['name'],
-                    time: meetingDetails[index]['time'],
-                    date: meetingDetails[index]['date'],
-                    venue: meetingDetails[index]['venue'],
-                    description: meetingDetails[index]['description'],
-                    members: meetingDetails[index]['members'],
-                    bgcolor: getColor(index),
-                    sgcolor: getSGColor(index),
-                  );
-                }
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.book,
+                color: _currentIndex==1?Color(0xFFFF6745):Colors.grey,
+              ),
+              title: Text(
+                'Projects',
+                style: TextStyle(
+                  color: _currentIndex==1?Color(0xFFFF6745):Colors.grey,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.info_outline,
+                color: _currentIndex==2?Color(0xFFFF4572):Colors.grey,
+              ),
+              title: Text(
+                'About Us',
+                style: TextStyle(
+                  color: _currentIndex==2?Color(0xFFFF4572):Colors.grey,
+                ),
               ),
             ),
           ],
         ),
+        body: tabs[_currentIndex]
       )
     );
   }

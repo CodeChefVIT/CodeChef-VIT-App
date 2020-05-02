@@ -33,26 +33,26 @@ class MeetingCard extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-      margin: EdgeInsets.fromLTRB(30,0,30,20),
+      margin: EdgeInsets.fromLTRB(30,0,30,MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all( Radius.circular(24)),
         color: bgcolor,
       ),
       width: 350,
-      height: 180,
+      height: MediaQuery.of(context).size.height * 180 / 896 ,
       child: Column(
         children: [
           Row(
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                padding: EdgeInsets.fromLTRB(34,22,0,0),
+                padding: EdgeInsets.fromLTRB(34,MediaQuery.of(context).size.height * 22 / 896 - 3,0,0),
                 child: Text(
                   name,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: 28,
+                    fontSize: MediaQuery.of(context).size.height * 28 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -60,13 +60,13 @@ class MeetingCard extends StatelessWidget{
               Expanded(child: SizedBox(width: 10,)),
               Container(
                 alignment: Alignment.centerRight,
-                padding: EdgeInsets.fromLTRB(0,22,34,0),
+                padding: EdgeInsets.fromLTRB(0,MediaQuery.of(context).size.height * 22 / 896 - 3,34,0),
                 child: Text(
                   time,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: 28,
+                    fontSize: MediaQuery.of(context).size.height * 28 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -83,7 +83,7 @@ class MeetingCard extends StatelessWidget{
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: 18,
+                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
                   ),
                 ),
               ),
@@ -96,7 +96,7 @@ class MeetingCard extends StatelessWidget{
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: 18,
+                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
                   ),
                 ),
               ),
@@ -108,7 +108,7 @@ class MeetingCard extends StatelessWidget{
               color: sgcolor,
             ),
             margin: EdgeInsets.symmetric(horizontal: 34),
-            height: 54,
+            height: MediaQuery.of(context).size.height * 54 / 896,
             width: 294,
             padding: EdgeInsets.all(10),
             child: Text(
@@ -120,7 +120,7 @@ class MeetingCard extends StatelessWidget{
               ),
             ),
           ),
-          SizedBox(height: 6,),
+          SizedBox(height: MediaQuery.of(context).size.height * 6 / 896,),
           Row(
             children: [
               Container(
@@ -130,13 +130,13 @@ class MeetingCard extends StatelessWidget{
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: 16,
+                    fontSize: MediaQuery.of(context).size.height * 16 / 896,
                   ),
                 ),
               )
             ],
           ),
-          SizedBox(height: 18,),
+          SizedBox(height: MediaQuery.of(context).size.height * 18 / 896,),
         ],
       ),
     );
