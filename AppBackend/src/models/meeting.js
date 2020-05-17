@@ -30,6 +30,6 @@ const meetingSchema = new mongoose.Schema({
 }, {
     timestamps : true
 })
-const meeting = mongoose.model('meeting',meetingSchema)
+const meeting = mongoose.model('Meeting',meetingSchema)
 
 module.exports = meeting

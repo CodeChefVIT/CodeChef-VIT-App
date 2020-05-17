@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -33,13 +32,28 @@ const userSchema = new mongoose.Schema({
         }
     },
     
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }]
+    role: {
+        type: String,
+        required: true,
+        enum: ["cat1", "cat2","cat3","cat4","admin"]
+      },
+      key: {
+        type: String,
+        required: true,
+        validate(value){
+        if ((value!=process.env.cat1)&&(value !=process.env.cat2)) {
+            throw new Error('Unable to login')
+        }}} ,
+        tokens: [{
+            token: {
+                type: String,
+                required: true
+            }
+        }]
+        
+   
 })
+
 
 userSchema.methods.toJSON = function () {
     const user = this
@@ -47,9 +61,10 @@ userSchema.methods.toJSON = function () {
 
     delete userObject.password
     delete userObject.tokens
-
+    delete userObject.key
     return userObject
 }
+
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this
@@ -60,6 +75,7 @@ userSchema.methods.generateAuthToken = async function () {
 
     return token
 }
+
 
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
@@ -87,6 +103,7 @@ userSchema.pre('save', async function (next) {
 
     next()
 })
+
 
 const User = mongoose.model('User', userSchema)
 
