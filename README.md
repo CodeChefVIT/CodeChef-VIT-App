@@ -1,4 +1,4 @@
-# CodeChef-VIT-App
+# CodeChef VIT App
 All in one official app for CodeChef-VIT.
 
 This App will be the singular App in use by Core Members
