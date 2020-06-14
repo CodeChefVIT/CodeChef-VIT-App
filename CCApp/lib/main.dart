@@ -1,5 +1,7 @@
 import 'package:CCApp/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import './SignUpPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +23,10 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String password;
+    String email;
+
     print(MediaQuery.of(context).size.height);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -33,7 +39,7 @@ class LoginScreen extends StatelessWidget {
             width: double.infinity,
             child: Image.asset('assets/images/fulllogo.png'),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 64 / 896,),
+          SizedBox(height: MediaQuery.of(context).size.height * 44 / 896,),
           Container(
             margin: EdgeInsets.only(left: 44),
             child: Text(
@@ -58,12 +64,15 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 65 / 896,),
+          SizedBox(height: MediaQuery.of(context).size.height * 45 / 896,),
           Container(
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              onChanged: (mail){
+                email=mail;
+              },
               keyboardType: TextInputType.emailAddress,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -99,6 +108,9 @@ class LoginScreen extends StatelessWidget {
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              onChanged: (pass){
+                password=pass;
+              },
               keyboardType: TextInputType.emailAddress,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -165,6 +177,36 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          SizedBox(height: 20,),
+          Row(
+            children: [
+              SizedBox(width: 95,),
+              Text("Don't have an account?",
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: 'SF Pro Display',
+                color: Colors.black,
+              ),
+              ),
+              FlatButton(
+                onPressed: (){
+                  Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SignUpPage()
+                )
+              );
+                },
+                child: Text("Sign Up",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'SF Pro Display',
+                    color: Color(0xFF1D59A1),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              )
+            ],
           ),
           Expanded(child: SizedBox(height: MediaQuery.of(context).size.height * 54 / 896,)),
           Image.asset('assets/images/grad.png'),
