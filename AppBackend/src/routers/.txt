@@ -1,0 +1,7 @@
+ if ((user.key==process.env.cat1&&user.role =='cat1')||(user.key ==process.env.cat2 && user.role =='cat2')) 
+ 
+ 
+else {
+            throw  res.status(400).send()
+
+        }
