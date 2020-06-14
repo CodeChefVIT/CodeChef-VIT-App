@@ -1,7 +1,46 @@
 import 'package:flutter/material.dart';
 import './homePage.dart';
+import 'package:http/http.dart' as http;
+import './signup_model.dart';
 
-class SignUpPage extends StatelessWidget{
+Future<SignupModel> createUser(String name,String email,String pass,String role,String key) async{
+  final String apiUrl = "https://codechef-vit-cc.herokuapp.com/signup";
+
+  final response = await http.post(apiUrl, body:{
+    "name":name,
+	  "email":email,
+	  "password":pass,
+	  "role":role,
+	  "key":key
+  });
+
+  if(response.statusCode == 201){
+    final String responseString = response.body;
+    return signupModelFromJson(responseString);
+  }
+  else{
+    return null;
+  }
+}
+
+class SignUpPage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState(){
+    return SignUpPageState();
+  }
+}
+
+class SignUpPageState extends State<SignUpPage>{
+
+  SignupModel _user;
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+  final TextEditingController roleController = TextEditingController();
+  final TextEditingController keyController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context){
     return MaterialApp(
@@ -34,6 +73,7 @@ class SignUpPage extends StatelessWidget{
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              controller: nameController,
               onChanged: (text){
               },
               keyboardType: TextInputType.name,
@@ -71,6 +111,7 @@ class SignUpPage extends StatelessWidget{
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              controller: emailController,
               onChanged: (text){
               },
               keyboardType: TextInputType.emailAddress,
@@ -108,6 +149,7 @@ class SignUpPage extends StatelessWidget{
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              controller: passController,
               onChanged: (text){
               },
               decoration: new InputDecoration(
@@ -144,6 +186,7 @@ class SignUpPage extends StatelessWidget{
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              controller: roleController,
               onChanged: (text){
               },
               decoration: new InputDecoration(
@@ -180,6 +223,7 @@ class SignUpPage extends StatelessWidget{
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              controller: keyController,
               onChanged: (text){
               },
               decoration: new InputDecoration(
@@ -216,12 +260,19 @@ class SignUpPage extends StatelessWidget{
             height: MediaQuery.of(context).size.height * 66 / 896,
             width: 326,
             child: FlatButton(
-              onPressed: (){
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => HomePage()
-                )
-              );
+              onPressed: () async{
+                final String name = nameController.text;
+                final String email = emailController.text;
+                final String pass = passController.text;
+                final String role = roleController.text;
+                final String key = keyController.text;
+
+                final SignupModel user = await createUser(name, email, pass, role, key);
+
+                setState((){
+                  _user=user;
+                });
+                print(_user);
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(33),
