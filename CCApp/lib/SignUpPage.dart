@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
 import 'package:http/http.dart' as http;
@@ -38,6 +38,7 @@ class SignUpPage extends StatefulWidget{
 class SignUpPageState extends State<SignUpPage>{
 
   SignupModel _user;
+  bool visiblePassword = false;
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -79,8 +80,6 @@ class SignUpPageState extends State<SignUpPage>{
             width: 326,
             child: TextField(
               controller: nameController,
-              onChanged: (text){
-              },
               keyboardType: TextInputType.name,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -117,8 +116,6 @@ class SignUpPageState extends State<SignUpPage>{
             width: 326,
             child: TextField(
               controller: emailController,
-              onChanged: (text){
-              },
               keyboardType: TextInputType.emailAddress,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -154,15 +151,26 @@ class SignUpPageState extends State<SignUpPage>{
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
+              obscureText: !visiblePassword,
               controller: passController,
-              onChanged: (text){
-              },
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 prefixIcon: Icon(
                   Icons.lock,
                   color: Color(0xFF1D59A1),
                 ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    visiblePassword
+                      ? FontAwesomeIcons.eye
+                      : FontAwesomeIcons.eyeSlash,
+                    color: Color(0xFF1D59A1),
+                  ), 
+                  onPressed: (){
+                    setState(() {
+                      visiblePassword = !visiblePassword;
+                    });
+                  }),
                 hintText: 'Password',
                 hintStyle: TextStyle(
                   color: Color(0xFFC7C7C7),
@@ -192,8 +200,6 @@ class SignUpPageState extends State<SignUpPage>{
             width: 326,
             child: TextField(
               controller: roleController,
-              onChanged: (text){
-              },
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 prefixIcon: Icon(
@@ -229,8 +235,6 @@ class SignUpPageState extends State<SignUpPage>{
             width: 326,
             child: TextField(
               controller: keyController,
-              onChanged: (text){
-              },
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
                 prefixIcon: Icon(
