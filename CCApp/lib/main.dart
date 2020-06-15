@@ -1,10 +1,33 @@
+import 'dart:convert';
 import 'package:CCApp/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './SignUpPage.dart';
+import './login_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+Future<LoginModel> createUser(String email,String pass) async{
+  final String apiUrl = "https://codechef-vit-cc.herokuapp.com/login";
+  final body =json.encode({
+	  "email":email,
+	  "password":pass,
+  });
+
+  final response = await http.post(apiUrl, headers: {
+    "Content-Type":"application/json"
+  },
+  body:body);
+  if(response.statusCode == 200){
+    final String responseString = response.body;
+      return loginModelFromJson(responseString); 
+  }
+  else{
+    return null;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -16,17 +39,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({
-    Key key,
-  }) : super(key: key);
+class LoginScreen extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState(){
+    return LoginScreenState();
+  }
+}
+
+class LoginScreenState extends State<LoginScreen> {
+
+  bool visiblePassword = false;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
-    String password;
-    String email;
-
+    LoginModel _user;
     print(MediaQuery.of(context).size.height);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -70,9 +99,7 @@ class LoginScreen extends StatelessWidget {
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
-              onChanged: (mail){
-                email=mail;
-              },
+              controller: emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -108,9 +135,8 @@ class LoginScreen extends StatelessWidget {
             margin: EdgeInsets.only(left: 44, right: 44),
             width: 326,
             child: TextField(
-              onChanged: (pass){
-                password=pass;
-              },
+              obscureText: !visiblePassword,
+              controller: passController,
               keyboardType: TextInputType.emailAddress,
               decoration: new InputDecoration(
                 contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -118,6 +144,18 @@ class LoginScreen extends StatelessWidget {
                   Icons.lock,
                   color: Color(0xFF1D59A1),
                 ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    visiblePassword
+                      ? FontAwesomeIcons.eye
+                      : FontAwesomeIcons.eyeSlash,
+                    color: Color(0xFF1D59A1),
+                  ), 
+                  onPressed: (){
+                    setState(() {
+                      visiblePassword = !visiblePassword;
+                    });
+                  }),
                 hintText: 'Password',
                 hintStyle: TextStyle(
                   color: Color(0xFFC7C7C7),
@@ -146,12 +184,25 @@ class LoginScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 66 / 896,
             width: 326,
             child: FlatButton(
-              onPressed: (){
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => HomePage()
-                )
-              );
+              onPressed: () async {
+                final String email = emailController.text;
+                final String pass = passController.text;
+
+                final LoginModel user = await createUser(email, pass);
+
+                setState((){
+                  _user=user;
+                });
+                if(_user!=null){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                    builder: (context) => HomePage()
+                  )
+                );
+                }
+                else{
+                  print("error");
+                }
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(33),
