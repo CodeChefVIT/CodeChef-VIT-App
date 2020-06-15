@@ -36,7 +36,7 @@ Open APK
 ## Contributors
 - <a href="https://github.com/44t4nk1">Siddharth Singh</a>
 - <a href="https://github.com/rvjain0510">Rishav Jain</a>
-- <a href="https://github.com/DhananjayM">Dhananjay Muru</a>
+- <a href="https://github.com/DhananjayM">Dhananjay Murugesh</a>
 
 ## License
 
