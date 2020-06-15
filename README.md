@@ -25,7 +25,7 @@
 
 
 ## Screenshots
-<img src="https://github.com/akshatvg/common-entry-test/raw/master/static/img/header.png" alt="Project Screenshots">
+<img src="https://github.com/44t4nk1/CodeChef-VIT-App/tree/master/Screenshots" alt="Project Screenshots">
 
 ## Instructions to run
 
