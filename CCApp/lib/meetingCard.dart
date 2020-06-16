@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MeetingCard extends StatelessWidget{
+class MeetingCard extends StatelessWidget {
   final String name;
   final String time;
   final String venue;
@@ -31,22 +31,24 @@ class MeetingCard extends StatelessWidget{
   ];
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(30,0,30,MediaQuery.of(context).size.height * 20 / 896),
+      margin: EdgeInsets.fromLTRB(
+          30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all( Radius.circular(24)),
+        borderRadius: BorderRadius.all(Radius.circular(24)),
         color: bgcolor,
       ),
       width: 350,
-      height: MediaQuery.of(context).size.height * 180 / 896 ,
+      height: MediaQuery.of(context).size.height * 180 / 896,
       child: Column(
         children: [
           Row(
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                padding: EdgeInsets.fromLTRB(34,MediaQuery.of(context).size.height * 22 / 896 - 3,0,0),
+                padding: EdgeInsets.fromLTRB(34,
+                    MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
                 child: Text(
                   name,
                   style: TextStyle(
@@ -57,10 +59,14 @@ class MeetingCard extends StatelessWidget{
                   ),
                 ),
               ),
-              Expanded(child: SizedBox(width: 10,)),
+              Expanded(
+                  child: SizedBox(
+                width: 10,
+              )),
               Container(
                 alignment: Alignment.centerRight,
-                padding: EdgeInsets.fromLTRB(0,MediaQuery.of(context).size.height * 22 / 896 - 3,34,0),
+                padding: EdgeInsets.fromLTRB(0,
+                    MediaQuery.of(context).size.height * 22 / 896 - 3, 34, 0),
                 child: Text(
                   time,
                   style: TextStyle(
@@ -77,7 +83,7 @@ class MeetingCard extends StatelessWidget{
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                padding: EdgeInsets.fromLTRB(34,0,0,5),
+                padding: EdgeInsets.fromLTRB(34, 0, 0, 5),
                 child: Text(
                   venue,
                   style: TextStyle(
@@ -87,10 +93,13 @@ class MeetingCard extends StatelessWidget{
                   ),
                 ),
               ),
-              Expanded(child: SizedBox(width: 10,)),
+              Expanded(
+                  child: SizedBox(
+                width: 10,
+              )),
               Container(
                 alignment: Alignment.centerRight,
-                padding: EdgeInsets.fromLTRB(0,0,34,5),
+                padding: EdgeInsets.fromLTRB(0, 0, 34, 5),
                 child: Text(
                   date,
                   style: TextStyle(
@@ -104,7 +113,7 @@ class MeetingCard extends StatelessWidget{
           ),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all( Radius.circular(20)),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
               color: sgcolor,
             ),
             margin: EdgeInsets.symmetric(horizontal: 34),
@@ -120,7 +129,9 @@ class MeetingCard extends StatelessWidget{
               ),
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 6 / 896,),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 6 / 896,
+          ),
           Row(
             children: [
               Container(
@@ -136,7 +147,9 @@ class MeetingCard extends StatelessWidget{
               )
             ],
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 18 / 896,),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 18 / 896,
+          ),
         ],
       ),
     );
