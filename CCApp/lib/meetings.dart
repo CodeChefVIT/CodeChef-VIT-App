@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './meetingCard.dart';
 import './homePage.dart';
 import './inputform.dart';
@@ -11,9 +12,11 @@ class Meetings extends StatefulWidget{
   }
 }
 
+
+
 class MeetingsState extends State<Meetings>{
   @override
-  @override
+  
   Widget build(BuildContext context){
     return Stack(
           children:[ 
@@ -50,15 +53,54 @@ class MeetingsState extends State<Meetings>{
                       shrinkWrap: true,
                       itemCount: meetingDetails.length,
                       itemBuilder: (context,index){
-                        return MeetingCard(
-                          name: meetingDetails[index]['name'],
-                          time: meetingDetails[index]['time'],
-                          date: meetingDetails[index]['date'],
-                          venue: meetingDetails[index]['venue'],
-                          description: meetingDetails[index]['description'],
-                          members: meetingDetails[index]['members'],
-                          bgcolor: getColor(index),
-                          sgcolor: getSGColor(index),
+                        final meeting=meetingDetails[index];
+                        return Dismissible(
+                          confirmDismiss: (DismissDirection direction) async {
+                            return await showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Confirm"),
+                                  content: const Text("Are you sure you wish to delete this item?"),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      onPressed: () => Navigator.of(context).pop(true),
+                                      child: const Text("DELETE")
+                                    ),
+                                    FlatButton(
+                                      onPressed: () => Navigator.of(context).pop(false),
+                                      child: const Text("CANCEL"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          background: Container(
+                            margin: EdgeInsets.fromLTRB(30,0,30,MediaQuery.of(context).size.height * 20 / 896),
+                            decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all( Radius.circular(24)),
+                            color: Colors.red,
+                          ),
+                            child: Center(child: FaIcon(FontAwesomeIcons.trashAlt,color: Colors.white,),),
+                          ),
+                          key: Key(meeting['name']),
+                          onDismissed: (left){
+                            setState(() {
+                              meetingDetails.removeAt(index);
+                              print(meetingDetails);
+                            });
+                            },
+                            child: MeetingCard(
+                            name: meetingDetails[index]['name'],
+                            time: meetingDetails[index]['time'],
+                            date: meetingDetails[index]['date'],
+                            venue: meetingDetails[index]['venue'],
+                            description: meetingDetails[index]['description'],
+                            members: meetingDetails[index]['members'],
+                            bgcolor: getColor(index),
+                            sgcolor: getSGColor(index),
+                          ),
                         );
                       }
                   ),

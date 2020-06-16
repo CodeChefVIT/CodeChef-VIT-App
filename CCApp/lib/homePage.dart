@@ -1,5 +1,6 @@
 import 'package:CCApp/meetings.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 void main(){
@@ -54,8 +55,8 @@ class HomePageState extends State<HomePage>{
           },
           items: [
             BottomNavigationBarItem( 
-              icon: Icon(
-                Icons.home,
+              icon: FaIcon(
+                FontAwesomeIcons.users,
                 color: _currentIndex==0?Color(0xFF459AFF):Colors.grey,
               ),
               title: Text(
@@ -66,8 +67,8 @@ class HomePageState extends State<HomePage>{
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.book,
+              icon: FaIcon(
+                FontAwesomeIcons.tasks,
                 color: _currentIndex==1?Color(0xFFFF6745):Colors.grey,
               ),
               title: Text(
@@ -78,8 +79,8 @@ class HomePageState extends State<HomePage>{
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.info_outline,
+              icon: FaIcon(
+                FontAwesomeIcons.infoCircle,
                 color: _currentIndex==2?Color(0xFFFF4572):Colors.grey,
               ),
               title: Text(
@@ -105,6 +106,7 @@ Color getColor(int selector) {
   }else if(selector % 3 ==2){
     return Color(0xFFFF4572);
   }
+  else return null;
 }
 
 Color getSGColor(int selector) {
@@ -115,4 +117,5 @@ Color getSGColor(int selector) {
   }else if(selector % 3 ==2){
     return Color(0xFFFF6C90);
   }
+  else return null;
 }
