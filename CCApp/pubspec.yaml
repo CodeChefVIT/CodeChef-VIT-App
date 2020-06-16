@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_slidable: "^0.5.4"
   flutter:
     sdk: flutter
   http: ^0.12.1
