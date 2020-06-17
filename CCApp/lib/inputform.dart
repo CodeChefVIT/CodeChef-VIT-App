@@ -12,6 +12,13 @@ class InputForm extends StatefulWidget {
 class InputFormState extends State<InputForm> {
   String title, venue, date, time, description, members;
 
+  TextEditingController titleController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
+  TextEditingController venueController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController membersController = TextEditingController();
+
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
@@ -43,9 +50,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
-                onSubmitted: (String text) {
-                  title = text;
-                },
+                controller: titleController,
                 decoration: new InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -83,9 +88,7 @@ class InputFormState extends State<InputForm> {
                   margin: EdgeInsets.only(left: 5, right: 5),
                   width: 135,
                   child: TextField(
-                    onSubmitted: (String text) {
-                      time = text;
-                    },
+                    controller: timeController,
                     decoration: new InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -121,9 +124,7 @@ class InputFormState extends State<InputForm> {
                   margin: EdgeInsets.only(left: 5, right: 5),
                   width: 135,
                   child: TextField(
-                    onSubmitted: (String text) {
-                      date = text;
-                    },
+                    controller: dateController,
                     decoration: new InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -161,9 +162,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
-                onSubmitted: (String text) {
-                  venue = text;
-                },
+                controller: venueController,
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
                   contentPadding:
@@ -200,9 +199,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
-                onChanged: (String text) {
-                  description = text;
-                },
+                controller: descriptionController,
                 keyboardType: TextInputType.multiline,
                 maxLines: 10,
                 decoration: new InputDecoration(
@@ -240,9 +237,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
-                onSubmitted: (String text) {
-                  members = text;
-                },
+                controller: membersController,
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
                   contentPadding:
@@ -280,6 +275,12 @@ class InputFormState extends State<InputForm> {
               width: 300,
               child: FlatButton(
                 onPressed: () {
+                  final String title=titleController.text;
+                  final String time=timeController.text;
+                  final String venue=venueController.text;
+                  final String date=dateController.text;
+                  final String description=descriptionController.text;
+                  final String members=membersController.text;
                   setState(() {
                     meetingDetails.add({
                       'name': title,
@@ -288,9 +289,12 @@ class InputFormState extends State<InputForm> {
                       'date': date,
                       'description': description,
                       'members': members
+                      
                     });
-                    Meetings();
                     print(meetingDetails);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => HomePage()));
                   });
                 },
                 shape: RoundedRectangleBorder(
