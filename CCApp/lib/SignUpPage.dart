@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:CCApp/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
@@ -51,7 +52,15 @@ class SignUpPageState extends State<SignUpPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 100 / 896),
+              SizedBox(height: MediaQuery.of(context).size.height * 70 / 896),
+              IconButton(
+                icon: FaIcon(FontAwesomeIcons.arrowLeft),
+                color: Color(0xFF1D59A1),
+                onPressed: (){
+                  Navigator.of(context).pop(
+                    MaterialPageRoute(builder: (context) => MyApp()));
+                },
+              ),
               Container(
                 height: MediaQuery.of(context).size.height * 89 / 896,
                 width: double.infinity,
