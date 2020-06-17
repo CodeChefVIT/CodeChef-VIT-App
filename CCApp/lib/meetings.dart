@@ -53,23 +53,98 @@ class MeetingsState extends State<Meetings> {
                 itemCount: meetingDetails.length,
                 itemBuilder: (context, index) {
                   return Slidable(
-                    actionPane: SlidableDrawerActionPane(),
-                    actionExtentRatio: 0.30,
+                    actionPane: SlidableScrollActionPane(),
+                    actionExtentRatio: 0.3,
+                    actions: [
+                      SlideAction(
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              children: [
+                                SizedBox(height: 70,),
+                                FaIcon(
+                                  FontAwesomeIcons.userCircle,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 5,),
+                                Text(
+                                  "Record",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize:12
+                                  ),
+                                  )
+                              ],
+                            ),
+                          ),
+                          margin: EdgeInsets.fromLTRB(30, 0, 0, 18),
+                          height: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            color: Color(0xFF34C759),
+                          ),
+                        ),
+                        onTap: () {},
+                      ),
+                      SlideAction(
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              children: [
+                                SizedBox(height: 70,),
+                                FaIcon(
+                                  FontAwesomeIcons.eye,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 5,),
+                                Text(
+                                  "Attendance",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize:12
+                                  ),
+                                  )
+                              ],
+                            ),
+                          ),
+                          margin: EdgeInsets.fromLTRB(15, 0, 15, 18),
+                          height: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            color: Color.fromRGBO(0, 86, 255, 100),
+                          ),
+                        ),
+                        onTap: () {},
+                      )
+                    ],
                     secondaryActions: [
                       SlideAction(
                           child: Container(
                             child: Center(
-                              child: FaIcon(
-                                FontAwesomeIcons.trashAlt,
-                                color: Colors.white,
-                              ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: 70,),
+                                FaIcon(
+                                  FontAwesomeIcons.times,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: 5,),
+                                Text(
+                                  "Delete",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize:12
+                                  ),
+                                  )
+                              ],
                             ),
+                          ),
                             margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
                             height: 200,
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(24)),
-                              color: Colors.red,
+                              color: Color(0xFFFF3B30),
                             ),
                           ),
                           onTap: () {
