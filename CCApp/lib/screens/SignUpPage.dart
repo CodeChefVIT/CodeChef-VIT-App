@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:CCApp/screens/main.dart';
+import 'package:CCApp/screens/login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
@@ -35,7 +35,7 @@ class SignUpPageState extends State<SignUpPage> {
                 color: Color(0xFF1D59A1),
                 onPressed: (){
                   Navigator.of(context).pop(
-                    MaterialPageRoute(builder: (context) => MyApp()));
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
               ),
               Container(
