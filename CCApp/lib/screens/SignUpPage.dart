@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:CCApp/main.dart';
+import 'package:CCApp/screens/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';

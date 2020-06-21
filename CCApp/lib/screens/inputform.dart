@@ -1,4 +1,4 @@
-import 'package:CCApp/meetings.dart';
+import 'package:CCApp/screens/meetings.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
 
