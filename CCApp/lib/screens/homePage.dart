@@ -1,4 +1,4 @@
-import 'package:CCApp/meetings.dart';
+import 'package:CCApp/screens/meetings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -47,6 +47,7 @@ class HomePageState extends State<HomePage> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: _currentIndex,
