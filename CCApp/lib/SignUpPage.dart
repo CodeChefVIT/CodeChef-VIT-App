@@ -4,28 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
 import 'package:http/http.dart' as http;
-import './signup_model.dart';
-
-Future<SignupModel> createUser(
-    String name, String email, String pass, String role, String key) async {
-  final String apiUrl = "https://codechef-vit-cc.herokuapp.com/signup";
-  final body = json.encode({
-    "name": name,
-    "email": email,
-    "password": pass,
-    "role": role,
-    "key": key
-  });
-
-  final response = await http.post(apiUrl,
-      headers: {"Content-Type": "application/json"}, body: body);
-  if (response.statusCode == 201) {
-    final String responseString = response.body;
-    return signupModelFromJson(responseString);
-  } else {
-    return null;
-  }
-}
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -35,7 +13,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class SignUpPageState extends State<SignUpPage> {
-  SignupModel _user;
   bool visiblePassword = false;
 
   final TextEditingController nameController = TextEditingController();
@@ -305,19 +282,8 @@ class SignUpPageState extends State<SignUpPage> {
                     final String pass = passController.text;
                     final String role = roleController.text;
                     final String key = keyController.text;
-
-                    final SignupModel user =
-                        await createUser(name, email, pass, role, key);
-
-                    setState(() {
-                      _user = user;
-                    });
-                    if (_user != null) {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => HomePage()));
-                    } else {
-                      print("error");
-                    }
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(33),

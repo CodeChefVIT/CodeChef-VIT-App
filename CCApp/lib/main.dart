@@ -3,28 +3,10 @@ import 'package:CCApp/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './SignUpPage.dart';
-import './login_model.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(MyApp());
-}
-
-Future<LoginModel> createUser(String email, String pass) async {
-  final String apiUrl = "https://codechef-vit-cc.herokuapp.com/login";
-  final body = json.encode({
-    "email": email,
-    "password": pass,
-  });
-
-  final response = await http.post(apiUrl,
-      headers: {"Content-Type": "application/json"}, body: body);
-  if (response.statusCode == 200) {
-    final String responseString = response.body;
-    return loginModelFromJson(responseString);
-  } else {
-    return null;
-  }
 }
 
 class MyApp extends StatelessWidget {
@@ -49,7 +31,6 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    LoginModel _user;
     print(MediaQuery.of(context).size.height);
     return Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -190,21 +171,11 @@ class LoginScreenState extends State<LoginScreen> {
               height: MediaQuery.of(context).size.height * 66 / 896,
               width: 326,
               child: FlatButton(
-                onPressed: () async {
+                onPressed: () {
                   final String email = emailController.text;
                   final String pass = passController.text;
-
-                  final LoginModel user = await createUser(email, pass);
-
-                  setState(() {
-                    _user = user;
-                  });
-                  if (_user != null) {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => HomePage()));
-                  } else {
-                    print("error");
-                  }
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(33),
