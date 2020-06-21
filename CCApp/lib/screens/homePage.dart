@@ -47,6 +47,7 @@ class HomePageState extends State<HomePage> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: _currentIndex,
