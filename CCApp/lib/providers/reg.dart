@@ -17,6 +17,10 @@ class Reg with ChangeNotifier{
     return _email;
   }
 
+  bool get isReg{
+    return token!=null;
+  }
+
   Future<void> login(Map<String,String> data) async {
     final url = 'https://codechef-vit-app.herokuapp.com/Accounts/login/';
     try{
@@ -76,4 +80,26 @@ class Reg with ChangeNotifier{
       throw error;
     }
   }
+
+  Future<void> tryAutoLogin() async{
+    final prefs = await SharedPreferences.getInstance();
+    if(!prefs.containsKey('userData')) {
+      return false;
+    }
+    final extractedUserData = 
+    json.decode(prefs.getString('userData')) as Map<String, Object>;
+    _token = extractedUserData['token'];
+    _email = extractedUserData['email'];
+    notifyListeners();
+    return true;
+  }
+
+  Future<void> logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    _token = null;
+    _email = null;
+    notifyListeners();
+  }
+
 } 
