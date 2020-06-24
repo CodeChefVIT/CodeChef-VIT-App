@@ -1,6 +1,7 @@
 import 'package:CCApp/screens/meetings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './logout.dart';
 
 void main() {
   runApp(HomePage());
@@ -41,7 +42,7 @@ class HomePageState extends State<HomePage> {
       child: Text('Projects'),
     ),
     Center(
-      child: Text('About Us'),
+      child: LogOut()
     ),
   ];
 
