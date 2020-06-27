@@ -12,7 +12,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class ProfilePageState extends State<ProfilePage> {
-  List<dynamic> prof=[];
+  List<dynamic> prof = [];
   bool _isLoading = false;
 
   @override
@@ -21,17 +21,17 @@ class ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
-  Future<void> getData() async{
+  Future<void> getData() async {
     setState(() {
       _isLoading = true;
     });
-    try{
-    await Provider.of<Profile>(context, listen: false)
-        .profileView(Provider.of<Reg>(context, listen: false).token);
-        setState(() {
-          prof=Provider.of<Profile>(context, listen: false).details;
-        });
-    }catch(e){
+    try {
+      await Provider.of<Profile>(context, listen: false)
+          .profileView(Provider.of<Reg>(context, listen: false).token);
+      setState(() {
+        prof = Provider.of<Profile>(context, listen: false).details;
+      });
+    } catch (e) {
       print(e);
     }
     setState(() {
@@ -39,16 +39,15 @@ class ProfilePageState extends State<ProfilePage> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _isLoading
-            ? Center(child:CircularProgressIndicator())
-            : prof[0]['uuid']!=null
-              ? Center(child: Text('done'),)
-              : SetupProfile()
-    );
+        body: _isLoading
+            ? Center(child: CircularProgressIndicator())
+            : prof.toString() == '[]'
+                ? SetupProfile()
+                : Center(
+                    child: Text(prof[0]['name']),
+                  ));
   }
 }
