@@ -1,16 +1,20 @@
+import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:CCApp/screens/login.dart';
 import 'package:CCApp/providers/reg.dart';
 
 import 'loading_screen.dart';
 
-void main() => runApp(
-      RestartWidget(
-        child: MyApp(),
-      ),
-    );
+void main() {
+  runApp(
+    RestartWidget(
+      child: MyApp(),
+    ),
+  );
+}
 
 class RestartWidget extends StatefulWidget {
   RestartWidget({this.child});
@@ -28,8 +32,6 @@ class RestartWidget extends StatefulWidget {
 class _RestartWidgetState extends State<RestartWidget> {
   Key key = UniqueKey();
 
-  bool videoCall = false;
-  
   void restartApp() {
     setState(() {
       key = UniqueKey();
@@ -48,11 +50,17 @@ class _RestartWidgetState extends State<RestartWidget> {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(
           value: Reg(),
-        )
+        ),
+        ChangeNotifierProvider.value(
+          value: Profile(),
+        ),
       ],
       child: Consumer<Reg>(
         builder: (context, reg, _) => MaterialApp(
