@@ -94,6 +94,9 @@ class SignUpPageState extends State<SignUpPage> {
                         if (value == '') {
                           return 'This field is required.';
                         }
+                        else{
+                          return null;
+                        }
                       },
                       onSaved: (value) {
                         _data['name'] = value;
@@ -140,6 +143,9 @@ class SignUpPageState extends State<SignUpPage> {
                     validator: (value) {
                         if (value == '') {
                           return 'This field is required.';
+                        }
+                        else{
+                          return null;
                         }
                       },
                       onSaved: (value) {
@@ -190,6 +196,9 @@ class SignUpPageState extends State<SignUpPage> {
                     validator: (value) {
                         if (value == '') {
                           return 'This field is required.';
+                        }
+                        else{
+                          return null;
                         }
                       },
                     obscureText: !visiblePassword,
@@ -246,6 +255,9 @@ class SignUpPageState extends State<SignUpPage> {
                     validator: (value) {
                         if (value == '') {
                           return 'This field is required.';
+                        }
+                        else{
+                          return null;
                         }
                       },
                       onSaved: (value) {

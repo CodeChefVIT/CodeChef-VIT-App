@@ -101,6 +101,9 @@ class LoginScreenState extends State<LoginScreen> {
                     if (value == '') {
                       return 'This field is empty';
                     }
+                    else{
+                          return null;
+                        }
                   },
                   decoration: new InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -144,6 +147,9 @@ class LoginScreenState extends State<LoginScreen> {
                     if (value == '') {
                       return 'This field is empty.';
                     }
+                    else{
+                          return null;
+                        }
                   },
                   obscureText: !visiblePassword,
                   onSaved: (value) {

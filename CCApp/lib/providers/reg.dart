@@ -35,7 +35,7 @@ class Reg with ChangeNotifier{
       print(response.body);
       if(response.statusCode == 200){
         final resBody = json.decode(response.body);
-        _token = resBody["token"];
+        _token = 'Token '+resBody["token"];
         final prefs = await SharedPreferences.getInstance();
         final _prefsData = jsonEncode({
           'token':_token,
@@ -65,7 +65,7 @@ class Reg with ChangeNotifier{
       print(response.body);
       if(response.statusCode == 201){
         final resBody = json.decode(response.body);
-        _token = resBody["token"];
+        _token = 'Token '+resBody["token"];
         final prefs = await SharedPreferences.getInstance();
         final _prefsData = jsonEncode({
           'token':_token,
