@@ -1,5 +1,6 @@
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/editProfile.dart';
 import 'package:CCApp/screens/setupprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -78,7 +79,13 @@ class ProfilePageState extends State<ProfilePage> {
                                     75 /
                                     896),
                             child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (ctx) => EditProfile(),
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'Edit',
                                 style:
@@ -127,7 +134,7 @@ class ProfilePageState extends State<ProfilePage> {
                                     414,
                               ),
                               FaIcon(
-                                FontAwesomeIcons.hashtag,
+                                FontAwesomeIcons.phone,
                                 size: 20,
                               ),
                               Container(
