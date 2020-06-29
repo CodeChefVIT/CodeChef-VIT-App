@@ -1,46 +1,45 @@
+import 'dart:convert';
+
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'homePage.dart';
-
-class SetupProfile extends StatefulWidget {
+class EditProfile extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return SetupProfileState();
+    return EditProfileState();
   }
 }
 
-class SetupProfileState extends State<SetupProfile> {
+class EditProfileState extends State<EditProfile> {
   @override
   void initState() {
-    details = Provider.of<Reg>(context, listen: false).userDetails;
+    details = Provider.of<Profile>(context, listen: false).details;
     super.initState();
   }
 
+  @override
   final GlobalKey<FormState> _formKey = GlobalKey();
   Map<String, String> _data = {};
-  Map details;
+  List<dynamic> details;
   Future<void> _submit() async {
-    if (!_formKey.currentState.validate()) {
-      return;
-    }
-    _formKey.currentState.save();
     try {
-      await Provider.of<Profile>(context, listen: false)
-          .profileSetup(_data, Provider.of<Reg>(context, listen: false).token);
+      await Provider.of<Profile>(context, listen: false).profileEdit(_data,
+          Provider.of<Reg>(context, listen: false).token, details[0]['uuid']);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(),
         ),
       );
     } catch (error) {
+      print(error);
       await showDialog(
         context: context,
         child: AlertDialog(
           title: Text('Error'),
-          content: Text('Profile Setup Failed'),
+          content: Text('Profile Edit Failed'),
         ),
       );
     }
@@ -48,9 +47,9 @@ class SetupProfileState extends State<SetupProfile> {
 
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
-    return SingleChildScrollView(
-        child: Container(
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: Container(
       child: Form(
         key: _formKey,
         child: Column(
@@ -69,7 +68,7 @@ class SetupProfileState extends State<SetupProfile> {
               padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * 29 / 414),
               child: Text(
-                "Finish your Profile...",
+                "Edit your Profile",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -84,7 +83,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
-                initialValue: details['name'],
+                initialValue: details[0]['name'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -92,7 +91,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['name'] = value;
                 },
                 decoration: new InputDecoration(
@@ -133,7 +132,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
-                initialValue: details['regno'],
+                initialValue: details[0]['regno'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -141,7 +140,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['regno'] = value;
                 },
                 decoration: new InputDecoration(
@@ -182,6 +181,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
+                initialValue: details[0]['phone'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -189,7 +189,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['phone'] = value;
                 },
                 decoration: new InputDecoration(
@@ -230,6 +230,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
+                initialValue: details[0]['room'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -237,7 +238,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['room'] = value;
                 },
                 decoration: new InputDecoration(
@@ -278,6 +279,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
+                initialValue: details[0]['block'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -285,7 +287,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['block'] = value;
                 },
                 decoration: new InputDecoration(
@@ -326,6 +328,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
+                initialValue: details[0]['gender'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -333,7 +336,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['gender'] = value;
                 },
                 decoration: new InputDecoration(
@@ -374,7 +377,7 @@ class SetupProfileState extends State<SetupProfile> {
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
               child: TextFormField(
-                initialValue: details['email'],
+                initialValue: details[0]['email'],
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -382,7 +385,7 @@ class SetupProfileState extends State<SetupProfile> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['email'] = value;
                 },
                 decoration: new InputDecoration(
@@ -442,7 +445,7 @@ class SetupProfileState extends State<SetupProfile> {
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(
-                      "Finish",
+                      "Save Changes",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 28,
@@ -458,6 +461,6 @@ class SetupProfileState extends State<SetupProfile> {
           ],
         ),
       ),
-    ));
+    )));
   }
 }
