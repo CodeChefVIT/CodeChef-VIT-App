@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:CCApp/providers/memberdata.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,7 +36,6 @@ class MembersState extends State<Members> {
           .memberDetails(Provider.of<Reg>(context, listen: false).token);
       setState(() {
         memberDetails = Provider.of<MemberData>(context, listen: false).details;
-        print(memberDetails);
       });
     } catch (e) {
       print(e);
@@ -182,6 +182,7 @@ class MembersState extends State<Members> {
                                   name: 'name',
                                   regno: memberDetails[index]['regno'],
                                   category: memberDetails[index]['category'],
+                                  color: getColor(index),
                                 ),
                               ),
                             );
