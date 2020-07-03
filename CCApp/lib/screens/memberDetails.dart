@@ -4,12 +4,13 @@ class MemberDetails extends StatelessWidget {
   final String name;
   final String regno;
   final int category;
+  final Color color;
 
-  MemberDetails({
-    @required this.name,
-    @required this.regno,
-    @required this.category,
-  });
+  MemberDetails(
+      {@required this.name,
+      @required this.regno,
+      @required this.category,
+      @required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class MemberDetails extends StatelessWidget {
           30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(24)),
-        color: Colors.blue,
+        color: color,
       ),
       width: 350,
       height: MediaQuery.of(context).size.height * 70 / 896,
