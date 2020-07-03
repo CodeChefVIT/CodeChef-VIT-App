@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
@@ -20,7 +18,6 @@ class EditProfileState extends State<EditProfile> {
     super.initState();
   }
 
-  @override
   final GlobalKey<FormState> _formKey = GlobalKey();
   Map<String, String> _data = {};
   List<dynamic> details;
@@ -55,14 +52,22 @@ class EditProfileState extends State<EditProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 100 / 896),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 44 / 896,
+            ),
             Container(
-              height: MediaQuery.of(context).size.height * 89 / 896,
-              width: double.infinity,
-              child: Image.asset('assets/images/fulllogo.png'),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 29 / 414),
+              child: Text(
+                "Profile",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'SF Pro Display'),
+              ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 34 / 896,
+              height: MediaQuery.of(context).size.height * 24 / 896,
             ),
             Container(
               padding: EdgeInsets.only(

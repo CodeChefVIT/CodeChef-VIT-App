@@ -7,6 +7,7 @@ import 'package:CCApp/screens/login.dart';
 import 'package:CCApp/providers/reg.dart';
 
 import 'loading_screen.dart';
+import './providers/memberdata.dart';
 
 void main() {
   runApp(
@@ -51,8 +52,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+      DeviceOrientation.portraitUp,
+    ]);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(
@@ -60,6 +61,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: Profile(),
+        ),
+        ChangeNotifierProvider.value(
+          value: MemberData(),
         ),
       ],
       child: Consumer<Reg>(

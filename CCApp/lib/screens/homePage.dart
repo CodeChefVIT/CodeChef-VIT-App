@@ -1,8 +1,9 @@
-import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/screens/meetings.dart';
 import 'package:CCApp/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'members.dart';
 
 void main() {
   runApp(HomePage());
@@ -44,6 +45,7 @@ class HomePageState extends State<HomePage> {
     ),
     Center(child: Text('About Us')),
     ProfilePage(),
+    Members()
   ];
 
   Widget build(BuildContext context) {
@@ -101,6 +103,18 @@ class HomePageState extends State<HomePage> {
                 'Profile',
                 style: TextStyle(
                   color: _currentIndex == 3 ? Color(0xFF459AFF) : Colors.grey,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.users,
+                color: _currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
+              ),
+              title: Text(
+                'Members',
+                style: TextStyle(
+                  color: _currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
                 ),
               ),
             ),
