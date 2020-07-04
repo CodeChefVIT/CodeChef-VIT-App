@@ -208,7 +208,7 @@ class MembersState extends State<Members> {
                               ],
                               child: Container(
                                 child: MemberDetails(
-                                  name: 'name', //memberDetails[index]['name'],
+                                  name: memberDetails[index]['name'],
                                   regno: memberDetails[index]['regno'],
                                   category: memberDetails[index]['category'],
                                   color: getColor(index),

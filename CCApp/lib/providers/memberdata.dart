@@ -47,13 +47,13 @@ class MemberData with ChangeNotifier {
 
   Future<void> memberDetails(token) async {
     try {
-      final url = 'https://codechef-vit-app.herokuapp.com/member/view/';
+      final url = 'https://codechef-vit-app.herokuapp.com/member/list/';
       final Response response = await get(url, headers: {
         'Content-Type': 'application/json',
         'Authorization': token
       });
-      List<dynamic> res = json.decode(response.body);
-      _details = res;
+      Map<String, dynamic> res = json.decode(response.body);
+      _details = res['members'];
     } catch (error) {
       throw error;
     }
