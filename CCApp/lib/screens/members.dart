@@ -1,13 +1,12 @@
-import 'dart:io';
 import 'package:CCApp/providers/memberdata.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/editMembers.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:provider/provider.dart';
-
 import 'memberDetails.dart';
 
 class Members extends StatefulWidget {
@@ -139,7 +138,26 @@ class MembersState extends State<Members> {
                                       color: Color(0xFF34C759),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(24)),
+                                            elevation: 12,
+                                            child: MemberForm(
+                                              regno: memberDetails[index]
+                                                  ['regno'],
+                                              category: memberDetails[index]
+                                                  ['category'],
+                                              uuid: memberDetails[index]
+                                                  ['uuid'],
+                                            ),
+                                          );
+                                        });
+                                  },
                                 ),
                               ],
                               secondaryActions: [
@@ -190,7 +208,7 @@ class MembersState extends State<Members> {
                               ],
                               child: Container(
                                 child: MemberDetails(
-                                  name: 'name',
+                                  name: 'name', //memberDetails[index]['name'],
                                   regno: memberDetails[index]['regno'],
                                   category: memberDetails[index]['category'],
                                   color: getColor(index),
