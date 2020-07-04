@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:CCApp/screens/createMember.dart';
 import 'package:CCApp/utils/http_exception.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -82,6 +83,19 @@ class MemberData with ChangeNotifier {
     } catch (error) {
       print(error);
       throw error;
+    }
+  }
+
+  Future<void> createMember(token, Map data) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/member/view/';
+    try {
+      final response = await http.post(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token},
+          body: jsonEncode(data));
+      print(response.statusCode);
+      print(response.body);
+    } catch (error) {
+      print(error);
     }
   }
 }

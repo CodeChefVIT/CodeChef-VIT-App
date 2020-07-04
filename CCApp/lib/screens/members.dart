@@ -1,5 +1,6 @@
 import 'package:CCApp/providers/memberdata.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/createMember.dart';
 import 'package:CCApp/screens/editMembers.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
@@ -216,6 +217,69 @@ class MembersState extends State<Members> {
                               ),
                             );
                           }))),
+              Center(
+                child: Container(
+                  margin:
+                      EdgeInsets.only(left: 44, right: 44, bottom: 10, top: 10),
+                  height: 52,
+                  width: 259,
+                  child: FlatButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(24)),
+                                elevation: 12,
+                                child: CreateMember());
+                          });
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    padding: EdgeInsets.all(0.0),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Color(0xFF459AFF),
+                          Color(0xFFFF6745),
+                          Color(0xFFFF4572)
+                        ]),
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 15),
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 28,
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 20),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Add Member",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )),
+                    ),
+                  ),
+                ),
+              )
             ]),
     );
   }

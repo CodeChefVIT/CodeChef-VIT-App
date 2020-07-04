@@ -37,7 +37,7 @@ class MemberDetails extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 24 / 896,
+                    fontSize: MediaQuery.of(context).size.height * 23 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
