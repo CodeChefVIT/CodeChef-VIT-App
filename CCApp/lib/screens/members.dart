@@ -175,7 +175,18 @@ class MembersState extends State<Members> {
                                         color: Color(0xFFFF3B30),
                                       ),
                                     ),
-                                    onTap: () {}),
+                                    onTap: () {
+                                      Provider.of<MemberData>(context,
+                                              listen: false)
+                                          .deleteMember(
+                                              Provider.of<Reg>(context,
+                                                      listen: false)
+                                                  .token,
+                                              memberDetails[index]['uuid']);
+                                      setState(() {
+                                        memberDetails.removeAt(index);
+                                      });
+                                    }),
                               ],
                               child: Container(
                                 child: MemberDetails(
