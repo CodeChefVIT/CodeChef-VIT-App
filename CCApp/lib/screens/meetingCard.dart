@@ -40,7 +40,7 @@ class MeetingCard extends StatelessWidget {
         color: bgcolor,
       ),
       width: 350,
-      height: MediaQuery.of(context).size.height * 180 / 896,
+      height: MediaQuery.of(context).size.height * 170 / 896,
       child: Column(
         children: [
           Row(
@@ -54,7 +54,7 @@ class MeetingCard extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 28 / 896,
+                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -72,7 +72,7 @@ class MeetingCard extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 28 / 896,
+                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:CCApp/screens/createMember.dart';
+import 'package:CCApp/utils/http_exception.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -46,13 +48,13 @@ class MemberData with ChangeNotifier {
 
   Future<void> memberDetails(token) async {
     try {
-      final url = 'https://codechef-vit-app.herokuapp.com/member/view/';
+      final url = 'https://codechef-vit-app.herokuapp.com/member/list/';
       final Response response = await get(url, headers: {
         'Content-Type': 'application/json',
         'Authorization': token
       });
-      List<dynamic> res = json.decode(response.body);
-      _details = res;
+      Map<String, dynamic> res = json.decode(response.body);
+      _details = res['members'];
     } catch (error) {
       throw error;
     }
@@ -68,6 +70,33 @@ class MemberData with ChangeNotifier {
       print(response.statusCode);
     } catch (error) {
       throw error;
+    }
+  }
+
+  Future<void> memberEdit(Map changedData, token, uuid) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/member/view/$uuid/';
+    try {
+      await patch(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token},
+          body: json.encode(changedData));
+      notifyListeners();
+    } catch (error) {
+      print(error);
+      throw error;
+    }
+  }
+
+  Future<void> createMember(token, Map data) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/member/view/';
+    try {
+      final response = await http.post(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token},
+          body: jsonEncode(data));
+      notifyListeners();
+      print(response.statusCode);
+      print(response.body);
+    } catch (error) {
+      print(error);
     }
   }
 }

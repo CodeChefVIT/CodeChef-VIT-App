@@ -1,17 +1,35 @@
 import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class InputForm extends StatefulWidget {
+class EditMeeting extends StatefulWidget {
+  final String name;
+  final String venue;
+  final String uuid;
+  final String time;
+  final String date;
+  final String description;
+  final String members;
+
+  EditMeeting(
+      {@required this.name,
+      @required this.venue,
+      @required this.uuid,
+      @required this.time,
+      @required this.date,
+      @required this.description,
+      @required this.members});
+
   @override
   State<StatefulWidget> createState() {
-    return InputFormState();
+    return EditMeetingState();
   }
 }
 
-class InputFormState extends State<InputForm> {
+class EditMeetingState extends State<EditMeeting> {
   Map<String, String> _data = {};
   final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
@@ -20,20 +38,19 @@ class InputFormState extends State<InputForm> {
     }
     _formKey.currentState.save();
     try {
-      await Provider.of<MeetingData>(context, listen: false)
-          .meetingCreate(_data, Provider.of<Reg>(context, listen: false).token);
+      await Provider.of<MeetingData>(context, listen: false).meetingEdit(
+          _data, Provider.of<Reg>(context, listen: false).token, widget.uuid);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(),
         ),
       );
     } catch (error) {
-      print(error);
       await showDialog(
         context: context,
         child: AlertDialog(
           title: Text('Error'),
-          content: Text('Meeting Create Failed'),
+          content: Text('Meeting Edit Failed'),
         ),
       );
     }
@@ -56,7 +73,7 @@ class InputFormState extends State<InputForm> {
               alignment: Alignment.bottomLeft,
               margin: EdgeInsets.only(left: 7),
               child: Text(
-                'Add a Meeting',
+                'Edit a Meeting',
                 style: TextStyle(
                   fontSize: 24,
                   fontFamily: 'SF Pro Display',
@@ -72,6 +89,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextFormField(
+                initialValue: widget.name,
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -79,7 +97,7 @@ class InputFormState extends State<InputForm> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['name'] = value;
                 },
                 decoration: new InputDecoration(
@@ -119,6 +137,7 @@ class InputFormState extends State<InputForm> {
                   margin: EdgeInsets.only(left: 5, right: 5),
                   width: 135,
                   child: TextFormField(
+                    initialValue: widget.time,
                     validator: (value) {
                       if (value == '') {
                         return 'This field is required.';
@@ -126,7 +145,7 @@ class InputFormState extends State<InputForm> {
                         return null;
                       }
                     },
-                    onSaved: (value) {
+                    onChanged: (value) {
                       _data['time'] = value;
                     },
                     decoration: new InputDecoration(
@@ -164,6 +183,7 @@ class InputFormState extends State<InputForm> {
                   margin: EdgeInsets.only(left: 5, right: 5),
                   width: 135,
                   child: TextFormField(
+                    initialValue: widget.date,
                     validator: (value) {
                       if (value == '') {
                         return 'This field is required.';
@@ -171,7 +191,7 @@ class InputFormState extends State<InputForm> {
                         return null;
                       }
                     },
-                    onSaved: (value) {
+                    onChanged: (value) {
                       _data['date'] = value;
                     },
                     decoration: new InputDecoration(
@@ -211,6 +231,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextFormField(
+                initialValue: widget.venue,
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -218,7 +239,7 @@ class InputFormState extends State<InputForm> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['venue'] = value;
                 },
                 keyboardType: TextInputType.multiline,
@@ -257,6 +278,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextFormField(
+                initialValue: widget.description,
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -264,7 +286,7 @@ class InputFormState extends State<InputForm> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['description'] = value;
                 },
                 keyboardType: TextInputType.multiline,
@@ -304,6 +326,7 @@ class InputFormState extends State<InputForm> {
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextFormField(
+                initialValue: widget.members,
                 validator: (value) {
                   if (value == '') {
                     return 'This field is required.';
@@ -311,7 +334,7 @@ class InputFormState extends State<InputForm> {
                     return null;
                   }
                 },
-                onSaved: (value) {
+                onChanged: (value) {
                   _data['members'] = value;
                 },
                 keyboardType: TextInputType.multiline,
@@ -382,7 +405,7 @@ class InputFormState extends State<InputForm> {
                             margin: EdgeInsets.only(left: 40),
                             alignment: Alignment.center,
                             child: Text(
-                              "Add Meeting",
+                              "Edit Meeting",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 20,
