@@ -16,25 +16,6 @@ class HomePage extends StatefulWidget {
   }
 }
 
-List meetingDetails = [
-  {
-    'name': 'Meeting 1',
-    'time': '7:15 PM',
-    'venue': 'SMV Tank',
-    'date': '28th April 2020',
-    'description': 'Description 1',
-    'members': 'First and Second Years',
-  },
-  {
-    'name': 'Meeting 2',
-    'time': '7:25 PM',
-    'venue': 'SMV Tank',
-    'date': '22th April 2020',
-    'description': 'Description 2',
-    'members': 'Board',
-  },
-];
-
 class HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 

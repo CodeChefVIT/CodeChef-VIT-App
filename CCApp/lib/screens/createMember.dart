@@ -1,6 +1,5 @@
 import 'package:CCApp/providers/memberdata.dart';
 import 'package:CCApp/providers/reg.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

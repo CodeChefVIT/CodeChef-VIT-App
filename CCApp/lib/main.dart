@@ -1,3 +1,4 @@
+import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: MemberData(),
+        ),
+        ChangeNotifierProvider.value(
+          value: MeetingData(),
         ),
       ],
       child: Consumer<Reg>(

@@ -1,5 +1,8 @@
+import 'package:CCApp/providers/meeting.dart';
+import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
-import './homePage.dart';
+import 'package:provider/provider.dart';
 
 class InputForm extends StatefulWidget {
   @override
@@ -9,17 +12,37 @@ class InputForm extends StatefulWidget {
 }
 
 class InputFormState extends State<InputForm> {
-  String title, venue, date, time, description, members;
-
-  TextEditingController titleController = TextEditingController();
-  TextEditingController timeController = TextEditingController();
-  TextEditingController venueController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController membersController = TextEditingController();
+  Map<String, String> _data = {};
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  Future<void> _submit() async {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+    _formKey.currentState.save();
+    try {
+      await Provider.of<MeetingData>(context, listen: false)
+          .meetingCreate(_data, Provider.of<Reg>(context, listen: false).token);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (ctx) => HomePage(),
+        ),
+      );
+    } catch (error) {
+      print(error);
+      await showDialog(
+        context: context,
+        child: AlertDialog(
+          title: Text('Error'),
+          content: Text('Meeting Create Failed'),
+        ),
+      );
+    }
+  }
 
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+        child: Form(
+      key: _formKey,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -48,8 +71,17 @@ class InputFormState extends State<InputForm> {
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
-              child: TextField(
-                controller: titleController,
+              child: TextFormField(
+                validator: (value) {
+                  if (value == '') {
+                    return 'This field is required.';
+                  } else {
+                    return null;
+                  }
+                },
+                onSaved: (value) {
+                  _data['name'] = value;
+                },
                 decoration: new InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -86,8 +118,17 @@ class InputFormState extends State<InputForm> {
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(left: 5, right: 5),
                   width: 135,
-                  child: TextField(
-                    controller: timeController,
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == '') {
+                        return 'This field is required.';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onSaved: (value) {
+                      _data['time'] = value;
+                    },
                     decoration: new InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -122,8 +163,17 @@ class InputFormState extends State<InputForm> {
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(left: 5, right: 5),
                   width: 135,
-                  child: TextField(
-                    controller: dateController,
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == '') {
+                        return 'This field is required.';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onSaved: (value) {
+                      _data['date'] = value;
+                    },
                     decoration: new InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -160,8 +210,17 @@ class InputFormState extends State<InputForm> {
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
-              child: TextField(
-                controller: venueController,
+              child: TextFormField(
+                validator: (value) {
+                  if (value == '') {
+                    return 'This field is required.';
+                  } else {
+                    return null;
+                  }
+                },
+                onSaved: (value) {
+                  _data['venue'] = value;
+                },
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
                   contentPadding:
@@ -197,8 +256,17 @@ class InputFormState extends State<InputForm> {
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
-              child: TextField(
-                controller: descriptionController,
+              child: TextFormField(
+                validator: (value) {
+                  if (value == '') {
+                    return 'This field is required.';
+                  } else {
+                    return null;
+                  }
+                },
+                onSaved: (value) {
+                  _data['description'] = value;
+                },
                 keyboardType: TextInputType.multiline,
                 maxLines: 10,
                 decoration: new InputDecoration(
@@ -231,12 +299,19 @@ class InputFormState extends State<InputForm> {
             SizedBox(
               height: 5,
             ),
-            Container(
+            /*Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
-              child: TextField(
-                controller: membersController,
+              child: TextFormField(
+                validator: (value) {
+                  if (value == '') {
+                    return 'This field is required.';
+                  } else {
+                    return null;
+                  }
+                },
+                initialValue: 'members',
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
                   contentPadding:
@@ -264,7 +339,7 @@ class InputFormState extends State<InputForm> {
                   ),
                 ),
               ),
-            ),
+            ),*/
             SizedBox(
               height: 5,
             ),
@@ -274,27 +349,7 @@ class InputFormState extends State<InputForm> {
               width: 300,
               child: FlatButton(
                 onPressed: () {
-                  final String title=titleController.text;
-                  final String time=timeController.text;
-                  final String venue=venueController.text;
-                  final String date=dateController.text;
-                  final String description=descriptionController.text;
-                  final String members=membersController.text;
-                  setState(() {
-                    meetingDetails.add({
-                      'name': title,
-                      'time': time,
-                      'venue': venue,
-                      'date': date,
-                      'description': description,
-                      'members': members
-                      
-                    });
-                    print(meetingDetails);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => HomePage()));
-                  });
+                  _submit();
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
@@ -343,6 +398,6 @@ class InputFormState extends State<InputForm> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

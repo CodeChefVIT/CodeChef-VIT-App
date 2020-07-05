@@ -92,6 +92,7 @@ class MemberData with ChangeNotifier {
       final response = await http.post(url,
           headers: {'Content-Type': 'application/json', 'Authorization': token},
           body: jsonEncode(data));
+      notifyListeners();
       print(response.statusCode);
       print(response.body);
     } catch (error) {

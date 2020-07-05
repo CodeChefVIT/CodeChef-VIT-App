@@ -99,124 +99,130 @@ class MembersState extends State<Members> {
                       width: double.infinity,
                       height:
                           MediaQuery.of(context).size.height * 600 / 896 - 50,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: memberDetails.length,
-                          itemBuilder: (context, index) {
-                            return Slidable(
-                              actionPane: SlidableScrollActionPane(),
-                              actions: [
-                                SlideAction(
-                                  child: Container(
-                                    child: Center(
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-                                          FaIcon(
-                                            FontAwesomeIcons.upload,
-                                            size: 20,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            "Update",
-                                            style: TextStyle(
+                      child: memberDetails == null
+                          ? Container
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: memberDetails.length,
+                              itemBuilder: (context, index) {
+                                return Slidable(
+                                  actionPane: SlidableScrollActionPane(),
+                                  actions: [
+                                    SlideAction(
+                                      child: Container(
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              SizedBox(
+                                                height: 15,
+                                              ),
+                                              FaIcon(
+                                                FontAwesomeIcons.upload,
+                                                size: 20,
                                                 color: Colors.white,
-                                                fontSize: 12),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    margin: EdgeInsets.fromLTRB(30, 0, 0, 18),
-                                    height: 70,
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(24)),
-                                      color: Color(0xFF34C759),
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(24)),
-                                            elevation: 12,
-                                            child: MemberForm(
-                                              regno: memberDetails[index]
-                                                  ['regno'],
-                                              category: memberDetails[index]
-                                                  ['category'],
-                                              uuid: memberDetails[index]
-                                                  ['uuid'],
-                                            ),
-                                          );
-                                        });
-                                  },
-                                ),
-                              ],
-                              secondaryActions: [
-                                SlideAction(
-                                    child: Container(
-                                      child: Center(
-                                        child: Column(
-                                          children: [
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            FaIcon(
-                                              FontAwesomeIcons.times,
-                                              color: Colors.white,
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              "Delete",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12),
-                                            )
-                                          ],
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text(
+                                                "Update",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 12),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        margin:
+                                            EdgeInsets.fromLTRB(30, 0, 0, 18),
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(24)),
+                                          color: Color(0xFF34C759),
                                         ),
                                       ),
-                                      margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
-                                      height: 70,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(24)),
-                                        color: Color(0xFFFF3B30),
-                                      ),
+                                      onTap: () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return Dialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            24)),
+                                                elevation: 12,
+                                                child: MemberForm(
+                                                  regno: memberDetails[index]
+                                                      ['regno'],
+                                                  category: memberDetails[index]
+                                                      ['category'],
+                                                  uuid: memberDetails[index]
+                                                      ['uuid'],
+                                                ),
+                                              );
+                                            });
+                                      },
                                     ),
-                                    onTap: () {
-                                      Provider.of<MemberData>(context,
-                                              listen: false)
-                                          .deleteMember(
-                                              Provider.of<Reg>(context,
-                                                      listen: false)
-                                                  .token,
-                                              memberDetails[index]['uuid']);
-                                      setState(() {
-                                        memberDetails.removeAt(index);
-                                      });
-                                    }),
-                              ],
-                              child: Container(
-                                child: MemberDetails(
-                                  name: memberDetails[index]['name'],
-                                  regno: memberDetails[index]['regno'],
-                                  category: memberDetails[index]['category'],
-                                  color: getColor(index),
-                                ),
-                              ),
-                            );
-                          }))),
+                                  ],
+                                  secondaryActions: [
+                                    SlideAction(
+                                        child: Container(
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 15,
+                                                ),
+                                                FaIcon(
+                                                  FontAwesomeIcons.times,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  "Delete",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          margin:
+                                              EdgeInsets.fromLTRB(0, 0, 30, 18),
+                                          height: 70,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(24)),
+                                            color: Color(0xFFFF3B30),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          Provider.of<MemberData>(context,
+                                                  listen: false)
+                                              .deleteMember(
+                                                  Provider.of<Reg>(context,
+                                                          listen: false)
+                                                      .token,
+                                                  memberDetails[index]['uuid']);
+                                          setState(() {
+                                            memberDetails.removeAt(index);
+                                          });
+                                        }),
+                                  ],
+                                  child: Container(
+                                    child: MemberDetails(
+                                      name: memberDetails[index]['name'],
+                                      regno: memberDetails[index]['regno'],
+                                      category: memberDetails[index]
+                                          ['category'],
+                                      color: getColor(index),
+                                    ),
+                                  ),
+                                );
+                              }))),
               Center(
                 child: Container(
                   margin:
