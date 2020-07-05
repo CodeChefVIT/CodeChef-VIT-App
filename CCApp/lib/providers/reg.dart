@@ -8,7 +8,13 @@ import 'package:CCApp/utils/http_exception.dart';
 class Reg with ChangeNotifier {
   String _token;
   String _email;
+  int _category;
+
   Map _userDetails = {};
+
+  int get category {
+    return _category;
+  }
 
   String get token {
     return _token;
@@ -34,11 +40,10 @@ class Reg with ChangeNotifier {
             'Content-Type': 'application/json',
           },
           body: json.encode(data));
-      print(response.statusCode);
-      print(response.body);
       if (response.statusCode == 200) {
         final resBody = json.decode(response.body);
         _token = 'Token ' + resBody["token"];
+        _category = resBody["category"];
         final prefs = await SharedPreferences.getInstance();
         final _prefsData = jsonEncode({'token': _token, 'email': _email});
         await prefs.setString('userData', _prefsData);
@@ -59,17 +64,18 @@ class Reg with ChangeNotifier {
             'Content-Type': 'application/json',
           },
           body: json.encode(data));
-      print(response.statusCode);
-      print(response.body);
       if (response.statusCode == 201) {
         final resBody = json.decode(response.body);
+        print(resBody);
         _token = 'Token ' + resBody["token"];
         _userDetails['name'] = resBody["name"];
         _userDetails['email'] = resBody["email"];
         _userDetails['regno'] = resBody["regno"];
+        _category = resBody["category"];
         print(_userDetails);
         final prefs = await SharedPreferences.getInstance();
-        final _prefsData = jsonEncode({'token': _token, 'email': _email});
+        final _prefsData = jsonEncode(
+            {'token': _token, 'email': _email, 'category': _category});
         await prefs.setString('userData', _prefsData);
         notifyListeners();
       } else {
@@ -89,6 +95,7 @@ class Reg with ChangeNotifier {
         json.decode(prefs.getString('userData')) as Map<String, Object>;
     _token = extractedUserData['token'];
     _email = extractedUserData['email'];
+    _category = extractedUserData['category'];
     notifyListeners();
     return true;
   }
@@ -98,6 +105,7 @@ class Reg with ChangeNotifier {
     await prefs.clear();
     _token = null;
     _email = null;
+    _category = null;
     notifyListeners();
   }
 }
