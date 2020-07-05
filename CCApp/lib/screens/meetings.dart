@@ -20,6 +20,7 @@ class Meetings extends StatefulWidget {
 class MeetingsState extends State<Meetings> {
   @override
   void initState() {
+    print(Provider.of<Reg>(context, listen: false).category);
     getData();
     super.initState();
   }
