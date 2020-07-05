@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/editMeeetings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -157,6 +158,65 @@ class MeetingsState extends State<Meetings> {
                             )
                           ],
                           secondaryActions: [
+                            SlideAction(
+                                child: Container(
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 70,
+                                        ),
+                                        FaIcon(
+                                          FontAwesomeIcons.pencilAlt,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "Edit",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(24)),
+                                    color: Color(0xff7734eb),
+                                  ),
+                                ),
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(24)),
+                                            elevation: 12,
+                                            child: EditMeeting(
+                                              name: meetingDetails[index]
+                                                  ['name'],
+                                              venue: meetingDetails[index]
+                                                  ['venue'],
+                                              time: meetingDetails[index]
+                                                  ['time'],
+                                              uuid: meetingDetails[index]
+                                                  ['uuid'],
+                                              description: meetingDetails[index]
+                                                  ['description'],
+                                              date: meetingDetails[index]
+                                                  ['date'],
+                                              members: meetingDetails[index]
+                                                  ['members'],
+                                            ));
+                                      });
+                                }),
                             SlideAction(
                                 child: Container(
                                   child: Center(
