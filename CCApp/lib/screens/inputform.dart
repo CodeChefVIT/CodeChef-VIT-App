@@ -299,7 +299,7 @@ class InputFormState extends State<InputForm> {
             SizedBox(
               height: 5,
             ),
-            /*Container(
+            Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
@@ -311,7 +311,9 @@ class InputFormState extends State<InputForm> {
                     return null;
                   }
                 },
-                initialValue: 'members',
+                onSaved: (value) {
+                  _data['members'] = value;
+                },
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
                   contentPadding:
@@ -339,7 +341,7 @@ class InputFormState extends State<InputForm> {
                   ),
                 ),
               ),
-            ),*/
+            ),
             SizedBox(
               height: 5,
             ),

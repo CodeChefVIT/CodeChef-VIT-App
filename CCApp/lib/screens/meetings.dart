@@ -202,8 +202,7 @@ class MeetingsState extends State<Meetings> {
                             date: meetingDetails[index]['date'],
                             venue: meetingDetails[index]['venue'],
                             description: meetingDetails[index]['description'],
-                            members:
-                                'members', //meetingDetails[index]['members'],
+                            members: meetingDetails[index]['members'],
                             bgcolor: getColor(index),
                             sgcolor: getSGColor(index),
                           )),
