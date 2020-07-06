@@ -42,7 +42,9 @@ class EditMeetingState extends State<EditMeeting> {
           _data, Provider.of<Reg>(context, listen: false).token, widget.uuid);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 0,
+          ),
         ),
       );
     } catch (error) {

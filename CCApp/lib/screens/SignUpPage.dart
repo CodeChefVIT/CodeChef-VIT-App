@@ -32,7 +32,9 @@ class SignUpPageState extends State<SignUpPage> {
       await Provider.of<Reg>(context, listen: false).signup(_data);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 0,
+          ),
         ),
       );
     } catch (e) {

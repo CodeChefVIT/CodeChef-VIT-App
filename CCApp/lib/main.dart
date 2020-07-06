@@ -74,7 +74,9 @@ class MyApp extends StatelessWidget {
         builder: (context, reg, _) => MaterialApp(
             debugShowCheckedModeBanner: false,
             home: reg.isReg
-                ? HomePage()
+                ? HomePage(
+                    currentIndex: 0,
+                  )
                 : FutureBuilder(
                     future: reg.tryAutoLogin(),
                     builder: (context, res) {
@@ -82,7 +84,9 @@ class MyApp extends StatelessWidget {
                         return LoadingScreen();
                       } else {
                         if (res.data) {
-                          return HomePage();
+                          return HomePage(
+                            currentIndex: 0,
+                          );
                         } else {
                           return LoginScreen();
                         }

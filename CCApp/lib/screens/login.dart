@@ -31,7 +31,9 @@ class LoginScreenState extends State<LoginScreen> {
       await Provider.of<Reg>(context, listen: false).login(_data);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 0,
+          ),
         ),
       );
     } catch (error) {

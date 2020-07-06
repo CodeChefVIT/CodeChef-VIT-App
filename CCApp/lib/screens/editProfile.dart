@@ -27,7 +27,9 @@ class EditProfileState extends State<EditProfile> {
           Provider.of<Reg>(context, listen: false).token, details[0]['uuid']);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 3,
+          ),
         ),
       );
     } catch (error) {
