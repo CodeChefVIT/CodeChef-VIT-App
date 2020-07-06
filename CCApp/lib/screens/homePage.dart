@@ -6,10 +6,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'members.dart';
 
 void main() {
-  runApp(HomePage());
+  runApp(HomePage(
+    currentIndex: 0,
+  ));
 }
 
 class HomePage extends StatefulWidget {
+  int currentIndex;
+  HomePage({@required this.currentIndex});
   @override
   State<StatefulWidget> createState() {
     return HomePageState();
@@ -17,8 +21,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-
   final tabs = [
     Meetings(),
     Center(
@@ -32,76 +34,91 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
+          currentIndex: widget.currentIndex,
           onTap: (index) {
             setState(() {
-              _currentIndex = index;
+              widget.currentIndex = index;
             });
           },
           items: [
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.users,
-                color: _currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
+                color:
+                    widget.currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
               ),
               title: Text(
                 'Meetings',
                 style: TextStyle(
-                  color: _currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
+                  color: widget.currentIndex == 0
+                      ? Color(0xFF459AFF)
+                      : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.tasks,
-                color: _currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
+                color:
+                    widget.currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
                 'Projects',
                 style: TextStyle(
-                  color: _currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
+                  color: widget.currentIndex == 1
+                      ? Color(0xFFFF6745)
+                      : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.infoCircle,
-                color: _currentIndex == 2 ? Color(0xFFFF4572) : Colors.grey,
+                color:
+                    widget.currentIndex == 2 ? Color(0xFFFF4572) : Colors.grey,
               ),
               title: Text(
                 'About Us',
                 style: TextStyle(
-                  color: _currentIndex == 2 ? Color(0xFFFF4572) : Colors.grey,
+                  color: widget.currentIndex == 2
+                      ? Color(0xFFFF4572)
+                      : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.userAlt,
-                color: _currentIndex == 3 ? Color(0xFF459AFF) : Colors.grey,
+                color:
+                    widget.currentIndex == 3 ? Color(0xFF459AFF) : Colors.grey,
               ),
               title: Text(
                 'Profile',
                 style: TextStyle(
-                  color: _currentIndex == 3 ? Color(0xFF459AFF) : Colors.grey,
+                  color: widget.currentIndex == 3
+                      ? Color(0xFF459AFF)
+                      : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.users,
-                color: _currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
+                color:
+                    widget.currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
                 'Members',
                 style: TextStyle(
-                  color: _currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
+                  color: widget.currentIndex == 4
+                      ? Color(0xFFFF6745)
+                      : Colors.grey,
                 ),
               ),
             ),
           ],
         ),
-        body: tabs[_currentIndex]);
+        body: tabs[widget.currentIndex]);
   }
 }
 

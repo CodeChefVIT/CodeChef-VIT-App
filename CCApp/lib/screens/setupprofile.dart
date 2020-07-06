@@ -32,7 +32,9 @@ class SetupProfileState extends State<SetupProfile> {
           .profileSetup(_data, Provider.of<Reg>(context, listen: false).token);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 3,
+          ),
         ),
       );
     } catch (error) {

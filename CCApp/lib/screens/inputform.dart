@@ -24,7 +24,9 @@ class InputFormState extends State<InputForm> {
           .meetingCreate(_data, Provider.of<Reg>(context, listen: false).token);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 0,
+          ),
         ),
       );
     } catch (error) {

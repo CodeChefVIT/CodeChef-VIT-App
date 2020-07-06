@@ -147,8 +147,10 @@ class MemberFormState extends State<MemberForm> {
                         _data,
                         Provider.of<Reg>(context, listen: false).token,
                         widget.uuid);
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HomePage(
+                          currentIndex: 4,
+                        )));
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),

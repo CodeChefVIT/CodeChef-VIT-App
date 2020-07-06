@@ -25,7 +25,9 @@ class CreateMemberState extends State<CreateMember> {
           .createMember(Provider.of<Reg>(context, listen: false).token, _data);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage(
+            currentIndex: 4,
+          ),
         ),
       );
     } catch (error) {
