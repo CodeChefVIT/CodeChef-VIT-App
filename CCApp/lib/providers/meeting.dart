@@ -42,4 +42,17 @@ class MeetingData with ChangeNotifier {
       throw error;
     }
   }
+
+  Future<void> meetingDelete(token, uuid) async {
+    try {
+      final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/$uuid/';
+      final Response response = await delete(url, headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      });
+      print(response.statusCode);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
