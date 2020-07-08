@@ -9,6 +9,7 @@ import './meetingCard.dart';
 import './homePage.dart';
 import './inputform.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:geolocator/geolocator.dart';
 
 class Meetings extends StatefulWidget {
   @override
@@ -50,6 +51,15 @@ class MeetingsState extends State<Meetings> {
     setState(() {
       _isLoading = false;
     });
+  }
+
+  Future<void> deleteMeet(uuid) async {
+    try {
+      await Provider.of<MeetingData>(context, listen: false)
+          .meetingDelete(Provider.of<Reg>(context, listen: false).token, uuid);
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -262,6 +272,7 @@ class MeetingsState extends State<Meetings> {
                                       ),
                                     ),
                                     onTap: () {
+                                      deleteMeet(meetingDetails[index]['uuid']);
                                       setState(() {
                                         meetingDetails.removeAt(index);
                                       });
