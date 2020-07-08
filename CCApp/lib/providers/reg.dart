@@ -45,7 +45,8 @@ class Reg with ChangeNotifier {
         _token = 'Token ' + resBody["token"];
         _category = resBody["category"];
         final prefs = await SharedPreferences.getInstance();
-        final _prefsData = jsonEncode({'token': _token, 'email': _email});
+        final _prefsData = jsonEncode(
+            {'token': _token, 'email': _email, 'category': _category});
         await prefs.setString('userData', _prefsData);
         notifyListeners();
       } else {
