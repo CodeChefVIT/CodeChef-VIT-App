@@ -5,7 +5,7 @@
 # CodeChef-VIT-App
 
 > <Subtitle>
-> Include project description here.
+> An all in one app for every CodeChef-VIT member.
 
 ---
 [![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](INSERT_LINK_FOR_DOCS_HERE) 
@@ -19,18 +19,31 @@
 - Discuss and Assign projects
 - Attendance in one Tap
 - An expenses page to keep track of club expenses for easy reimbursement
-- An about us pag
+- An about us page
 
 
 
 
 ## Screenshots
-<img src="https://github.com/44t4nk1/CodeChef-VIT-App/tree/master/Screenshots" alt="Project Screenshots">
+<img src="./Screenshots/login.png" alt="Project Screenshots">
+<img src="./Screenshots/meeting.png" alt="Project Screenshots">
+<img src="./Screenshots/Addmeeting.png" alt="Project Screenshots">
+<img src="./Screenshots/profile.png" alt="Project Screenshots">
+<img src="./Screenshots/members.png" alt="Project Screenshots">
 
 ## Instructions to run
 
 ```
-Open APK
+Clone the Project
+
+Instructions for Android:
+- Go to CCApp//build/app/outputs/apk/release/app-release.apk
+- Install APK on your Android device
+
+Instructions for iOS:
+- Open the project file in XCode
+- Run the App to Install
+
 ```
 
 ## Contributors
