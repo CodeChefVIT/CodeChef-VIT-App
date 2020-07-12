@@ -26,7 +26,7 @@
 
 ## Screenshots
 <img src="./Screenshots/login.png" alt="Project Screenshots">
-<img src="./Screenshots/meetings.png" alt="Project Screenshots">
+<img src="./Screenshots/meeting.png" alt="Project Screenshots">
 <img src="./Screenshots/Addmeeting.png" alt="Project Screenshots">
 <img src="./Screenshots/profile.png" alt="Project Screenshots">
 <img src="./Screenshots/members.png" alt="Project Screenshots">
