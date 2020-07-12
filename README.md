@@ -5,7 +5,7 @@
 # CodeChef-VIT-App
 
 > <Subtitle>
-> Include project description here.
+> An all in one app for every CodeChef-VIT member.
 
 ---
 [![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](INSERT_LINK_FOR_DOCS_HERE) 
@@ -19,13 +19,17 @@
 - Discuss and Assign projects
 - Attendance in one Tap
 - An expenses page to keep track of club expenses for easy reimbursement
-- An about us pag
+- An about us page
 
 
 
 
 ## Screenshots
 <img src="./Screenshots/login.png" alt="Project Screenshots">
+<img src="./Screenshots/meetings.png" alt="Project Screenshots">
+<img src="./Screenshots/Addmeeting.png" alt="Project Screenshots">
+<img src="./Screenshots/profile.png" alt="Project Screenshots">
+<img src="./Screenshots/members.png" alt="Project Screenshots">
 
 ## Instructions to run
 
