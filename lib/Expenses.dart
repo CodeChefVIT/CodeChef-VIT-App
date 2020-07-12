@@ -1,17 +1,14 @@
+import 'package:codechefvitapp/expensesinputform.dart';
 import 'package:flutter/material.dart';
-import './projectsinputform.dart';
-
-class ProjectsPage extends StatefulWidget {
+class Expenses extends StatefulWidget {
   @override
-  _ProjectsPageState createState() => _ProjectsPageState();
+  _ExpensesState createState() => _ExpensesState();
 }
-List projectDetails=[
+List expenseDetails=[
   {
-    'project':'Codechef-VIT App',
-    'mentor':'Akshat Gupta',
-    'member1':'Siddharth Singh',
-    'member2':'Dananjay Murugesh',
-    'member3':'Rishav Jain',
+    'reason': 'DEVSOC 2020',
+    'name': 'Dananjay Murugesh',
+    'amount': '1000',
   }
 ];
 List _expand = List.generate(20, (i) => false).toList();
@@ -77,17 +74,9 @@ Widget slideLeftBackground() {
     ),
   );
 }
-class _ProjectsPageState extends State<ProjectsPage> {
+class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
-    List colors = [
-      0xFF459AFF,
-      0xFFFF6745,
-      0xFFFF4572,
-      0xFF7BB7FF,
-      0xFFFF967E,
-      0xFFFF6C90
-    ];
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -104,7 +93,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
               padding: EdgeInsets.only(left: 30),
               alignment: Alignment.centerLeft,
               child: Text(
-                'Projects',
+                'Expenses',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
@@ -114,14 +103,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
               ),
             ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: projectDetails.length,
+                itemCount: expenseDetails.length,
                 itemBuilder:(context,index){
-                return Dismissible(
+                  return Dismissible(
                     onDismissed: (DismissDirection direction){
                       setState(() {
-                        projectDetails.removeAt(index);
+                        expenseDetails.removeAt(index);
                       });
                     },
                     background: slideRightBackground(),
@@ -135,7 +124,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 content: Text(
-                                    "Are you sure you want to delete this project?"),
+                                    "Are you sure you want to delete this expense?"),
                                 actions: <Widget>[
                                   FlatButton(
                                     child: Text(
@@ -153,7 +142,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        projectDetails.removeAt(index);
+                                        expenseDetails.removeAt(index);
                                       });
                                       Navigator.of(context).pop();
                                     },
@@ -164,64 +153,69 @@ class _ProjectsPageState extends State<ProjectsPage> {
                         return res;
                       }
                     },
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    height: _expand[index]
-                        ?250.0
-                        :50.0,
-                    width:400,
-                    margin: EdgeInsets.all(12.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: index%3==0?Colors.deepOrangeAccent:(index%3==1?Colors.blueAccent:Colors.pinkAccent)
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              padding:EdgeInsets.only(left: 18),
-                              child: Text(
-                                projectDetails[index]['project'],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w600
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      height: _expand[index]
+                          ?250.0
+                          :150.0,
+                      width:400,
+                      margin: EdgeInsets.all(12.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          color: index%3==0?Colors.deepOrangeAccent:(index%3==1?Colors.blueAccent:Colors.pinkAccent)
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 4,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                padding:EdgeInsets.only(left: 18),
+                                child: Text(
+                                  expenseDetails[index]['reason'],
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w600
+                                  ),
                                 ),
                               ),
-                            ),
-                            IconButton(
-                              icon: Icon(_expand[index]?Icons.keyboard_arrow_up:Icons.keyboard_arrow_down),
-                              onPressed: (){
-                                setState(() {
-                                  _expand[index]=!_expand[index];
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        if(_expand[index])
+                              IconButton(
+                                icon: Icon(_expand[index]?Icons.keyboard_arrow_up:Icons.keyboard_arrow_down),
+                                onPressed: (){
+                                  setState(() {
+                                    _expand[index]=!_expand[index];
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                           Column(
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Team Members:",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                  ),
+                                child: Row(
+                                  children: <Widget>[
+                                    SizedBox(width: 10),
+                                    Text(
+                                      expenseDetails[index]['name'],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                          fontSize: 18
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: <Widget>[
-                                    SizedBox(width: 5),
+                                    SizedBox(width: 10),
                                     Text(
-                                      projectDetails[index]['mentor'],
+                                      'Amount',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white,
@@ -229,74 +223,49 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                       ),
                                     ),
                                     Spacer(),
-                                    Icon(Icons.school,color: Colors.white),
+                                    Text(
+                                      '₹',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                          fontSize: 18
+                                      ),
+                                    ),
+                                    Text(
+                                      expenseDetails[index]['amount'],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                          fontSize: 18
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
-                              if(projectDetails[index]['member1']!=null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 5),
-                                      Text(
-                                        projectDetails[index]['member1'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                            fontSize: 18
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      SizedBox(),
-                                    ],
-                                  ),
-                                ),
-                              if(projectDetails[index]['member2']!=null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 5),
-                                      Text(
-                                        projectDetails[index]['member2'],
-                                        style:TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                            fontSize: 18
-                                        ) ,
-                                      ),
-                                      Spacer(),
-                                      SizedBox(),
-                                    ],
-                                  ),
-                                ),
-                              if(projectDetails[index]['member3']!=null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 5),
-                                      Text(
-                                        projectDetails[index]['member3'],
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      SizedBox(),
-                                    ],
-                                  ),
-                                ),
                             ],
                           ),
-                      ],
+                          if(_expand[index])
+                            Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Image",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }
+                  );
+                }
             ),
             SizedBox(height:12),
             Container(
@@ -308,7 +277,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                         return Dialog(
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                           elevation: 12,
-                          child: ProjectsInputForm(),
+                          child: ExpensesInputForm(),
                         );
                       }
                   );
@@ -340,7 +309,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                         ),
                         SizedBox(width: 50),
                         Text(
-                          "Add Projects",
+                          "Add Expense",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,
