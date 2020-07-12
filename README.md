@@ -25,12 +25,21 @@
 
 
 ## Screenshots
-<img src="https://github.com/44t4nk1/CodeChef-VIT-App/tree/master/Screenshots" alt="Project Screenshots">
+<img src="./Screenshots/login.png" alt="Project Screenshots">
 
 ## Instructions to run
 
 ```
-Open APK
+Clone the Project
+
+Instructions for Android:
+- Go to CCApp//build/app/outputs/apk/release/app-release.apk
+- Install APK on your Android device
+
+Instructions for iOS:
+- Open the project file in XCode
+- Run the App to Install
+
 ```
 
 ## Contributors
