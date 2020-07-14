@@ -74,13 +74,11 @@ class MemberData with ChangeNotifier {
   }
 
   Future<void> memberEdit(Map changedData, token, uuid) async {
-    print(changedData);
     final url = 'https://codechef-vit-app.herokuapp.com/member/view/$uuid/';
     try {
-      final response = await patch(url,
+      await patch(url,
           headers: {'Content-Type': 'application/json', 'Authorization': token},
           body: json.encode(changedData));
-      print(response.statusCode);
       notifyListeners();
     } catch (error) {
       print(error);
