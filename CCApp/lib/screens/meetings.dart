@@ -140,7 +140,28 @@ class MeetingsState extends State<Meetings> {
                                       color: Color(0xFF34C759),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () async {
+                                    await Provider.of<MeetingData>(context,
+                                            listen: false)
+                                        .startAttendance(
+                                            Provider.of<Reg>(context,
+                                                    listen: false)
+                                                .token,
+                                            meetingDetails[index]['uuid']);
+
+                                    meetingDetails[index]['start_time'] =
+                                        Provider.of<MeetingData>(context,
+                                                listen: false)
+                                            .meetingDetailsResp['start_time'];
+                                    meetingDetails[index]['latitude'] =
+                                        Provider.of<MeetingData>(context,
+                                                listen: false)
+                                            .meetingDetailsResp['latitude'];
+                                    meetingDetails[index]['longitude'] =
+                                        Provider.of<MeetingData>(context,
+                                                listen: false)
+                                            .meetingDetailsResp['longitude'];
+                                  },
                                 ),
                                 SlideAction(
                                   child: Container(
