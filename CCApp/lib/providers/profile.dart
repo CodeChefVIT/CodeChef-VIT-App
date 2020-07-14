@@ -55,7 +55,7 @@ class Profile with ChangeNotifier {
         _details = res;
         notifyListeners();
       } else {
-        throw HttpException('Profile Setup Failed');
+        throw HttpException('Profile Edit Failed');
       }
     } catch (error) {
       print(error);
