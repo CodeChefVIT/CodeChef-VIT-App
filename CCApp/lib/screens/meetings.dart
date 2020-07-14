@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:CCApp/providers/meeting.dart';
+import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/editMeeetings.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class Meetings extends StatefulWidget {
 class MeetingsState extends State<Meetings> {
   @override
   void initState() {
+    Provider.of<Profile>(context, listen: false)
+        .profileView(Provider.of<Reg>(context, listen: false).token);
     check = Provider.of<Reg>(context, listen: false).category;
     if (check == 5 || check == 3) {
       board = true;
@@ -140,7 +143,27 @@ class MeetingsState extends State<Meetings> {
                                       color: Color(0xFF34C759),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () async {
+                                    await Provider.of<MeetingData>(context,
+                                            listen: false)
+                                        .startAttendance(
+                                            Provider.of<Reg>(context,
+                                                    listen: false)
+                                                .token,
+                                            meetingDetails[index]['uuid']);
+                                    meetingDetails[index]['start_time'] =
+                                        Provider.of<MeetingData>(context,
+                                                listen: false)
+                                            .meetingDetailsResp['start_time'];
+                                    meetingDetails[index]['latitude'] =
+                                        Provider.of<MeetingData>(context,
+                                                listen: false)
+                                            .meetingDetailsResp['latitude'];
+                                    meetingDetails[index]['longitude'] =
+                                        Provider.of<MeetingData>(context,
+                                                listen: false)
+                                            .meetingDetailsResp['longitude'];
+                                  },
                                 ),
                                 SlideAction(
                                   child: Container(
@@ -434,7 +457,28 @@ class MeetingsState extends State<Meetings> {
                                       color: Color(0xFF34C759),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () async {
+                                    print(Provider.of<Profile>(context,
+                                            listen: false)
+                                        .regno);
+                                    print(Provider.of<Profile>(context,
+                                            listen: false)
+                                        .uuid);
+                                    await Provider.of<MeetingData>(context,
+                                            listen: false)
+                                        .markAttendance(
+                                            Provider.of<Reg>(context,
+                                                    listen: false)
+                                                .token,
+                                            Provider.of<Profile>(context,
+                                                    listen: false)
+                                                .uuid,
+                                            meetingDetails[index]['uuid'],
+                                            Provider.of<Profile>(context,
+                                                    listen: false)
+                                                .regno,
+                                            true);
+                                  },
                                 ),
                                 SlideAction(
                                   child: Container(

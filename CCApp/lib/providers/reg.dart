@@ -42,6 +42,7 @@ class Reg with ChangeNotifier {
           body: json.encode(data));
       if (response.statusCode == 200) {
         final resBody = json.decode(response.body);
+        print(resBody);
         _token = 'Token ' + resBody["token"];
         _category = resBody["category"];
         final prefs = await SharedPreferences.getInstance();
