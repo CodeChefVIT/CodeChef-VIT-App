@@ -85,4 +85,19 @@ class MeetingData with ChangeNotifier {
       throw error;
     }
   }
+
+  Future<void> markAttendance(token, uuid, meetuuid, regno, status) async {
+    var url =
+        'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid&regno=$regno&isPresent=$status&uuid=$uuid';
+    try {
+      var response = await http.get(url, headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      });
+      print(response.statusCode);
+      print(response.body);
+    } catch (error) {
+      print(error);
+    }
+  }
 }

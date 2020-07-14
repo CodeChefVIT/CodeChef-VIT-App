@@ -13,6 +13,12 @@ class Profile with ChangeNotifier {
     return _uuid;
   }
 
+  String _regno;
+
+  String get regno {
+    return _regno;
+  }
+
   List<dynamic> get details {
     return _details;
   }
@@ -42,6 +48,7 @@ class Profile with ChangeNotifier {
     List<dynamic> res = json.decode(response.body);
     _details = res;
     _uuid = res[0]['uuid'];
+    _regno = res[0]['regno'];
   }
 
   Future<void> profileEdit(Map<String, String> changedData, token, uuid) async {
