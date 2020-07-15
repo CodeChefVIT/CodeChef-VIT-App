@@ -95,8 +95,9 @@ class _ViewAttendanceState extends State<ViewAttendance> {
                       itemBuilder: (context, index) {
                         return AttendanceCard(
                           color: getColor(index),
-                          name: 'name',
+                          name: memberDetails[index]['name'],
                           regno: memberDetails[index]['regno'],
+                          status: memberDetails[index]['attendance'],
                         );
                       }),
             ))

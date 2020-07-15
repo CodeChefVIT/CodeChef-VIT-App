@@ -4,9 +4,13 @@ class AttendanceCard extends StatelessWidget {
   final String name;
   final String regno;
   final Color color;
+  final bool status;
 
   AttendanceCard(
-      {@required this.name, @required this.regno, @required this.color});
+      {@required this.name,
+      @required this.regno,
+      @required this.color,
+      @required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +57,24 @@ class AttendanceCard extends StatelessWidget {
               ),
             ],
           ),
+          Expanded(
+            child: Container(
+              width: 10,
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerRight,
+            padding: EdgeInsets.only(right: 34),
+            child: Text(
+              status ? 'P' : 'A',
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'SF Pro Display',
+                fontSize: MediaQuery.of(context).size.height * 28 / 896,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          )
         ],
       ),
     );

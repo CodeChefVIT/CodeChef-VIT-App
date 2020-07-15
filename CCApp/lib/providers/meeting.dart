@@ -105,9 +105,6 @@ class MeetingData with ChangeNotifier {
         'Authorization': token
       });
       var res = json.decode(response.body);
-      print(res);
-      _attendance.add(res);
-      print(_attendance);
     } catch (error) {
       print(error);
     }
@@ -122,6 +119,8 @@ class MeetingData with ChangeNotifier {
         'Authorization': token
       });
       var res = json.decode(response.body);
+      _attendance = res['attendance'];
+      print(res);
     } catch (error) {
       print(error);
     }
