@@ -33,6 +33,7 @@ class MeetingsState extends State<Meetings> {
     super.initState();
   }
 
+  bool checkA = false;
   int check;
   List meetingDetails = [];
   bool board = false;
@@ -468,7 +469,6 @@ class MeetingsState extends State<Meetings> {
                                     ),
                                   ),
                                   onTap: () async {
-                                    bool check = false;
                                     Position position = await Geolocator()
                                         .getCurrentPosition(
                                             desiredAccuracy: LocationAccuracy
@@ -484,7 +484,7 @@ class MeetingsState extends State<Meetings> {
                                             position.longitude);
                                     print(distanceInMeters);
                                     if (distanceInMeters < 25) {
-                                      check = true;
+                                      checkA = true;
                                     }
                                     await Provider.of<MeetingData>(context,
                                             listen: false)
@@ -499,7 +499,7 @@ class MeetingsState extends State<Meetings> {
                                             Provider.of<Profile>(context,
                                                     listen: false)
                                                 .regno,
-                                            check);
+                                            checkA);
                                   },
                                 ),
                                 SlideAction(
@@ -539,7 +539,7 @@ class MeetingsState extends State<Meetings> {
                                       MaterialPageRoute(
                                         builder: (ctx) => ViewAttendance(
                                           uuid: meetingDetails[index]['uuid'],
-                                          status: true,
+                                          status: checkA,
                                         ),
                                       ),
                                     );
