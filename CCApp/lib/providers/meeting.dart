@@ -72,7 +72,7 @@ class MeetingData with ChangeNotifier {
     }
   }
 
-  Future<void> startAttendance(token, uuid) async {
+  Future<bool> startAttendance(token, uuid) async {
     Map<String, String> _meetingDetailsExtra = {};
     final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/$uuid/';
     Position position = await Geolocator().getCurrentPosition(
@@ -90,34 +90,41 @@ class MeetingData with ChangeNotifier {
       _meetingDetailsResp['longitude'] = res['longitude'];
       _meetingDetailsResp['start_time'] = res['start_time'];
       print(_meetingDetailsResp);
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (error) {
       print(error);
       throw error;
     }
   }
 
-  Future<void> markAttendance(token, uuid, meetuuid, regno, status) async {
+  Future<void> markAttendance(token, meetuuid) async {
     var url =
-        'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid&regno=$regno&isPresent=$status&uuid=$uuid';
+        'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid';
     try {
       var response = await http.get(url, headers: {
         'Content-Type': 'application/json',
         'Authorization': token
       });
       var res = json.decode(response.body);
+      print(res);
     } catch (error) {
       print(error);
     }
   }
 
-  Future<void> viewAttendance(token, uuid, meetuuid, regno, status) async {
+  Future<void> viewAttendance(token, meetuuid) async {
     var url =
-        'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid&regno=$regno&isPresent=$status&uuid=$uuid';
+        'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid';
     try {
       var response = await http.get(url, headers: {
         'Content-Type': 'application/json',
         'Authorization': token
       });
+      print(response.statusCode);
       var res = json.decode(response.body);
       _attendance = res['attendance'];
       print(res);

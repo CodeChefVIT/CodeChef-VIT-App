@@ -33,7 +33,7 @@ class MeetingsState extends State<Meetings> {
     super.initState();
   }
 
-  bool checkA = false;
+  bool checkstart = false;
   int check;
   List meetingDetails = [];
   bool board = false;
@@ -146,7 +146,8 @@ class MeetingsState extends State<Meetings> {
                                     ),
                                   ),
                                   onTap: () async {
-                                    await Provider.of<MeetingData>(context,
+                                    checkstart = await Provider.of<MeetingData>(
+                                            context,
                                             listen: false)
                                         .startAttendance(
                                             Provider.of<Reg>(context,
@@ -165,6 +166,45 @@ class MeetingsState extends State<Meetings> {
                                         Provider.of<MeetingData>(context,
                                                 listen: false)
                                             .meetingDetailsResp['longitude'];
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          24)),
+                                              elevation: 12,
+                                              child: checkstart
+                                                  ? Container(
+                                                      padding:
+                                                          EdgeInsets.all(30),
+                                                      child: Text(
+                                                        'Attendance Started',
+                                                        style: TextStyle(
+                                                            fontSize: 24,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                      height: 100,
+                                                      width: double.infinity,
+                                                    )
+                                                  : Container(
+                                                      padding:
+                                                          EdgeInsets.all(30),
+                                                      child: Text(
+                                                        'Error',
+                                                        style: TextStyle(
+                                                            fontSize: 24,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                      height: 100,
+                                                      width: double.infinity,
+                                                    ));
+                                        });
                                   },
                                 ),
                                 SlideAction(
@@ -204,7 +244,6 @@ class MeetingsState extends State<Meetings> {
                                       MaterialPageRoute(
                                         builder: (ctx) => ViewAttendance(
                                           uuid: meetingDetails[index]['uuid'],
-                                          status: true,
                                         ),
                                       ),
                                     );
@@ -473,7 +512,6 @@ class MeetingsState extends State<Meetings> {
                                         .getCurrentPosition(
                                             desiredAccuracy: LocationAccuracy
                                                 .bestForNavigation);
-                                    print(position.latitude);
                                     double distanceInMeters = await Geolocator()
                                         .distanceBetween(
                                             double.parse(meetingDetails[index]
@@ -484,22 +522,53 @@ class MeetingsState extends State<Meetings> {
                                             position.longitude);
                                     print(distanceInMeters);
                                     if (distanceInMeters < 25) {
-                                      checkA = true;
+                                      await Provider.of<MeetingData>(context,
+                                              listen: false)
+                                          .markAttendance(
+                                        Provider.of<Reg>(context, listen: false)
+                                            .token,
+                                        meetingDetails[index]['uuid'],
+                                      );
                                     }
-                                    await Provider.of<MeetingData>(context,
-                                            listen: false)
-                                        .markAttendance(
-                                            Provider.of<Reg>(context,
-                                                    listen: false)
-                                                .token,
-                                            Provider.of<Profile>(context,
-                                                    listen: false)
-                                                .uuid,
-                                            meetingDetails[index]['uuid'],
-                                            Provider.of<Profile>(context,
-                                                    listen: false)
-                                                .regno,
-                                            checkA);
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          24)),
+                                              elevation: 12,
+                                              child: distanceInMeters < 25
+                                                  ? Container(
+                                                      padding:
+                                                          EdgeInsets.all(30),
+                                                      child: Text(
+                                                        'Attendance Marked',
+                                                        style: TextStyle(
+                                                            fontSize: 24,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                      height: 100,
+                                                      width: double.infinity,
+                                                    )
+                                                  : Container(
+                                                      padding:
+                                                          EdgeInsets.all(30),
+                                                      child: Text(
+                                                        'Get Closer',
+                                                        style: TextStyle(
+                                                            fontSize: 24,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                      height: 100,
+                                                      width: double.infinity,
+                                                    ));
+                                        });
                                   },
                                 ),
                                 SlideAction(
@@ -539,7 +608,6 @@ class MeetingsState extends State<Meetings> {
                                       MaterialPageRoute(
                                         builder: (ctx) => ViewAttendance(
                                           uuid: meetingDetails[index]['uuid'],
-                                          status: checkA,
                                         ),
                                       ),
                                     );

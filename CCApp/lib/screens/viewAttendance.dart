@@ -10,9 +10,8 @@ import 'package:provider/provider.dart';
 
 class ViewAttendance extends StatefulWidget {
   final String uuid;
-  final bool status;
 
-  ViewAttendance({@required this.uuid, @required this.status});
+  ViewAttendance({@required this.uuid});
   @override
   _ViewAttendanceState createState() => _ViewAttendanceState();
 }
@@ -34,11 +33,7 @@ class _ViewAttendanceState extends State<ViewAttendance> {
     });
     try {
       await Provider.of<MeetingData>(context, listen: false).viewAttendance(
-          Provider.of<Reg>(context, listen: false).token,
-          Provider.of<Profile>(context, listen: false).uuid,
-          widget.uuid,
-          Provider.of<Profile>(context, listen: false).regno,
-          widget.status);
+          Provider.of<Reg>(context, listen: false).token, widget.uuid);
       setState(() {
         memberDetails =
             Provider.of<MeetingData>(context, listen: false).attendance;
