@@ -3,6 +3,7 @@ import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/editMeeetings.dart';
+import 'package:CCApp/screens/viewAttendance.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -197,7 +198,16 @@ class MeetingsState extends State<Meetings> {
                                       color: Color.fromRGBO(0, 86, 255, 100),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (ctx) => ViewAttendance(
+                                          uuid: meetingDetails[index]['uuid'],
+                                          status: true,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 )
                               ],
                               secondaryActions: [
@@ -524,7 +534,16 @@ class MeetingsState extends State<Meetings> {
                                       color: Color.fromRGBO(0, 86, 255, 100),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (ctx) => ViewAttendance(
+                                          uuid: meetingDetails[index]['uuid'],
+                                          status: true,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 )
                               ],
                               child: Container(
