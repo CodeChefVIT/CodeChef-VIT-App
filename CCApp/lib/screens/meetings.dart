@@ -3,6 +3,7 @@ import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/editMeeetings.dart';
+import 'package:CCApp/screens/viewAttendance.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,7 @@ class MeetingsState extends State<Meetings> {
     super.initState();
   }
 
+  bool checkA = false;
   int check;
   List meetingDetails = [];
   bool board = false;
@@ -197,7 +199,16 @@ class MeetingsState extends State<Meetings> {
                                       color: Color.fromRGBO(0, 86, 255, 100),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (ctx) => ViewAttendance(
+                                          uuid: meetingDetails[index]['uuid'],
+                                          status: true,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 )
                               ],
                               secondaryActions: [
@@ -458,12 +469,23 @@ class MeetingsState extends State<Meetings> {
                                     ),
                                   ),
                                   onTap: () async {
-                                    print(Provider.of<Profile>(context,
-                                            listen: false)
-                                        .regno);
-                                    print(Provider.of<Profile>(context,
-                                            listen: false)
-                                        .uuid);
+                                    Position position = await Geolocator()
+                                        .getCurrentPosition(
+                                            desiredAccuracy: LocationAccuracy
+                                                .bestForNavigation);
+                                    print(position.latitude);
+                                    double distanceInMeters = await Geolocator()
+                                        .distanceBetween(
+                                            double.parse(meetingDetails[index]
+                                                ['latitude']),
+                                            double.parse(meetingDetails[index]
+                                                ['longitude']),
+                                            position.latitude,
+                                            position.longitude);
+                                    print(distanceInMeters);
+                                    if (distanceInMeters < 25) {
+                                      checkA = true;
+                                    }
                                     await Provider.of<MeetingData>(context,
                                             listen: false)
                                         .markAttendance(
@@ -477,7 +499,7 @@ class MeetingsState extends State<Meetings> {
                                             Provider.of<Profile>(context,
                                                     listen: false)
                                                 .regno,
-                                            true);
+                                            checkA);
                                   },
                                 ),
                                 SlideAction(
@@ -512,7 +534,16 @@ class MeetingsState extends State<Meetings> {
                                       color: Color.fromRGBO(0, 86, 255, 100),
                                     ),
                                   ),
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (ctx) => ViewAttendance(
+                                          uuid: meetingDetails[index]['uuid'],
+                                          status: checkA,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 )
                               ],
                               child: Container(

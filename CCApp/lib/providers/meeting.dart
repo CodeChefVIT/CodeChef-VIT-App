@@ -6,9 +6,19 @@ import 'package:geolocator/geolocator.dart';
 
 class MeetingData with ChangeNotifier {
   List<dynamic> _details = [];
+  List<dynamic> _attendance = [];
+  bool _marked = false;
 
   List<dynamic> get details {
     return _details;
+  }
+
+  bool get marked {
+    return _marked;
+  }
+
+  List<dynamic> get attendance {
+    return _attendance;
   }
 
   Map<String, String> _meetingDetailsResp = {};
@@ -94,8 +104,23 @@ class MeetingData with ChangeNotifier {
         'Content-Type': 'application/json',
         'Authorization': token
       });
-      print(response.statusCode);
-      print(response.body);
+      var res = json.decode(response.body);
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> viewAttendance(token, uuid, meetuuid, regno, status) async {
+    var url =
+        'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid&regno=$regno&isPresent=$status&uuid=$uuid';
+    try {
+      var response = await http.get(url, headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      });
+      var res = json.decode(response.body);
+      _attendance = res['attendance'];
+      print(res);
     } catch (error) {
       print(error);
     }
