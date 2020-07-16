@@ -475,10 +475,9 @@ class MeetingsState extends State<Meetings> {
                                   child: Container(
                                     child: Center(
                                       child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
-                                          SizedBox(
-                                            height: 70,
-                                          ),
                                           FaIcon(
                                             FontAwesomeIcons.userCircle,
                                             color: Colors.white,
@@ -571,10 +570,9 @@ class MeetingsState extends State<Meetings> {
                                   child: Container(
                                     child: Center(
                                       child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
-                                          SizedBox(
-                                            height: 70,
-                                          ),
                                           FaIcon(
                                             FontAwesomeIcons.eye,
                                             color: Colors.white,
