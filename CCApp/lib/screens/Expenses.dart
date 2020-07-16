@@ -1,10 +1,12 @@
-import 'package:codechefvitapp/expensesinputform.dart';
+import 'package:CCApp/screens/expensesinputform.dart';
 import 'package:flutter/material.dart';
+
 class Expenses extends StatefulWidget {
   @override
   _ExpensesState createState() => _ExpensesState();
 }
-List expenseDetails=[
+
+List expenseDetails = [
   {
     'reason': 'DEVSOC 2020',
     'name': 'Dananjay Murugesh',
@@ -26,15 +28,14 @@ Widget slideRightBackground() {
             Icons.cancel,
             color: Colors.black,
           ),
-          SizedBox(width:15),
+          SizedBox(width: 15),
           Text(
             "Cancel",
             style: TextStyle(
                 color: Colors.black45,
                 fontWeight: FontWeight.w600,
                 fontSize: 19,
-                fontFamily: 'SFProDisplay'
-            ),
+                fontFamily: 'SFProDisplay'),
             textAlign: TextAlign.left,
           ),
         ],
@@ -43,6 +44,7 @@ Widget slideRightBackground() {
     ),
   );
 }
+
 Widget slideLeftBackground() {
   return Container(
     color: Colors.white,
@@ -54,15 +56,14 @@ Widget slideLeftBackground() {
             Icons.delete,
             color: Colors.black,
           ),
-          SizedBox(width:15),
+          SizedBox(width: 15),
           Text(
             "Delete",
             style: TextStyle(
                 color: Colors.black45,
                 fontWeight: FontWeight.w600,
                 fontSize: 19,
-                fontFamily: 'SFProDisplay'
-            ),
+                fontFamily: 'SFProDisplay'),
             textAlign: TextAlign.right,
           ),
           SizedBox(
@@ -74,6 +75,7 @@ Widget slideLeftBackground() {
     ),
   );
 }
+
 class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
@@ -82,8 +84,8 @@ class _ExpensesState extends State<Expenses> {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Image.asset(
-            'assets/codechef-1.JPG', fit: BoxFit.contain, height: 50),
+        title: Image.asset('assets/codechef-1.JPG',
+            fit: BoxFit.contain, height: 50),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -106,9 +108,9 @@ class _ExpensesState extends State<Expenses> {
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: expenseDetails.length,
-                itemBuilder:(context,index){
+                itemBuilder: (context, index) {
                   return Dismissible(
-                    onDismissed: (DismissDirection direction){
+                    onDismissed: (DismissDirection direction) {
                       setState(() {
                         expenseDetails.removeAt(index);
                       });
@@ -155,37 +157,41 @@ class _ExpensesState extends State<Expenses> {
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 300),
-                      height: _expand[index]
-                          ?250.0
-                          :150.0,
-                      width:400,
+                      height: _expand[index] ? 250.0 : 150.0,
+                      width: 400,
                       margin: EdgeInsets.all(12.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
-                          color: index%3==0?Colors.deepOrangeAccent:(index%3==1?Colors.blueAccent:Colors.pinkAccent)
-                      ),
+                          color: index % 3 == 0
+                              ? Colors.deepOrangeAccent
+                              : (index % 3 == 1
+                                  ? Colors.blueAccent
+                                  : Colors.pinkAccent)),
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 4,),
+                          SizedBox(
+                            height: 4,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
-                                padding:EdgeInsets.only(left: 18),
+                                padding: EdgeInsets.only(left: 18),
                                 child: Text(
                                   expenseDetails[index]['reason'],
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 24,
-                                      fontWeight: FontWeight.w600
-                                  ),
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
                               IconButton(
-                                icon: Icon(_expand[index]?Icons.keyboard_arrow_up:Icons.keyboard_arrow_down),
-                                onPressed: (){
+                                icon: Icon(_expand[index]
+                                    ? Icons.keyboard_arrow_up
+                                    : Icons.keyboard_arrow_down),
+                                onPressed: () {
                                   setState(() {
-                                    _expand[index]=!_expand[index];
+                                    _expand[index] = !_expand[index];
                                   });
                                 },
                               ),
@@ -203,8 +209,7 @@ class _ExpensesState extends State<Expenses> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white,
-                                          fontSize: 18
-                                      ),
+                                          fontSize: 18),
                                     ),
                                   ],
                                 ),
@@ -219,8 +224,7 @@ class _ExpensesState extends State<Expenses> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white,
-                                          fontSize: 18
-                                      ),
+                                          fontSize: 18),
                                     ),
                                     Spacer(),
                                     Text(
@@ -228,23 +232,21 @@ class _ExpensesState extends State<Expenses> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white,
-                                          fontSize: 18
-                                      ),
+                                          fontSize: 18),
                                     ),
                                     Text(
                                       expenseDetails[index]['amount'],
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white,
-                                          fontSize: 18
-                                      ),
+                                          fontSize: 18),
                                     ),
                                   ],
                                 ),
                               ),
                             ],
                           ),
-                          if(_expand[index])
+                          if (_expand[index])
                             Column(
                               children: <Widget>[
                                 Padding(
@@ -260,45 +262,45 @@ class _ExpensesState extends State<Expenses> {
                                 ),
                               ],
                             ),
-
                         ],
                       ),
                     ),
                   );
-                }
-            ),
-            SizedBox(height:12),
+                }),
+            SizedBox(height: 12),
             Container(
               height: 50.0,
               child: RaisedButton(
                 onPressed: () {
-                  showDialog(context: context,
-                      builder: (context){
+                  showDialog(
+                      context: context,
+                      builder: (context) {
                         return Dialog(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24)),
                           elevation: 12,
                           child: ExpensesInputForm(),
                         );
-                      }
-                  );
+                      });
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 padding: EdgeInsets.all(0.0),
                 child: Ink(
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        Colors.blueAccent,
-                        Colors.deepOrangeAccent,
-                        Colors.pinkAccent
-                      ],
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.blueAccent,
+                          Colors.deepOrangeAccent,
+                          Colors.pinkAccent
+                        ],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
-                      borderRadius: BorderRadius.circular(30.0)
-                  ),
+                      borderRadius: BorderRadius.circular(30.0)),
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+                    constraints:
+                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                     alignment: Alignment.center,
                     child: Row(
                       children: <Widget>[
@@ -314,8 +316,7 @@ class _ExpensesState extends State<Expenses> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 19,
-                              fontFamily: 'SFProDisplay'
-                          ),
+                              fontFamily: 'SFProDisplay'),
                         ),
                       ],
                     ),
