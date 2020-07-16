@@ -72,7 +72,7 @@ class InputFormState extends State<InputForm> {
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
-              width: 300,
+              width: MediaQuery.of(context).size.height * 280 / 896,
               child: TextFormField(
                 validator: (value) {
                   if (value == '') {
@@ -115,11 +115,14 @@ class InputFormState extends State<InputForm> {
               height: 5,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   alignment: Alignment.center,
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  width: 135,
+                  margin: EdgeInsets.only(
+                      left: 5,
+                      right: MediaQuery.of(context).size.height * 5 / 896),
+                  width: MediaQuery.of(context).size.height * 137 / 896,
                   child: TextFormField(
                     validator: (value) {
                       if (value == '') {
@@ -158,13 +161,12 @@ class InputFormState extends State<InputForm> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 2,
-                ),
                 Container(
                   alignment: Alignment.center,
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  width: 135,
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.height * 5 / 896,
+                      right: 5),
+                  width: MediaQuery.of(context).size.height * 137 / 896,
                   child: TextFormField(
                     validator: (value) {
                       if (value == '') {
@@ -211,7 +213,7 @@ class InputFormState extends State<InputForm> {
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
-              width: 300,
+              width: MediaQuery.of(context).size.height * 280 / 896,
               child: TextFormField(
                 validator: (value) {
                   if (value == '') {
@@ -257,7 +259,7 @@ class InputFormState extends State<InputForm> {
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
-              width: 300,
+              width: MediaQuery.of(context).size.height * 280 / 896,
               child: TextFormField(
                 validator: (value) {
                   if (value == '') {
@@ -304,7 +306,7 @@ class InputFormState extends State<InputForm> {
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
-              width: 300,
+              width: MediaQuery.of(context).size.height * 280 / 896,
               child: TextFormField(
                 validator: (value) {
                   if (value == '') {
@@ -381,7 +383,10 @@ class InputFormState extends State<InputForm> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 40),
+                            margin: EdgeInsets.only(
+                                left: MediaQuery.of(context).size.height *
+                                    40 /
+                                    896),
                             alignment: Alignment.center,
                             child: Text(
                               "Add Meeting",

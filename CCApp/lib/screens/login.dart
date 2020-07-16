@@ -64,7 +64,7 @@ class LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 100 / 896),
+                        height: MediaQuery.of(context).size.height * 80 / 896),
                     Container(
                       height: MediaQuery.of(context).size.height * 89 / 896,
                       width: double.infinity,
@@ -147,7 +147,7 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 33 / 896,
+                      height: MediaQuery.of(context).size.height * 23 / 896,
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
@@ -210,7 +210,7 @@ class LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(
                       height:
-                          MediaQuery.of(context).size.height * 57 / 896 - 12,
+                          MediaQuery.of(context).size.height * 57 / 896 - 22,
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 44, right: 44),
@@ -247,12 +247,12 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: MediaQuery.of(context).size.height * 20 / 896,
                     ),
                     Row(
                       children: [
                         SizedBox(
-                          width: 95,
+                          width: MediaQuery.of(context).size.height * 96 / 896,
                         ),
                         Text(
                           "Don't have an account?",

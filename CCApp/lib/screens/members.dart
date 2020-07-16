@@ -129,10 +129,10 @@ class MembersState extends State<Members> {
                                                 child: Container(
                                                   child: Center(
                                                     child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
-                                                        SizedBox(
-                                                          height: 15,
-                                                        ),
                                                         FaIcon(
                                                           FontAwesomeIcons
                                                               .upload,
@@ -196,17 +196,22 @@ class MembersState extends State<Members> {
                                                   child: Container(
                                                     child: Center(
                                                       child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
                                                         children: [
-                                                          SizedBox(
-                                                            height: 15,
-                                                          ),
                                                           FaIcon(
                                                             FontAwesomeIcons
                                                                 .times,
                                                             color: Colors.white,
                                                           ),
                                                           SizedBox(
-                                                            height: 5,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height *
+                                                                5 /
+                                                                896,
                                                           ),
                                                           Text(
                                                             "Delete",

@@ -1,5 +1,6 @@
+import 'package:CCApp/screens/Expenses.dart';
 import 'package:flutter/material.dart';
-import 'package:codechefvitapp/Expenses.dart';
+
 class ExpensesInputForm extends StatefulWidget {
   @override
   _ExpensesInputFormState createState() => _ExpensesInputFormState();
