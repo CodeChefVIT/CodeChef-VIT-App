@@ -89,16 +89,16 @@ class _ProjectsPageState extends State<ProjectsPage> {
       0xFFFF6C90
     ];
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Image.asset(
-            'assets/codechef-1.JPG', fit: BoxFit.contain, height: 50),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            SizedBox(height: 42),
+            Container(
+              width: double.infinity,
+              height: 54,
+              alignment: Alignment.topCenter,
+              child: Image.asset('assets/images/fulllogo.png'),
+            ),
             SizedBox(height: 14),
             Container(
               padding: EdgeInsets.only(left: 30),

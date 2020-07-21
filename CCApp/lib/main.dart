@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:CCApp/screens/login.dart';
 import 'package:CCApp/providers/reg.dart';
-
 import 'loading_screen.dart';
 import './providers/memberdata.dart';
 

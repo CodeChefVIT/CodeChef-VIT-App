@@ -2,8 +2,10 @@ import 'package:CCApp/screens/meetings.dart';
 import 'package:CCApp/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:CCApp/screens/ProjectsPage.dart';
 import 'members.dart';
+import 'package:CCApp/screens/AboutUsPage.dart';
+import 'package:CCApp/screens/Expenses.dart';
 
 void main() {
   runApp(HomePage(
@@ -23,11 +25,10 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final tabs = [
     Meetings(),
-    Center(
-      child: Text('Projects'),
-    ),
-    Center(child: Text('About Us')),
+    ProjectsPage(),
+    AboutUsPage(),
     ProfilePage(),
+    Expenses(),
     Members()
   ];
 
@@ -103,15 +104,30 @@ class HomePageState extends State<HomePage> {
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
-                FontAwesomeIcons.users,
+                FontAwesomeIcons.moneyBillWave,
                 color:
                     widget.currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
-                'Members',
+                'Expenses',
                 style: TextStyle(
                   color: widget.currentIndex == 4
                       ? Color(0xFFFF6745)
+                      : Colors.grey,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.users,
+                color:
+                widget.currentIndex == 5 ? Color(0xFFFF4572) : Colors.grey,
+              ),
+              title: Text(
+                'Members',
+                style: TextStyle(
+                  color: widget.currentIndex == 5
+                      ? Color(0xFFFF4572)
                       : Colors.grey,
                 ),
               ),
