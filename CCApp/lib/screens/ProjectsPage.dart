@@ -5,13 +5,14 @@ class ProjectsPage extends StatefulWidget {
   @override
   _ProjectsPageState createState() => _ProjectsPageState();
 }
-List projectDetails=[
+
+List projectDetails = [
   {
-    'project':'Codechef-VIT App',
-    'mentor':'Akshat Gupta',
-    'member1':'Siddharth Singh',
-    'member2':'Dananjay Murugesh',
-    'member3':'Rishav Jain',
+    'project': 'Codechef-VIT App',
+    'mentor': 'Akshat Gupta',
+    'member1': 'Siddharth Singh',
+    'member2': 'Dananjay Murugesh',
+    'member3': 'Rishav Jain',
   }
 ];
 List _expand = List.generate(20, (i) => false).toList();
@@ -29,15 +30,14 @@ Widget slideRightBackground() {
             Icons.cancel,
             color: Colors.black,
           ),
-          SizedBox(width:15),
+          SizedBox(width: 15),
           Text(
             "Cancel",
             style: TextStyle(
                 color: Colors.black45,
                 fontWeight: FontWeight.w600,
                 fontSize: 19,
-                fontFamily: 'SFProDisplay'
-            ),
+                fontFamily: 'SFProDisplay'),
             textAlign: TextAlign.left,
           ),
         ],
@@ -46,6 +46,7 @@ Widget slideRightBackground() {
     ),
   );
 }
+
 Widget slideLeftBackground() {
   return Container(
     color: Colors.white,
@@ -57,15 +58,14 @@ Widget slideLeftBackground() {
             Icons.delete,
             color: Colors.black,
           ),
-          SizedBox(width:15),
+          SizedBox(width: 15),
           Text(
             "Delete",
             style: TextStyle(
                 color: Colors.black45,
                 fontWeight: FontWeight.w600,
                 fontSize: 19,
-                fontFamily: 'SFProDisplay'
-            ),
+                fontFamily: 'SFProDisplay'),
             textAlign: TextAlign.right,
           ),
           SizedBox(
@@ -77,6 +77,7 @@ Widget slideLeftBackground() {
     ),
   );
 }
+
 class _ProjectsPageState extends State<ProjectsPage> {
   @override
   Widget build(BuildContext context) {
@@ -114,12 +115,12 @@ class _ProjectsPageState extends State<ProjectsPage> {
               ),
             ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: projectDetails.length,
-                itemBuilder:(context,index){
-                return Dismissible(
-                    onDismissed: (DismissDirection direction){
+                itemBuilder: (context, index) {
+                  return Dismissible(
+                    onDismissed: (DismissDirection direction) {
                       setState(() {
                         projectDetails.removeAt(index);
                       });
@@ -164,172 +165,173 @@ class _ProjectsPageState extends State<ProjectsPage> {
                         return res;
                       }
                     },
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    height: _expand[index]
-                        ?250.0
-                        :50.0,
-                    width:400,
-                    margin: EdgeInsets.all(12.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: index%3==0?Colors.deepOrangeAccent:(index%3==1?Colors.blueAccent:Colors.pinkAccent)
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              padding:EdgeInsets.only(left: 18),
-                              child: Text(
-                                projectDetails[index]['project'],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w600
-                                ),
-                              ),
-                            ),
-                            IconButton(
-                              icon: Icon(_expand[index]?Icons.keyboard_arrow_up:Icons.keyboard_arrow_down),
-                              onPressed: (){
-                                setState(() {
-                                  _expand[index]=!_expand[index];
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        if(_expand[index])
-                          Column(
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      height: _expand[index] ? 250.0 : 50.0,
+                      width: 400,
+                      margin: EdgeInsets.all(12.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          color: index % 3 == 0
+                              ? Colors.deepOrangeAccent
+                              : (index % 3 == 1
+                                  ? Colors.blueAccent
+                                  : Colors.pinkAccent)),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              Container(
+                                padding: EdgeInsets.only(left: 18),
                                 child: Text(
-                                  "Team Members:",
+                                  projectDetails[index]['project'],
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                  ),
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: <Widget>[
-                                    SizedBox(width: 5),
-                                    Text(
-                                      projectDetails[index]['mentor'],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    Icon(Icons.school,color: Colors.white),
-                                  ],
-                                ),
+                              IconButton(
+                                icon: Icon(_expand[index]
+                                    ? Icons.keyboard_arrow_up
+                                    : Icons.keyboard_arrow_down),
+                                color: Colors.white,
+                                onPressed: () {
+                                  setState(() {
+                                    _expand[index] = !_expand[index];
+                                  });
+                                },
                               ),
-                              if(projectDetails[index]['member1']!=null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 5),
-                                      Text(
-                                        projectDetails[index]['member1'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                            fontSize: 18
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      SizedBox(),
-                                    ],
-                                  ),
-                                ),
-                              if(projectDetails[index]['member2']!=null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 5),
-                                      Text(
-                                        projectDetails[index]['member2'],
-                                        style:TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                            fontSize: 18
-                                        ) ,
-                                      ),
-                                      Spacer(),
-                                      SizedBox(),
-                                    ],
-                                  ),
-                                ),
-                              if(projectDetails[index]['member3']!=null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SizedBox(width: 5),
-                                      Text(
-                                        projectDetails[index]['member3'],
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      SizedBox(),
-                                    ],
-                                  ),
-                                ),
                             ],
                           ),
-                      ],
+                          if (_expand[index])
+                            Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Team Members:",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(width: 5),
+                                      Text(
+                                        projectDetails[index]['mentor'],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                            fontSize: 18),
+                                      ),
+                                      Spacer(),
+                                      Icon(Icons.school, color: Colors.white),
+                                    ],
+                                  ),
+                                ),
+                                if (projectDetails[index]['member1'] != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(width: 5),
+                                        Text(
+                                          projectDetails[index]['member1'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white,
+                                              fontSize: 18),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(),
+                                      ],
+                                    ),
+                                  ),
+                                if (projectDetails[index]['member2'] != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(width: 5),
+                                        Text(
+                                          projectDetails[index]['member2'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white,
+                                              fontSize: 18),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(),
+                                      ],
+                                    ),
+                                  ),
+                                if (projectDetails[index]['member3'] != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(width: 5),
+                                        Text(
+                                          projectDetails[index]['member3'],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(),
+                                      ],
+                                    ),
+                                  ),
+                              ],
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }
-            ),
-            SizedBox(height:12),
+                  );
+                }),
+            SizedBox(height: 12),
             Container(
               height: 50.0,
               child: RaisedButton(
                 onPressed: () {
-                  showDialog(context: context,
-                      builder: (context){
+                  showDialog(
+                      context: context,
+                      builder: (context) {
                         return Dialog(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24)),
                           elevation: 12,
                           child: ProjectsInputForm(),
                         );
-                      }
-                  );
+                      });
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 padding: EdgeInsets.all(0.0),
                 child: Ink(
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        Colors.blueAccent,
-                        Colors.deepOrangeAccent,
-                        Colors.pinkAccent
-                      ],
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.blueAccent,
+                          Colors.deepOrangeAccent,
+                          Colors.pinkAccent
+                        ],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
-                      borderRadius: BorderRadius.circular(30.0)
-                  ),
+                      borderRadius: BorderRadius.circular(30.0)),
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+                    constraints:
+                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                     alignment: Alignment.center,
                     child: Row(
                       children: <Widget>[
@@ -345,8 +347,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 19,
-                              fontFamily: 'SFProDisplay'
-                          ),
+                              fontFamily: 'SFProDisplay'),
                         ),
                       ],
                     ),
