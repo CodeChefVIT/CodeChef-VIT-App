@@ -110,7 +110,7 @@ class SignUpPageState extends State<SignUpPage> {
                         onSaved: (value) {
                           _data['name'] = value;
                         },
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.multiline,
                         decoration: new InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 10),
                           prefixIcon: Icon(
