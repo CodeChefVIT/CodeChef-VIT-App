@@ -9,7 +9,7 @@ class ProjectsInputForm extends StatefulWidget {
 }
 
 class _ProjectsInputFormState extends State<ProjectsInputForm> {
-  String project, mentor, name1, name2, name3;
+  String project, mentor, name1, name2, name3, name4, name5, name6;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -233,6 +233,126 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
               height: 10,
             ),
             Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 5, right: 5),
+              width: 300,
+              child: TextField(
+                textInputAction: TextInputAction.done,
+                onChanged: (String text) {
+                  name4 = text;
+                },
+                keyboardType: TextInputType.multiline,
+                decoration: new InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  hintText: 'Team Member 4',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 5, right: 5),
+              width: 300,
+              child: TextField(
+                textInputAction: TextInputAction.done,
+                onChanged: (String text) {
+                  name5 = text;
+                },
+                keyboardType: TextInputType.multiline,
+                decoration: new InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  hintText: 'Team Member 5',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 5, right: 5),
+              width: 300,
+              child: TextField(
+                textInputAction: TextInputAction.done,
+                onChanged: (String text) {
+                  name6 = text;
+                },
+                keyboardType: TextInputType.multiline,
+                decoration: new InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  hintText: 'Team Member 6',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
               margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
               height: 50,
               width: 300,
@@ -245,6 +365,9 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                       'member1': name1,
                       'member2': name2,
                       'member3': name3,
+                      'member4': name4,
+                      'member5': name5,
+                      'member6': name6,
                     });
                     print(projectDetails);
                     print(projectDetails[1]['project']);

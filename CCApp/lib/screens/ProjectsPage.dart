@@ -13,6 +13,9 @@ List projectDetails = [
     'member1': 'Siddharth Singh',
     'member2': 'Dananjay Murugesh',
     'member3': 'Rishav Jain',
+    'member4': 'Lol',
+    'member5': 'new',
+    'member6': 'ok'
   }
 ];
 List _expand = List.generate(20, (i) => false).toList();
@@ -167,7 +170,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 300),
-                      height: _expand[index] ? 250.0 : 50.0,
+                      height: _expand[index] ? 350.0 : 50.0,
                       width: 400,
                       margin: EdgeInsets.all(12.0),
                       decoration: BoxDecoration(
@@ -285,6 +288,60 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                             color: Colors.white,
                                             fontSize: 18,
                                           ),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(),
+                                      ],
+                                    ),
+                                  ),
+                                if (projectDetails[index]['member4'] != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(width: 5),
+                                        Text(
+                                          projectDetails[index]['member4'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white,
+                                              fontSize: 18),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(),
+                                      ],
+                                    ),
+                                  ),
+                                if (projectDetails[index]['member5'] != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(width: 5),
+                                        Text(
+                                          projectDetails[index]['member5'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white,
+                                              fontSize: 18),
+                                        ),
+                                        Spacer(),
+                                        SizedBox(),
+                                      ],
+                                    ),
+                                  ),
+                                if (projectDetails[index]['member6'] != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(width: 5),
+                                        Text(
+                                          projectDetails[index]['member6'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white,
+                                              fontSize: 18),
                                         ),
                                         Spacer(),
                                         SizedBox(),
