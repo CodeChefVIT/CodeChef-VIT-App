@@ -87,11 +87,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
     ];
     int i;
     return Scaffold(
-<<<<<<< HEAD
-      body:SingleChildScrollView(
-=======
       body: SingleChildScrollView(
->>>>>>> 2ab948fa74464ede24aa1288f3d1f57a62a61f6a
         child: Column(
           children: <Widget>[
             SizedBox(height: 42),
