@@ -1,13 +1,15 @@
+import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './ProjectsPage.dart';
+
 class ProjectsInputForm extends StatefulWidget {
   @override
   _ProjectsInputFormState createState() => _ProjectsInputFormState();
 }
 
 class _ProjectsInputFormState extends State<ProjectsInputForm> {
-  String project, mentor, name1, name2, name3;
+  String project, mentor, name1, name2, name3, name4, name5, name6;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,14 +17,14 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
         borderRadius: BorderRadius.circular(30),
       ),
       width: 400,
-      height: 600,
+      height: 480,
       padding: EdgeInsets.all(20),
       child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.only(left:7),
+              margin: EdgeInsets.only(left: 7),
               child: Text(
                 'Add a Project',
                 style: TextStyle(
@@ -39,25 +41,28 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
               width: 300,
               child: TextField(
                 textInputAction: TextInputAction.done,
-                onChanged: (String text){
+                onChanged: (String text) {
                   project = text;
                 },
                 decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   hintText: 'Project Name',
                   hintStyle: TextStyle(
                     color: Color(0xFFC7C7C7),
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.black,
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -66,33 +71,38 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
                 textInputAction: TextInputAction.done,
-                onChanged: (String text){
+                onChanged: (String text) {
                   mentor = text;
                 },
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   hintText: 'Mentor',
                   hintStyle: TextStyle(
                     color: Color(0xFFC7C7C7),
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.black,
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -108,26 +118,29 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
               width: 300,
               child: TextField(
                 textInputAction: TextInputAction.done,
-                onChanged: (String text){
+                onChanged: (String text) {
                   name1 = text;
                 },
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   hintText: 'Team Member 1',
                   hintStyle: TextStyle(
                     color: Color(0xFFC7C7C7),
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.black,
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -136,33 +149,38 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
                 textInputAction: TextInputAction.done,
-                onChanged: (String text){
+                onChanged: (String text) {
                   name2 = text;
                 },
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   hintText: 'Team Member 2',
                   hintStyle: TextStyle(
                     color: Color(0xFFC7C7C7),
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.black,
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -171,33 +189,38 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
               child: TextField(
                 textInputAction: TextInputAction.done,
-                onChanged: (String text){
+                onChanged: (String text) {
                   name3 = text;
                 },
                 keyboardType: TextInputType.multiline,
                 decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   hintText: 'Team Member 3',
                   hintStyle: TextStyle(
                     color: Color(0xFFC7C7C7),
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.black,
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -206,17 +229,155 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
-              margin: EdgeInsets.only(left:5, right: 5, bottom:10, top: 20),
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 5, right: 5),
+              width: 300,
+              child: TextField(
+                textInputAction: TextInputAction.done,
+                onChanged: (String text) {
+                  name4 = text;
+                },
+                keyboardType: TextInputType.multiline,
+                decoration: new InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  hintText: 'Team Member 4',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 5, right: 5),
+              width: 300,
+              child: TextField(
+                textInputAction: TextInputAction.done,
+                onChanged: (String text) {
+                  name5 = text;
+                },
+                keyboardType: TextInputType.multiline,
+                decoration: new InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  hintText: 'Team Member 5',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 5, right: 5),
+              width: 300,
+              child: TextField(
+                textInputAction: TextInputAction.done,
+                onChanged: (String text) {
+                  name6 = text;
+                },
+                keyboardType: TextInputType.multiline,
+                decoration: new InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  hintText: 'Team Member 6',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius:
+                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
               height: 50,
               width: 300,
               child: FlatButton(
-                onPressed: (){
+                onPressed: () {
                   setState(() {
-                    projectDetails.add({'project':project,'mentor':mentor,'member1':name1,'member2':name2,'member3':name3,});
+                    projectDetails.add({
+                      'project': project,
+                      'mentor': mentor,
+                      'member1': name1,
+                      'member2': name2,
+                      'member3': name3,
+                      'member4': name4,
+                      'member5': name5,
+                      'member6': name6,
+                    });
                     print(projectDetails);
                     print(projectDetails[1]['project']);
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (ctx) => HomePage(
+                          currentIndex: 1,
+                        ),
+                      ),
+                    );
                   });
                 },
                 shape: RoundedRectangleBorder(
@@ -225,7 +386,11 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 padding: EdgeInsets.all(0.0),
                 child: Ink(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [Color(0xFF459AFF), Color(0xFFFF6745),Color(0xFFFF4572)]),
+                    gradient: LinearGradient(colors: [
+                      Color(0xFF459AFF),
+                      Color(0xFFFF6745),
+                      Color(0xFFFF4572)
+                    ]),
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: Container(
@@ -233,7 +398,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left:15),
+                            margin: EdgeInsets.only(left: 15),
                             child: Icon(
                               Icons.add,
                               color: Colors.white,
@@ -255,8 +420,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                             ),
                           ),
                         ],
-                      )
-                  ),
+                      )),
                 ),
               ),
             )
