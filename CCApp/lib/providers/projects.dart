@@ -42,4 +42,17 @@ class Project with ChangeNotifier {
       throw error;
     }
   }
+
+  Future<void> projectEdit(Map<String, String> changedData, token, uuid) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/project/new/$uuid/';
+    try {
+      var response = await http.patch(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token},
+          body: json.encode(changedData));
+      print(response.body);
+    } catch (error) {
+      print(error);
+      throw error;
+    }
+  }
 }

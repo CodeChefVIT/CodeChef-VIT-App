@@ -1,4 +1,5 @@
 import 'package:CCApp/providers/memberdata.dart';
+import 'package:CCApp/providers/projects.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +16,19 @@ class EditProject extends StatefulWidget {
   final String member4;
   final String member5;
   final String member6;
+  final String uuid;
 
-  EditProject({
-    @required this.name,
-    @required this.mentor,
-    this.member1,
-    this.member2,
-    this.member3,
-    this.member4,
-    this.member5,
-    this.member6,
-    @required this.description,
-  });
+  EditProject(
+      {@required this.name,
+      @required this.mentor,
+      this.member1,
+      this.member2,
+      this.member3,
+      this.member4,
+      this.member5,
+      this.member6,
+      @required this.description,
+      @required this.uuid});
 
   @override
   State<StatefulWidget> createState() {
@@ -37,6 +39,30 @@ class EditProject extends StatefulWidget {
 class EditProjectState extends State<EditProject> {
   Map<String, String> _data = {};
   final GlobalKey<FormState> _formKey = GlobalKey();
+
+  Future<void> _submit() async {
+    try {
+      await Provider.of<Project>(context, listen: false).projectEdit(
+          _data, Provider.of<Reg>(context, listen: false).token, widget.uuid);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (ctx) => HomePage(
+            currentIndex: 1,
+          ),
+        ),
+      );
+    } catch (error) {
+      print(error);
+      await showDialog(
+        context: context,
+        child: AlertDialog(
+          title: Text('Error'),
+          content: Text('Profile Edit Failed'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -458,6 +484,7 @@ class EditProjectState extends State<EditProject> {
                 width: 300,
                 child: FlatButton(
                   onPressed: () async {
+                    _submit();
                     print(_data);
                   },
                   shape: RoundedRectangleBorder(

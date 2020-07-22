@@ -127,6 +127,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                                 BorderRadius.circular(24)),
                                         elevation: 12,
                                         child: EditProject(
+                                          uuid: projectDetails[index]['uuid'],
                                           name: projectDetails[index]['name'],
                                           description: projectDetails[index]
                                               ['description'],
