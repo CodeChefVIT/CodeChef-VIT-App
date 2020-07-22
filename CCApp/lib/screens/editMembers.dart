@@ -23,14 +23,14 @@ class MemberFormState extends State<MemberForm> {
   Map _data = {};
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        width: 400,
-        height: 250,
-        padding: EdgeInsets.all(20),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      width: 400,
+      height: 250,
+      padding: EdgeInsets.all(20),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -149,7 +149,7 @@ class MemberFormState extends State<MemberForm> {
                         widget.uuid);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => HomePage(
-                          currentIndex: 4,
+                          currentIndex: 5,
                         )));
               },
               shape: RoundedRectangleBorder(

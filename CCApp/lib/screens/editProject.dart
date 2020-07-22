@@ -1,26 +1,49 @@
+import 'package:CCApp/providers/memberdata.dart';
 import 'package:CCApp/providers/projects.dart';
 import 'package:CCApp/providers/reg.dart';
-import 'package:CCApp/screens/homePage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'homePage.dart';
 
-class ProjectsInputForm extends StatefulWidget {
+class EditProject extends StatefulWidget {
+  final String name;
+  final String description;
+  final String mentor;
+  final String member1;
+  final String member2;
+  final String member3;
+  final String member4;
+  final String member5;
+  final String member6;
+  final String uuid;
+
+  EditProject(
+      {@required this.name,
+      @required this.mentor,
+      this.member1,
+      this.member2,
+      this.member3,
+      this.member4,
+      this.member5,
+      this.member6,
+      @required this.description,
+      @required this.uuid});
+
   @override
-  _ProjectsInputFormState createState() => _ProjectsInputFormState();
+  State<StatefulWidget> createState() {
+    return EditProjectState();
+  }
 }
 
-class _ProjectsInputFormState extends State<ProjectsInputForm> {
-  @override
+class EditProjectState extends State<EditProject> {
   Map<String, String> _data = {};
   final GlobalKey<FormState> _formKey = GlobalKey();
+
   Future<void> _submit() async {
-    if (!_formKey.currentState.validate()) {
-      return;
-    }
-    _formKey.currentState.save();
     try {
-      await Provider.of<Project>(context, listen: false)
-          .projectCreate(_data, Provider.of<Reg>(context, listen: false).token);
+      await Provider.of<Project>(context, listen: false).projectEdit(
+          _data, Provider.of<Reg>(context, listen: false).token, widget.uuid);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(
@@ -34,12 +57,13 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
         context: context,
         child: AlertDialog(
           title: Text('Error'),
-          content: Text('Project Create Failed'),
+          content: Text('Profile Edit Failed'),
         ),
       );
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -57,7 +81,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 alignment: Alignment.bottomLeft,
                 margin: EdgeInsets.only(left: 7),
                 child: Text(
-                  'Add a Project',
+                  'Edit Project',
                   style: TextStyle(
                     fontSize: 24,
                     fontFamily: 'SF Pro Display',
@@ -73,6 +97,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
+                  initialValue: widget.name,
                   validator: (value) {
                     if (value == '') {
                       return 'This field is required.';
@@ -80,7 +105,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                       return null;
                     }
                   },
-                  onSaved: (value) {
+                  onChanged: (value) {
                     _data['name'] = value;
                   },
                   decoration: new InputDecoration(
@@ -118,6 +143,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
+                  initialValue: widget.description,
                   keyboardType: TextInputType.multiline,
                   maxLines: 5,
                   validator: (value) {
@@ -127,7 +153,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                       return null;
                     }
                   },
-                  onSaved: (value) {
+                  onChanged: (value) {
                     _data['description'] = value;
                   },
                   decoration: new InputDecoration(
@@ -165,6 +191,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
+                  initialValue: widget.mentor,
                   validator: (value) {
                     if (value == '') {
                       return 'This field is required.';
@@ -172,7 +199,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                       return null;
                     }
                   },
-                  onSaved: (value) {
+                  onChanged: (value) {
                     _data['mentor'] = value;
                   },
                   decoration: new InputDecoration(
@@ -210,6 +237,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
+                  initialValue: widget.member1,
                   validator: (value) {
                     if (value == '') {
                       return 'This field is required.';
@@ -217,7 +245,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                       return null;
                     }
                   },
-                  onSaved: (value) {
+                  onChanged: (value) {
                     _data['member1'] = value;
                   },
                   keyboardType: TextInputType.multiline,
@@ -256,7 +284,8 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
-                  onSaved: (value) {
+                  initialValue: widget.member2,
+                  onChanged: (value) {
                     _data['member2'] = value;
                   },
                   decoration: new InputDecoration(
@@ -294,7 +323,8 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
-                  onSaved: (value) {
+                  initialValue: widget.member3,
+                  onChanged: (value) {
                     _data['member3'] = value;
                   },
                   keyboardType: TextInputType.multiline,
@@ -333,7 +363,8 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
-                  onSaved: (value) {
+                  initialValue: widget.member4,
+                  onChanged: (value) {
                     _data['member4'] = value;
                   },
                   keyboardType: TextInputType.multiline,
@@ -372,7 +403,8 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
-                  onSaved: (value) {
+                  initialValue: widget.member5,
+                  onChanged: (value) {
                     _data['member5'] = value;
                   },
                   keyboardType: TextInputType.multiline,
@@ -411,7 +443,8 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
-                  onSaved: (value) {
+                  initialValue: widget.member6,
+                  onChanged: (value) {
                     _data['member6'] = value;
                   },
                   keyboardType: TextInputType.multiline,
@@ -451,7 +484,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                 width: 300,
                 child: FlatButton(
                   onPressed: () async {
-                    await _submit();
+                    _submit();
                     print(_data);
                   },
                   shape: RoundedRectangleBorder(
@@ -486,7 +519,7 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                                       896),
                               alignment: Alignment.center,
                               child: Text(
-                                "Add Project",
+                                "Edit Project",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 20,
