@@ -15,12 +15,62 @@ List projectDetails = [
     'project': 'Codechef-VIT App',
     'mentor': 'Akshat Gupta',
     'member1': 'Siddharth Singh',
-    'member2': 'Dananjay Murugesh',
+    'member2': '',
     'member3': 'Rishav Jain',
-    'member4': 'Lol',
+    'member4': '',
     'member5': 'new',
-    'member6': 'ok'
-  }
+    'member6': ''
+  },
+  {
+    'project': 'Codechef-VIT Ppp',
+    'mentor': 'Akshat Gupta',
+    'member1': 'Siddharth Singh',
+    'member2': 'Okay',
+    'member3': 'Rishav Jain',
+    'member4': '',
+    'member5': 'new',
+    'member6': ''
+  },
+  {
+    'project': 'Codechef-VIT App',
+    'mentor': 'Akshat Gupta',
+    'member1': 'Siddharth Singh',
+    'member2': '',
+    'member3': 'Rishav Jain',
+    'member4': '',
+    'member5': '',
+    'member6': ''
+  },
+  {
+    'project': 'Codechef-VIT App',
+    'mentor': 'Akshat Gupta',
+    'member1': 'Siddharth Singh',
+    'member2': 'HBHBXH',
+    'member3': 'Rishav Jain',
+    'member4': 'asjknkan',
+    'member5': 'new',
+    'member6': 'askandk'
+  },
+  {
+    'project': 'Codechef-VIT App',
+    'mentor': 'Akshat Gupta',
+    'member1': '',
+    'member2': '',
+    'member3': '',
+    'member4': '',
+    'member5': 'new',
+    'member6': ''
+  },
+  {
+    'project': 'Codechef-VIT App',
+    'mentor': 'Akshat Gupta',
+    'member1': '',
+    'member2': '',
+    'member3': '',
+    'member4': '',
+    'member5': '',
+    'member6': ''
+  },
 ];
 
 class _ProjectsPageState extends State<ProjectsPage> {
@@ -44,7 +94,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
             padding: EdgeInsets.only(left: 30),
             alignment: Alignment.centerLeft,
             child: Text(
-              'Meetings',
+              'Projects',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontFamily: 'SF Pro Display',
@@ -88,7 +138,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                             ),
                           ),
                           margin: EdgeInsets.fromLTRB(30, 0, 0, 18),
-                          height: 200,
+                          height: 500,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(24)),
                             color: Color(0xFF34C759),
@@ -118,7 +168,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                             ),
                           ),
                           margin: EdgeInsets.fromLTRB(15, 0, 15, 18),
-                          height: 200,
+                          height: 500,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(24)),
                             color: Color.fromRGBO(0, 86, 255, 100),
@@ -150,7 +200,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                               ),
                             ),
                             margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
-                            height: 200,
+                            height: 500,
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(24)),
@@ -180,7 +230,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                               ),
                             ),
                             margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
-                            height: 200,
+                            height: 500,
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(24)),
@@ -194,14 +244,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
                           }),
                     ],
                     child: ProjectCard(
-                      name: projectDetails[0]['project'],
-                      mentor: projectDetails[0]['mentor'],
-                      member1: projectDetails[0]['member1'],
-                      member2: projectDetails[0]['member2'],
-                      member3: projectDetails[0]['member3'],
-                      member4: projectDetails[0]['member4'],
-                      member5: projectDetails[0]['member5'],
-                      member6: projectDetails[0]['member6'],
+                      name: projectDetails[index]['project'],
+                      mentor: projectDetails[index]['mentor'],
+                      member1: projectDetails[index]['member1'],
+                      member2: projectDetails[index]['member2'],
+                      member3: projectDetails[index]['member3'],
+                      member4: projectDetails[index]['member4'],
+                      member5: projectDetails[index]['member5'],
+                      member6: projectDetails[index]['member6'],
                       bgcolor: getColor(index),
                     ),
                   );

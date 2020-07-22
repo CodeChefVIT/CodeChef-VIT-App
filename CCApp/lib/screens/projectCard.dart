@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProjectCard extends StatelessWidget {
+class ProjectCard extends StatefulWidget {
   final String name;
   final String mentor;
   final String member1;
@@ -23,6 +23,38 @@ class ProjectCard extends StatelessWidget {
     this.member6,
     @required this.bgcolor,
   });
+  @override
+  State<StatefulWidget> createState() {
+    return ProjectCardState();
+  }
+}
+
+class ProjectCardState extends State<ProjectCard> {
+  int height = 0;
+
+  @override
+  void initState() {
+    if (widget.member1 != '') {
+      height++;
+    }
+    if (widget.member2 != '') {
+      height++;
+    }
+    if (widget.member3 != '') {
+      height++;
+    }
+    if (widget.member4 != '') {
+      height++;
+    }
+    if (widget.member5 != '') {
+      height++;
+    }
+    if (widget.member6 != '') {
+      height++;
+    }
+    print(height);
+    super.initState();
+  }
 
   List colors = [
     0xFF459AFF,
@@ -40,10 +72,10 @@ class ProjectCard extends StatelessWidget {
           30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(24)),
-        color: bgcolor,
+        color: widget.bgcolor,
       ),
       width: 350,
-      height: MediaQuery.of(context).size.height * 300 / 896,
+      height: MediaQuery.of(context).size.height * 90 / 896 + height * 25 + 10,
       child: Column(
         children: [
           Container(
@@ -51,7 +83,7 @@ class ProjectCard extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(
                 34, MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
             child: Text(
-              name,
+              widget.name,
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'SF Pro Display',
@@ -67,7 +99,7 @@ class ProjectCard extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(34,
                     MediaQuery.of(context).size.height * 10 / 896 - 3, 0, 0),
                 child: Text(
-                  mentor,
+                  widget.mentor,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
@@ -77,9 +109,10 @@ class ProjectCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: Container(
-                width: 5,
-              )),
+                child: Container(
+                  width: 5,
+                ),
+              ),
               Container(
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.fromLTRB(0,
@@ -89,110 +122,111 @@ class ProjectCard extends StatelessWidget {
               )
             ],
           ),
-          Row(
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.fromLTRB(34, 0, 0, 5),
-                child: Text(
-                  member1,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                  ),
-                ),
-              ),
-              Expanded(
-                  child: SizedBox(
-                width: 10,
-              )),
-              Container(
-                alignment: Alignment.centerRight,
-                padding: EdgeInsets.fromLTRB(0, 0, 34, 5),
-                child: Text(
-                  member2,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: 34),
-            height: MediaQuery.of(context).size.height * 54 / 896,
-            width: 294,
-            padding: EdgeInsets.all(10),
-            child: Text(
-              member3,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontFamily: 'SF Pro Text',
-              ),
-            ),
-          ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 6 / 896,
+            height: 10,
           ),
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsetsDirectional.only(start: 34),
-                child: Text(
-                  member4,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 16 / 896,
+          widget.member1 != ''
+              ? Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                  child: Text(
+                    widget.member1,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'SF Pro Display',
+                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    ),
                   ),
+                )
+              : Container(
+                  width: 0,
+                  height: 0,
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 18 / 896,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: 34),
-            height: MediaQuery.of(context).size.height * 54 / 896,
-            width: 294,
-            padding: EdgeInsets.all(10),
-            child: Text(
-              member5,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontFamily: 'SF Pro Text',
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: 34),
-            height: MediaQuery.of(context).size.height * 54 / 896,
-            width: 294,
-            padding: EdgeInsets.all(10),
-            child: Text(
-              member6,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontFamily: 'SF Pro Text',
-              ),
-            ),
-          ),
+          widget.member2 != ''
+              ? Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                  child: Text(
+                    widget.member2,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'SF Pro Display',
+                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 0,
+                  height: 0,
+                ),
+          widget.member3 != ''
+              ? Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                  child: Text(
+                    widget.member3,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'SF Pro Display',
+                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 0,
+                  height: 0,
+                ),
+          widget.member4 != ''
+              ? Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                  child: Text(
+                    widget.member4,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'SF Pro Display',
+                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 0,
+                  height: 0,
+                ),
+          widget.member5 != ''
+              ? Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                  child: Text(
+                    widget.member5,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'SF Pro Display',
+                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 0,
+                  height: 0,
+                ),
+          widget.member6 != ''
+              ? Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                  child: Text(
+                    widget.member6,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'SF Pro Display',
+                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 0,
+                  height: 0,
+                ),
         ],
       ),
     );
