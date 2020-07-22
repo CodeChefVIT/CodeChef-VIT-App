@@ -94,7 +94,7 @@ class ProjectCardState extends State<ProjectCard> {
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 24 / 896,
+                    fontSize: MediaQuery.of(context).size.height * 20 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
