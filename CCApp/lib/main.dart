@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:CCApp/screens/login.dart';
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/providers/projects.dart';
 import 'loading_screen.dart';
 import './providers/memberdata.dart';
 
@@ -67,6 +68,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: MeetingData(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Project(),
         ),
       ],
       child: Consumer<Reg>(

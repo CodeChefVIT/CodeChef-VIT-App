@@ -42,371 +42,372 @@ class InputFormState extends State<InputForm> {
   }
 
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      width: 400,
+      height: 600,
+      padding: EdgeInsets.all(20),
+      child: SingleChildScrollView(
         child: Form(
-      key: _formKey,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        width: 400,
-        height: 600,
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.only(left: 7),
-              child: Text(
-                'Add a Meeting',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'SF Pro Display',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(left: 5, right: 5),
-              width: MediaQuery.of(context).size.height * 280 / 896,
-              child: TextFormField(
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  _data['name'] = value;
-                },
-                decoration: new InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  hintText: 'Title',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2,
-                    ),
-                  ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
-                    ),
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.bottomLeft,
+                margin: EdgeInsets.only(left: 7),
+                child: Text(
+                  'Add a Meeting',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                      left: 5,
-                      right: MediaQuery.of(context).size.height * 5 / 896),
-                  width: MediaQuery.of(context).size.height * 137 / 896,
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value == '') {
-                        return 'This field is required.';
-                      } else {
-                        return null;
-                      }
-                    },
-                    onSaved: (value) {
-                      _data['time'] = value;
-                    },
-                    decoration: new InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      hintText: 'Time',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFC7C7C7),
-                        fontSize: 18,
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(left: 5, right: 5),
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _data['name'] = value;
+                  },
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Title',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
+                    ),
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
                       ),
-                      enabledBorder: new OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(27.5)),
-                        borderSide: BorderSide(
-                          color: Colors.black,
-                          width: 2,
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(
+                        left: 5,
+                        right: MediaQuery.of(context).size.height * 5 / 896),
+                    width: MediaQuery.of(context).size.height * 137 / 896,
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == '') {
+                          return 'This field is required.';
+                        } else {
+                          return null;
+                        }
+                      },
+                      onSaved: (value) {
+                        _data['time'] = value;
+                      },
+                      decoration: new InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        hintText: 'Time',
+                        hintStyle: TextStyle(
+                          color: Color(0xFFC7C7C7),
+                          fontSize: 18,
                         ),
-                      ),
-                      focusedBorder: new OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(27.5)),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
-                          width: 2,
+                        enabledBorder: new OutlineInputBorder(
+                          borderRadius: const BorderRadius.all(
+                              const Radius.circular(27.5)),
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: new OutlineInputBorder(
+                          borderRadius: const BorderRadius.all(
+                              const Radius.circular(27.5)),
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                            width: 2,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.height * 5 / 896,
-                      right: 5),
-                  width: MediaQuery.of(context).size.height * 137 / 896,
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value == '') {
-                        return 'This field is required.';
-                      } else {
-                        return null;
-                      }
-                    },
-                    onSaved: (value) {
-                      _data['date'] = value;
-                    },
-                    decoration: new InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      hintText: 'Date',
-                      hintStyle: TextStyle(
-                        color: Color(0xFFC7C7C7),
-                        fontSize: 18,
-                      ),
-                      enabledBorder: new OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(27.5)),
-                        borderSide: BorderSide(
-                          color: Colors.black,
-                          width: 2,
+                  Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.height * 5 / 896,
+                        right: 5),
+                    width: MediaQuery.of(context).size.height * 137 / 896,
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == '') {
+                          return 'This field is required.';
+                        } else {
+                          return null;
+                        }
+                      },
+                      onSaved: (value) {
+                        _data['date'] = value;
+                      },
+                      decoration: new InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        hintText: 'Date',
+                        hintStyle: TextStyle(
+                          color: Color(0xFFC7C7C7),
+                          fontSize: 18,
+                        ),
+                        enabledBorder: new OutlineInputBorder(
+                          borderRadius: const BorderRadius.all(
+                              const Radius.circular(27.5)),
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: new OutlineInputBorder(
+                          borderRadius: const BorderRadius.all(
+                              const Radius.circular(27.5)),
+                          borderSide: BorderSide(
+                            color: Colors.blue,
+                            width: 2,
+                          ),
                         ),
                       ),
-                      focusedBorder: new OutlineInputBorder(
-                        borderRadius:
-                            const BorderRadius.all(const Radius.circular(27.5)),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
-                          width: 2,
-                        ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(left: 5, right: 5),
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _data['venue'] = value;
+                  },
+                  keyboardType: TextInputType.multiline,
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Venue',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
+                    ),
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(left: 5, right: 5),
-              width: MediaQuery.of(context).size.height * 280 / 896,
-              child: TextFormField(
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  _data['venue'] = value;
-                },
-                keyboardType: TextInputType.multiline,
-                decoration: new InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  hintText: 'Venue',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(left: 5, right: 5),
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _data['description'] = value;
+                  },
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 10,
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Description',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
                     ),
-                  ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(left: 5, right: 5),
-              width: MediaQuery.of(context).size.height * 280 / 896,
-              child: TextFormField(
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  _data['description'] = value;
-                },
-                keyboardType: TextInputType.multiline,
-                maxLines: 10,
-                decoration: new InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  hintText: 'Description',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2,
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(left: 5, right: 5),
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _data['members'] = value;
+                  },
+                  keyboardType: TextInputType.multiline,
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Members',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
                     ),
-                  ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(left: 5, right: 5),
-              width: MediaQuery.of(context).size.height * 280 / 896,
-              child: TextFormField(
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  _data['members'] = value;
-                },
-                keyboardType: TextInputType.multiline,
-                decoration: new InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  hintText: 'Members',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2,
-                    ),
-                  ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
-                    ),
-                  ),
-                ),
+              SizedBox(
+                height: 5,
               ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
-              height: 50,
-              width: 300,
-              child: FlatButton(
-                onPressed: () {
-                  _submit();
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      Color(0xFF459AFF),
-                      Color(0xFFFF6745),
-                      Color(0xFFFF4572)
-                    ]),
+              Container(
+                margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
+                height: 50,
+                width: 300,
+                child: FlatButton(
+                  onPressed: () {
+                    _submit();
+                  },
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  child: Container(
-                      alignment: Alignment.center,
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 15),
-                            child: Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 28,
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.height *
-                                    40 /
-                                    896),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Add Meeting",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 20,
+                  padding: EdgeInsets.all(0.0),
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                        Color(0xFF459AFF),
+                        Color(0xFFFF6745),
+                        Color(0xFFFF4572)
+                      ]),
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    child: Container(
+                        alignment: Alignment.center,
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left: 15),
+                              child: Icon(
+                                Icons.add,
                                 color: Colors.white,
-                                fontFamily: 'SF Pro Display',
-                                fontWeight: FontWeight.w600,
+                                size: 28,
                               ),
                             ),
-                          ),
-                        ],
-                      )),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.height *
+                                      40 /
+                                      896),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Add Meeting",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontFamily: 'SF Pro Display',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }
