@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProjectCard extends StatefulWidget {
   final String name;
+  final String description;
   final String mentor;
   final String member1;
   final String member2;
@@ -11,18 +12,20 @@ class ProjectCard extends StatefulWidget {
   final String member5;
   final String member6;
   final Color bgcolor;
+  final Color sgcolor;
 
-  ProjectCard({
-    @required this.name,
-    @required this.mentor,
-    this.member1,
-    this.member2,
-    this.member3,
-    this.member4,
-    this.member5,
-    this.member6,
-    @required this.bgcolor,
-  });
+  ProjectCard(
+      {@required this.name,
+      @required this.mentor,
+      this.member1,
+      this.member2,
+      this.member3,
+      this.member4,
+      this.member5,
+      this.member6,
+      @required this.description,
+      @required this.bgcolor,
+      @required this.sgcolor});
   @override
   State<StatefulWidget> createState() {
     return ProjectCardState();
@@ -79,7 +82,7 @@ class ProjectCardState extends State<ProjectCard> {
       ),
       width: 350,
       height: isPressed
-          ? MediaQuery.of(context).size.height * 90 / 896 + height * 25 + 30
+          ? MediaQuery.of(context).size.height * 140 / 896 + height * 25 + 30
           : 85,
       child: Column(
         children: [
@@ -128,6 +131,24 @@ class ProjectCardState extends State<ProjectCard> {
           isPressed
               ? Container(
                   child: Column(children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: widget.sgcolor,
+                    ),
+                    margin: EdgeInsets.symmetric(horizontal: 34),
+                    height: MediaQuery.of(context).size.height * 54 / 896,
+                    width: 294,
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      widget.description,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontFamily: 'SF Pro Text',
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       Container(

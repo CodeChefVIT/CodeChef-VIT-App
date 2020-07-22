@@ -160,6 +160,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                           ],
                           child: ProjectCard(
                             name: projectDetails[index]['name'],
+                            description: projectDetails[index]['description'],
                             mentor: projectDetails[index]['mentor'],
                             member1: projectDetails[index]['member1'] == null
                                 ? ''
@@ -180,6 +181,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                 ? ''
                                 : projectDetails[index]['member6'],
                             bgcolor: getColor(index),
+                            sgcolor: getSGColor(index),
                           ),
                         );
                       },
