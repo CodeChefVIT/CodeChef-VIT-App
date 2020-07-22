@@ -123,14 +123,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 FaIcon(
-                                  FontAwesomeIcons.userCircle,
+                                  FontAwesomeIcons.pencilAlt,
                                   color: Colors.white,
                                 ),
                                 SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  "Record",
+                                  "Edit",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 12),
                                 )
@@ -146,68 +146,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
                         ),
                         onTap: () async {},
                       ),
-                      SlideAction(
-                        child: Container(
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.eye,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  "Attendance",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 12),
-                                )
-                              ],
-                            ),
-                          ),
-                          margin: EdgeInsets.fromLTRB(15, 0, 15, 18),
-                          height: 500,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
-                            color: Color.fromRGBO(0, 86, 255, 100),
-                          ),
-                        ),
-                        onTap: () {},
-                      )
                     ],
                     secondaryActions: [
-                      SlideAction(
-                          child: Container(
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  FaIcon(
-                                    FontAwesomeIcons.pencilAlt,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Edit",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
-                              ),
-                            ),
-                            margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
-                            height: 500,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(24)),
-                              color: Color(0xff7734eb),
-                            ),
-                          ),
-                          onTap: () {}),
                       SlideAction(
                           child: Container(
                             child: Center(
