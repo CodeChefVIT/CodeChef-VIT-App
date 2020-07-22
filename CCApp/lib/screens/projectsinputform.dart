@@ -3,7 +3,6 @@ import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './ProjectsPage.dart';
 
 class ProjectsInputForm extends StatefulWidget {
   @override
@@ -42,16 +41,16 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
   }
 
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-          ),
-          width: 400,
-          height: 720,
-          padding: EdgeInsets.all(20),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      width: 400,
+      height: 700,
+      padding: EdgeInsets.all(20),
+      child: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
           child: Column(
             children: [
               Container(
