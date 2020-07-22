@@ -30,4 +30,16 @@ class Project with ChangeNotifier {
       throw error;
     }
   }
+
+  Future<void> projectCreate(Map<String, String> data, token) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/project/new/';
+    try {
+      var res = await http.post(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token},
+          body: json.encode(data));
+      print(res);
+    } catch (error) {
+      throw error;
+    }
+  }
 }

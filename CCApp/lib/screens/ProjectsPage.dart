@@ -199,7 +199,18 @@ class _ProjectsPageState extends State<ProjectsPage> {
                   height: 52,
                   width: 259,
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24)),
+                              elevation: 12,
+                              child: ProjectsInputForm(),
+                            );
+                          });
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),
