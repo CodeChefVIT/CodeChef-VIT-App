@@ -17,4 +17,17 @@ class Project with ChangeNotifier {
     print(res);
     _details = res;
   }
+
+  Future<void> deleteProject(token, uuid) async {
+    try {
+      final url = 'https://codechef-vit-app.herokuapp.com/project/new/$uuid/';
+      var response = await http.delete(url, headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      });
+      print(response.statusCode);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
