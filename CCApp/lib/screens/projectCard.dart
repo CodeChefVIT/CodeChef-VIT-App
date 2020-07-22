@@ -56,6 +56,8 @@ class ProjectCardState extends State<ProjectCard> {
     super.initState();
   }
 
+  bool isPressed = false;
+
   List colors = [
     0xFF459AFF,
     0xFFFF6745,
@@ -67,7 +69,8 @@ class ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 0),
       margin: EdgeInsets.fromLTRB(
           30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
@@ -75,158 +78,209 @@ class ProjectCardState extends State<ProjectCard> {
         color: widget.bgcolor,
       ),
       width: 350,
-      height: MediaQuery.of(context).size.height * 90 / 896 + height * 25 + 10,
+      height: isPressed
+          ? MediaQuery.of(context).size.height * 90 / 896 + height * 25 + 30
+          : 85,
       child: Column(
         children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.fromLTRB(
-                34, MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
-            child: Text(
-              widget.name,
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'SF Pro Display',
-                fontSize: MediaQuery.of(context).size.height * 24 / 896,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
           Row(
             children: [
               Container(
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(34,
-                    MediaQuery.of(context).size.height * 10 / 896 - 3, 0, 0),
+                    MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
                 child: Text(
-                  widget.mentor,
+                  widget.name,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                    fontSize: MediaQuery.of(context).size.height * 24 / 896,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               Expanded(
                 child: Container(
-                  width: 5,
+                  width: 2,
                 ),
               ),
               Container(
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.fromLTRB(0,
-                    MediaQuery.of(context).size.height * 10 / 896 - 3, 34, 0),
-                child: FaIcon(FontAwesomeIcons.graduationCap,
-                    color: Colors.white, size: 20),
+                    MediaQuery.of(context).size.height * 22 / 896 - 3, 25, 0),
+                child: IconButton(
+                  icon: FaIcon(
+                    isPressed
+                        ? FontAwesomeIcons.arrowUp
+                        : FontAwesomeIcons.arrowDown,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isPressed = !isPressed;
+                      print(isPressed);
+                    });
+                  },
+                ),
               )
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
-          widget.member1 != ''
+          isPressed
               ? Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
-                  child: Text(
-                    widget.member1,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'SF Pro Display',
-                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    ),
+                  child: Column(children: [
+                  Row(
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.fromLTRB(
+                            34,
+                            MediaQuery.of(context).size.height * 10 / 896 - 3,
+                            0,
+                            0),
+                        child: Text(
+                          widget.mentor,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'SF Pro Display',
+                            fontSize:
+                                MediaQuery.of(context).size.height * 18 / 896,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: 5,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.fromLTRB(
+                            0,
+                            MediaQuery.of(context).size.height * 10 / 896 - 3,
+                            34,
+                            0),
+                        child: FaIcon(FontAwesomeIcons.graduationCap,
+                            color: Colors.white, size: 20),
+                      )
+                    ],
                   ),
-                )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
-          widget.member2 != ''
-              ? Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
-                  child: Text(
-                    widget.member2,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'SF Pro Display',
-                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
-                )
+                  widget.member1 != ''
+                      ? Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                          child: Text(
+                            widget.member1,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SF Pro Display',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 18 / 896,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        ),
+                  widget.member2 != ''
+                      ? Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                          child: Text(
+                            widget.member2,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SF Pro Display',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 18 / 896,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        ),
+                  widget.member3 != ''
+                      ? Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                          child: Text(
+                            widget.member3,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SF Pro Display',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 18 / 896,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        ),
+                  widget.member4 != ''
+                      ? Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                          child: Text(
+                            widget.member4,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SF Pro Display',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 18 / 896,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        ),
+                  widget.member5 != ''
+                      ? Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                          child: Text(
+                            widget.member5,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SF Pro Display',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 18 / 896,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        ),
+                  widget.member6 != ''
+                      ? Container(
+                          alignment: Alignment.centerLeft,
+                          padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
+                          child: Text(
+                            widget.member6,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'SF Pro Display',
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 18 / 896,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 0,
+                          height: 0,
+                        ),
+                ]))
               : Container(
-                  width: 0,
                   height: 0,
-                ),
-          widget.member3 != ''
-              ? Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
-                  child: Text(
-                    widget.member3,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'SF Pro Display',
-                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    ),
-                  ),
+                  width: 0,
                 )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
-          widget.member4 != ''
-              ? Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
-                  child: Text(
-                    widget.member4,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'SF Pro Display',
-                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    ),
-                  ),
-                )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
-          widget.member5 != ''
-              ? Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
-                  child: Text(
-                    widget.member5,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'SF Pro Display',
-                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    ),
-                  ),
-                )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
-          widget.member6 != ''
-              ? Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(34, 0, 0, 3),
-                  child: Text(
-                    widget.member6,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'SF Pro Display',
-                      fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    ),
-                  ),
-                )
-              : Container(
-                  width: 0,
-                  height: 0,
-                ),
         ],
       ),
     );
