@@ -1,3 +1,5 @@
+import 'package:CCApp/screens/homePage.dart';
+import 'package:CCApp/screens/projectCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -191,7 +193,17 @@ class _ProjectsPageState extends State<ProjectsPage> {
                             });
                           }),
                     ],
-                    child: Container(child: Text('hello')),
+                    child: ProjectCard(
+                      name: projectDetails[0]['project'],
+                      mentor: projectDetails[0]['mentor'],
+                      member1: projectDetails[0]['member1'],
+                      member2: projectDetails[0]['member2'],
+                      member3: projectDetails[0]['member3'],
+                      member4: projectDetails[0]['member4'],
+                      member5: projectDetails[0]['member5'],
+                      member6: projectDetails[0]['member6'],
+                      bgcolor: getColor(index),
+                    ),
                   );
                 },
               ),
