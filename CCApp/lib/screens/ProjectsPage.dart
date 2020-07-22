@@ -34,8 +34,6 @@ class _ProjectsPageState extends State<ProjectsPage> {
       setState(() {
         projectDetails = Provider.of<Project>(context, listen: false).details;
       });
-      print(projectDetails);
-      print(projectDetails[1]['member4'].toString());
     } catch (e) {
       print(e);
     }
@@ -152,7 +150,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                     color: Color(0xFFFF3B30),
                                   ),
                                 ),
-                                onTap: () {
+                                onTap: () async {
+                                  await Provider.of<Project>(context,
+                                          listen: false)
+                                      .deleteProject(
+                                          Provider.of<Reg>(context,
+                                                  listen: false)
+                                              .token,
+                                          projectDetails[index]['uuid']);
                                   setState(() {
                                     projectDetails.removeAt(index);
                                   });
