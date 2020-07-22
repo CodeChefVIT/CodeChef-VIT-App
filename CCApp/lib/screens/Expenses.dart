@@ -1,5 +1,7 @@
 import 'package:CCApp/screens/expensesinputform.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Expenses extends StatefulWidget {
   @override
@@ -14,68 +16,7 @@ List expenseDetails = [
   }
 ];
 List _expand = List.generate(20, (i) => false).toList();
-Widget slideRightBackground() {
-  return Container(
-    color: Colors.white,
-    child: Align(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            width: 20,
-          ),
-          Icon(
-            Icons.cancel,
-            color: Colors.black,
-          ),
-          SizedBox(width: 15),
-          Text(
-            "Cancel",
-            style: TextStyle(
-                color: Colors.black45,
-                fontWeight: FontWeight.w600,
-                fontSize: 19,
-                fontFamily: 'SFProDisplay'),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
-      alignment: Alignment.centerLeft,
-    ),
-  );
-}
-
-Widget slideLeftBackground() {
-  return Container(
-    color: Colors.white,
-    child: Align(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Icon(
-            Icons.delete,
-            color: Colors.black,
-          ),
-          SizedBox(width: 15),
-          Text(
-            "Delete",
-            style: TextStyle(
-                color: Colors.black45,
-                fontWeight: FontWeight.w600,
-                fontSize: 19,
-                fontFamily: 'SFProDisplay'),
-            textAlign: TextAlign.right,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-        ],
-      ),
-      alignment: Alignment.centerRight,
-    ),
-  );
-}
-
+int height=0;
 class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
@@ -109,162 +50,309 @@ class _ExpensesState extends State<Expenses> {
                 shrinkWrap: true,
                 itemCount: expenseDetails.length,
                 itemBuilder: (context, index) {
-                  return Dismissible(
-                    onDismissed: (DismissDirection direction) {
-                      setState(() {
-                        expenseDetails.removeAt(index);
-                      });
-                    },
-                    background: slideRightBackground(),
-                    secondaryBackground: slideLeftBackground(),
-                    key: UniqueKey(),
-                    // ignore: missing_return
-                    confirmDismiss: (direction) async {
-                      if (direction == DismissDirection.endToStart) {
-                        final bool res = await showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: Text(
-                                    "Are you sure you want to delete this expense?"),
-                                actions: <Widget>[
-                                  FlatButton(
-                                    child: Text(
-                                      "Cancel",
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  FlatButton(
-                                    child: Text(
-                                      "Delete",
-                                      style: TextStyle(color: Colors.red),
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        expenseDetails.removeAt(index);
-                                      });
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            });
-                        return res;
-                      }
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      height: _expand[index] ? 250.0 : 150.0,
-                      width: 400,
-                      margin: EdgeInsets.all(12.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          color: index % 3 == 0
-                              ? Colors.deepOrangeAccent
-                              : (index % 3 == 1
-                                  ? Colors.blueAccent
-                                  : Colors.pinkAccent)),
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.only(left: 18),
-                                child: Text(
-                                  expenseDetails[index]['reason'],
+                  return Slidable(
+                    actionPane: SlidableScrollActionPane(),
+                    actionExtentRatio: 0.3,
+                    actions: [
+                      SlideAction(
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment:
+                              MainAxisAlignment.center,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.pencilAlt,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Edit",
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              IconButton(
-                                icon: Icon(_expand[index]
-                                    ? Icons.keyboard_arrow_up
-                                    : Icons.keyboard_arrow_down),
-                                onPressed: () {
-                                  setState(() {
-                                    _expand[index] = !_expand[index];
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: <Widget>[
-                                    SizedBox(width: 10),
-                                    Text(
-                                      expenseDetails[index]['name'],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: <Widget>[
-                                    SizedBox(width: 10),
-                                    Text(
-                                      'Amount',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18),
-                                    ),
-                                    Spacer(),
-                                    Text(
-                                      '₹',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18),
-                                    ),
-                                    Text(
-                                      expenseDetails[index]['amount'],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                          fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          if (_expand[index])
-                            Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Image",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
+                                      fontSize: 12),
+                                )
                               ],
                             ),
-                        ],
+                          ),
+                          margin: EdgeInsets.fromLTRB(30, 0, 0, 18),
+                          height: 500,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(24)),
+                            color: Color(0xFF34C759),
+                          ),
+                        ),
+                        onTap: () async {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(24)),
+                                  elevation: 12,
+                                  child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    child: Center(child: Text("Edit")),
+                                  ),
+                                );
+                              });
+                        },
                       ),
+                    ],
+                    secondaryActions: [
+                      SlideAction(
+                          child: Container(
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.center,
+                                children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.times,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "Delete",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12),
+                                  )
+                                ],
+                              ),
+                            ),
+                            margin: EdgeInsets.fromLTRB(0, 0, 30, 18),
+                            height: 500,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(24)),
+                              color: Color(0xFFFF3B30),
+                            ),
+                          ),
+                          onTap: () async {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(10)),
+                                    elevation: 12,
+                                    child: Container(
+                                      height: 105,
+                                      width: 330,
+                                      child: Column(
+                                        children: <Widget>[
+                                          SizedBox(height: 20,),
+                                          Text(
+                                            'Are you sure you want to delete this expenditure?',
+                                          ),
+                                          SizedBox(height: 16,),
+                                          Row(
+                                            children: <Widget>[
+                                              SizedBox(width: 150,),
+                                              FlatButton(
+                                                child: Text(
+                                                  "Cancel",
+                                                  style: TextStyle(color: Colors.black),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                              FlatButton(
+                                                child: Text(
+                                                  "Delete",
+                                                  style: TextStyle(color: Colors.red),
+                                                ),
+                                                onPressed: (){},
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          }),
+                    ],
+                    child: AnimatedContainer(
+                      curve: Curves.bounceOut,
+                      duration: Duration(milliseconds: 700),
+                      margin: EdgeInsets.fromLTRB(
+                          30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                        color: index % 3 == 0
+                      ? Colors.deepOrangeAccent
+                          : (index % 3 == 1
+                      ? Colors.blueAccent
+                          : Colors.pinkAccent)),
+                      width: 350,
+                      height: _expand[index]
+                          ? MediaQuery.of(context).size.height * 140 / 896 + height * 25 + 55
+                          : 110,
+                      child: Column(
+                        children: [
+                        Row(
+                        children: [
+                        Container(
+                      alignment: Alignment.centerLeft,
+                        padding: EdgeInsets.fromLTRB(34,
+                            MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
+                        child: Text(
+                          expenseDetails[index]['reason'],
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'SF Pro Display',
+                            fontSize: MediaQuery.of(context).size.height * 20 / 896,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                          Expanded(
+                        child: Container(
+                          width: 2,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        padding: EdgeInsets.fromLTRB(0,
+                            MediaQuery.of(context).size.height * 22 / 896 - 3, 25, 0),
+                        child: IconButton(
+                          icon: FaIcon(
+                            _expand[index]
+                                ? FontAwesomeIcons.arrowUp
+                                : FontAwesomeIcons.arrowDown,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _expand[index] = !_expand[index];
+                              print(_expand[index]);
+                            });
+                          },
+                        ),
+                      )
+                      ],
                     ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              color: index % 3 == 0
+                                  ? Colors.deepOrangeAccent
+                                  : (index % 3 == 1
+                                  ? Colors.blueAccent
+                                  : Colors.pinkAccent),
+                            ),
+                            margin: EdgeInsets.symmetric(horizontal: 25),
+                            height: MediaQuery.of(context).size.height * 54 / 896,
+                            width: 394,
+                            padding: EdgeInsets.all(10),
+                            child: SingleChildScrollView(
+                              child: Text(
+                                expenseDetails[index]['name'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontFamily: 'SF Pro Text',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                    _expand[index]
+                        ? Flexible(
+                        child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                      Flexible(
+                        child: Row(
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.fromLTRB(
+                                  34,
+                                  MediaQuery.of(context).size.height * 1 / 896,
+                                  0,
+                                  0),
+                              child: Text(
+                                "Amount",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'SF Pro Display',
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      18 /
+                                      896,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                width: 5,
+                              ),
+                            ),
+
+                            Container(
+                              alignment: Alignment.centerRight,
+                              padding: EdgeInsets.fromLTRB(
+                                  0,
+                                  MediaQuery.of(context).size.height * 10 / 896 -
+                                      3,
+                                  34,
+                                  0),
+                              child: Row(
+                                children: <Widget>[
+                                  Text(
+                                    "₹",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'SF Pro Display',
+                                      fontSize: MediaQuery.of(context).size.height *
+                                          18 /
+                                          896,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    expenseDetails[index]['amount'],
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'SF Pro Display',
+                                      fontSize: MediaQuery.of(context).size.height *
+                                          18 /
+                                          896,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                        child: SizedBox(
+                          height: 10,
+                        ),
+                      ),
+                    ]
+                    ),
+                  ): Container(
+                      height: 0,
+                      width: 0,
+                    )
+                  ],
+                  )
+                  ),
                   );
                 }),
             SizedBox(height: 12),
