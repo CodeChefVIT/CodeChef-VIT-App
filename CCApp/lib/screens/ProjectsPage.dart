@@ -1,4 +1,6 @@
 import 'package:CCApp/providers/reg.dart';
+import 'package:CCApp/screens/editProfile.dart';
+import 'package:CCApp/screens/editProject.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:CCApp/screens/projectCard.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +117,61 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                   color: Color(0xFF34C759),
                                 ),
                               ),
-                              onTap: () async {},
+                              onTap: () async {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(24)),
+                                        elevation: 12,
+                                        child: EditProject(
+                                          name: projectDetails[index]['name'],
+                                          description: projectDetails[index]
+                                              ['description'],
+                                          mentor: projectDetails[index]
+                                              ['mentor'],
+                                          member1: projectDetails[index]
+                                                      ['member1'] ==
+                                                  null
+                                              ? ''
+                                              : projectDetails[index]
+                                                  ['member1'],
+                                          member2: projectDetails[index]
+                                                      ['member2'] ==
+                                                  null
+                                              ? ''
+                                              : projectDetails[index]
+                                                  ['member2'],
+                                          member3: projectDetails[index]
+                                                      ['member3'] ==
+                                                  null
+                                              ? ''
+                                              : projectDetails[index]
+                                                  ['member3'],
+                                          member4: projectDetails[index]
+                                                      ['member4'] ==
+                                                  null
+                                              ? ''
+                                              : projectDetails[index]
+                                                  ['member4'],
+                                          member5: projectDetails[index]
+                                                      ['member5'] ==
+                                                  null
+                                              ? ''
+                                              : projectDetails[index]
+                                                  ['member5'],
+                                          member6: projectDetails[index]
+                                                      ['member6'] ==
+                                                  null
+                                              ? ''
+                                              : projectDetails[index]
+                                                  ['member6'],
+                                        ),
+                                      );
+                                    });
+                              },
                             ),
                           ],
                           secondaryActions: [
