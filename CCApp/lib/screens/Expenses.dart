@@ -2,6 +2,8 @@ import 'package:CCApp/screens/expensesinputform.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:CCApp/providers/reg.dart';
+import 'package:provider/provider.dart';
 
 class Expenses extends StatefulWidget {
   @override
@@ -18,11 +20,21 @@ List expenseDetails = [
 List _expand = List.generate(20, (i) => false).toList();
 int height=0;
 class _ExpensesState extends State<Expenses> {
+  bool board=false;
+  int check;
   @override
+  void initState() {
+    check = Provider.of<Reg>(context, listen: false).category;
+    if (check == 5 || check == 3) {
+      board = true;
+    }
+    super.initState();
+  }
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+    return board
+        ?Scaffold(
+          body: SingleChildScrollView(
+          child: Column(
           children: <Widget>[
             SizedBox(height: 42),
             Container(
@@ -412,6 +424,212 @@ class _ExpensesState extends State<Expenses> {
                 ),
               ),
             ),
+            SizedBox(height: 16),
+          ],
+        ),
+      ),
+    )
+        :Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 42),
+            Container(
+              width: double.infinity,
+              height: 54,
+              alignment: Alignment.topCenter,
+              child: Image.asset('assets/images/fulllogo.png'),
+            ),
+            SizedBox(height: 14),
+            Container(
+              padding: EdgeInsets.only(left: 30),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Expenses',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                  fontFamily: 'SFProDisplay',
+                ),
+              ),
+            ),
+            ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: expenseDetails.length,
+                itemBuilder: (context, index) {
+                  return AnimatedContainer(
+                      curve: Curves.bounceOut,
+                      duration: Duration(milliseconds: 700),
+                      margin: EdgeInsets.fromLTRB(
+                          30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          color: index % 3 == 0
+                              ? Colors.deepOrangeAccent
+                              : (index % 3 == 1
+                              ? Colors.blueAccent
+                              : Colors.pinkAccent)),
+                      width: 350,
+                      height: _expand[index]
+                          ? MediaQuery.of(context).size.height * 140 / 896 + height * 25 + 55
+                          : 110,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                padding: EdgeInsets.fromLTRB(34,
+                                    MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
+                                child: Text(
+                                  expenseDetails[index]['reason'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'SF Pro Display',
+                                    fontSize: MediaQuery.of(context).size.height * 20 / 896,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  width: 2,
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.centerRight,
+                                padding: EdgeInsets.fromLTRB(0,
+                                    MediaQuery.of(context).size.height * 22 / 896 - 3, 25, 0),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    _expand[index]
+                                        ? FontAwesomeIcons.arrowUp
+                                        : FontAwesomeIcons.arrowDown,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _expand[index] = !_expand[index];
+                                      print(_expand[index]);
+                                    });
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              color: index % 3 == 0
+                                  ? Colors.deepOrangeAccent
+                                  : (index % 3 == 1
+                                  ? Colors.blueAccent
+                                  : Colors.pinkAccent),
+                            ),
+                            margin: EdgeInsets.symmetric(horizontal: 25),
+                            height: MediaQuery.of(context).size.height * 54 / 896,
+                            width: 394,
+                            padding: EdgeInsets.all(10),
+                            child: SingleChildScrollView(
+                              child: Text(
+                                expenseDetails[index]['name'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontFamily: 'SF Pro Text',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          _expand[index]
+                              ? Flexible(
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Flexible(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          padding: EdgeInsets.fromLTRB(
+                                              34,
+                                              MediaQuery.of(context).size.height * 1 / 896,
+                                              0,
+                                              0),
+                                          child: Text(
+                                            "Amount",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'SF Pro Display',
+                                              fontSize: MediaQuery.of(context).size.height *
+                                                  18 /
+                                                  896,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            width: 5,
+                                          ),
+                                        ),
+
+                                        Container(
+                                          alignment: Alignment.centerRight,
+                                          padding: EdgeInsets.fromLTRB(
+                                              0,
+                                              MediaQuery.of(context).size.height * 10 / 896 -
+                                                  3,
+                                              34,
+                                              0),
+                                          child: Row(
+                                            children: <Widget>[
+                                              Text(
+                                                "₹",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: 'SF Pro Display',
+                                                  fontSize: MediaQuery.of(context).size.height *
+                                                      18 /
+                                                      896,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text(
+                                                expenseDetails[index]['amount'],
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: 'SF Pro Display',
+                                                  fontSize: MediaQuery.of(context).size.height *
+                                                      18 /
+                                                      896,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: SizedBox(
+                                      height: 10,
+                                    ),
+                                  ),
+                                ]
+                            ),
+                          ): Container(
+                            height: 0,
+                            width: 0,
+                          )
+                        ],
+                      )
+                  );
+                }),
             SizedBox(height: 16),
           ],
         ),
