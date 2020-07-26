@@ -52,6 +52,21 @@ flutter:
     - assets/images/fulllogo.png
     - assets/images/pattern.svg
     - assets/images/grad.png
+    - assets/images/Board/kunal.jpg
+    - assets/images/Board/rajat.jpg
+    - assets/images/Board/akshat.jpg
+    - assets/images/Board/muskan.jpg
+    - assets/images/Board/nishi.jpg
+    - assets/images/Board/ishan.jpg
+    - assets/images/Board/shreya.jpg
+    - assets/images/Board/dipto.jpg
+    - assets/images/Board/priyank.jpg
+    - assets/images/Board/devang.jpg
+    - assets/images/Board/anmol.jpg
+    - assets/images/Board/vansh.jpg
+    - assets/images/Board/kshitiz1.jpg
+    - assets/images/Board/anuj.jpg
+    - assets/images/Board/navyaa.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
