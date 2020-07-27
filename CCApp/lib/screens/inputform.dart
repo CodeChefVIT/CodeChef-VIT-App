@@ -2,6 +2,7 @@ import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class InputForm extends StatefulWidget {
@@ -12,6 +13,25 @@ class InputForm extends StatefulWidget {
 }
 
 class InputFormState extends State<InputForm> {
+  bool timePicked = false;
+  TimeOfDay time;
+  String timeString;
+  void initState() {
+    time = TimeOfDay.now();
+    super.initState();
+  }
+
+  Future _pickTime(BuildContext context) async {
+    print('entered');
+    TimeOfDay t = await showTimePicker(context: context, initialTime: time);
+    if (t != null && t != time)
+      setState(() {
+        time = t;
+        timeString = '${time.hour}:${time.minute}:00';
+        timePicked = true;
+      });
+  }
+
   Map<String, String> _data = {};
   final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
@@ -114,98 +134,93 @@ class InputFormState extends State<InputForm> {
               SizedBox(
                 height: 5,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
+              FlatButton(
+                onPressed: () async {
+                  await _pickTime(context);
+                  _data['time'] = timeString;
+                },
+                child: Container(
+                    height: MediaQuery.of(context).size.height * 60 / 896,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Color(0xff000000)),
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      color: Color(0xffffffff),
+                    ),
                     alignment: Alignment.center,
-                    margin: EdgeInsets.only(
-                        left: 5,
-                        right: MediaQuery.of(context).size.height * 5 / 896),
-                    width: MediaQuery.of(context).size.height * 137 / 896,
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == '') {
-                          return 'This field is required.';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onSaved: (value) {
-                        _data['time'] = value;
-                      },
-                      decoration: new InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        hintText: 'Time',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFC7C7C7),
-                          fontSize: 18,
-                        ),
-                        enabledBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
+                    width: MediaQuery.of(context).size.height * 280 / 896,
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 260 / 4,
+                          alignment: Alignment.center,
+                          child: Icon(
+                            FontAwesomeIcons.clock,
                             color: Colors.black,
-                            width: 2,
+                            size: 28,
                           ),
                         ),
-                        focusedBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                            width: 2,
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            timePicked ? timeString : "Pick a time",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontFamily: 'SF Pro Display',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
+                      ],
+                    )),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.height * 5 / 896,
+                    right: 5),
+                width: MediaQuery.of(context).size.height * 137 / 896,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _data['date'] = value;
+                  },
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Date',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
+                    ),
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
                       ),
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.height * 5 / 896,
-                        right: 5),
-                    width: MediaQuery.of(context).size.height * 137 / 896,
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == '') {
-                          return 'This field is required.';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onSaved: (value) {
-                        _data['date'] = value;
-                      },
-                      decoration: new InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        hintText: 'Date',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFC7C7C7),
-                          fontSize: 18,
-                        ),
-                        enabledBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
               SizedBox(
                 height: 5,
