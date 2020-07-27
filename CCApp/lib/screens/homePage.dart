@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:CCApp/screens/ProjectsPage.dart';
 import 'members.dart';
-import 'package:CCApp/screens/AboutUsPage.dart';
 import 'package:CCApp/screens/Expenses.dart';
 
 void main() {
@@ -26,7 +25,6 @@ class HomePageState extends State<HomePage> {
   final tabs = [
     Meetings(),
     ProjectsPage(),
-    AboutUsPage(),
     ProfilePage(),
     Expenses(),
     Members()
@@ -74,24 +72,9 @@ class HomePageState extends State<HomePage> {
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
-                FontAwesomeIcons.infoCircle,
-                color:
-                    widget.currentIndex == 2 ? Color(0xFFFF4572) : Colors.grey,
-              ),
-              title: Text(
-                'About Us',
-                style: TextStyle(
-                  color: widget.currentIndex == 2
-                      ? Color(0xFFFF4572)
-                      : Colors.grey,
-                ),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: FaIcon(
                 FontAwesomeIcons.userAlt,
                 color:
-                    widget.currentIndex == 3 ? Color(0xFF459AFF) : Colors.grey,
+                    widget.currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
               ),
               title: Text(
                 'Profile',
@@ -106,7 +89,7 @@ class HomePageState extends State<HomePage> {
               icon: FaIcon(
                 FontAwesomeIcons.moneyBillWave,
                 color:
-                    widget.currentIndex == 4 ? Color(0xFFFF6745) : Colors.grey,
+                    widget.currentIndex == 3 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
                 'Expenses',
@@ -121,7 +104,7 @@ class HomePageState extends State<HomePage> {
               icon: FaIcon(
                 FontAwesomeIcons.users,
                 color:
-                    widget.currentIndex == 5 ? Color(0xFFFF4572) : Colors.grey,
+                    widget.currentIndex == 4 ? Color(0xFFFF4572) : Colors.grey,
               ),
               title: Text(
                 'Members',

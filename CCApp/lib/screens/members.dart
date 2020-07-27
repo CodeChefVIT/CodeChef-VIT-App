@@ -270,7 +270,7 @@ class MembersState extends State<Members> {
                             margin: EdgeInsets.only(
                                 left: 44, right: 44, bottom: 10, top: 10),
                             height: 52,
-                            width: 259,
+                            width: 260,
                             child: FlatButton(
                               onPressed: () {
                                 showDialog(
@@ -302,7 +302,8 @@ class MembersState extends State<Members> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          margin: EdgeInsets.only(left: 15),
+                                          width: 260 / 4,
+                                          alignment: Alignment.center,
                                           child: Icon(
                                             Icons.add,
                                             color: Colors.white,
@@ -310,7 +311,6 @@ class MembersState extends State<Members> {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(left: 20),
                                           alignment: Alignment.center,
                                           child: Text(
                                             "Add Member",
