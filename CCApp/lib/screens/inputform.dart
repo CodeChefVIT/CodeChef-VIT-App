@@ -403,10 +403,11 @@ class InputFormState extends State<InputForm> {
                     ),
                     child: Container(
                         alignment: Alignment.center,
-                        child: Row(
+                        child: Stack(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: 15),
+                              width: 300 / 4,
+                              alignment: Alignment.center,
                               child: Icon(
                                 Icons.add,
                                 color: Colors.white,
@@ -414,10 +415,6 @@ class InputFormState extends State<InputForm> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.height *
-                                      40 /
-                                      896),
                               alignment: Alignment.center,
                               child: Text(
                                 "Add Meeting",

@@ -168,15 +168,17 @@ class ProjectCardState extends State<ProjectCard> {
                                 MediaQuery.of(context).size.height * 1 / 896,
                                 0,
                                 0),
-                            child: Text(
-                              widget.mentor,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'SF Pro Display',
-                                fontSize: MediaQuery.of(context).size.height *
-                                    18 /
-                                    896,
-                                fontWeight: FontWeight.bold,
+                            child: Container(
+                              child: Text(
+                                widget.mentor,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'SF Pro Display',
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      18 /
+                                      896,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),

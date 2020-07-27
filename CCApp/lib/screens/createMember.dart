@@ -26,7 +26,7 @@ class CreateMemberState extends State<CreateMember> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(
-            currentIndex: 5,
+            currentIndex: 3,
           ),
         ),
       );

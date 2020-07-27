@@ -33,7 +33,7 @@ class SetupProfileState extends State<SetupProfile> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(
-            currentIndex: 3,
+            currentIndex: 4,
           ),
         ),
       );
