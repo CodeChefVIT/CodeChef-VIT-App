@@ -25,9 +25,9 @@ class HomePageState extends State<HomePage> {
   final tabs = [
     Meetings(),
     ProjectsPage(),
-    ProfilePage(),
     Expenses(),
-    Members()
+    Members(),
+    ProfilePage()
   ];
 
   Widget build(BuildContext context) {
@@ -72,30 +72,15 @@ class HomePageState extends State<HomePage> {
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
-                FontAwesomeIcons.userAlt,
+                FontAwesomeIcons.moneyBillWave,
                 color:
                     widget.currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
               ),
               title: Text(
-                'Profile',
-                style: TextStyle(
-                  color: widget.currentIndex == 3
-                      ? Color(0xFF459AFF)
-                      : Colors.grey,
-                ),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.moneyBillWave,
-                color:
-                    widget.currentIndex == 3 ? Color(0xFFFF6745) : Colors.grey,
-              ),
-              title: Text(
                 'Expenses',
                 style: TextStyle(
-                  color: widget.currentIndex == 4
-                      ? Color(0xFFFF6745)
+                  color: widget.currentIndex == 2
+                      ? Color(0xFF459AFF)
                       : Colors.grey,
                 ),
               ),
@@ -104,12 +89,27 @@ class HomePageState extends State<HomePage> {
               icon: FaIcon(
                 FontAwesomeIcons.users,
                 color:
-                    widget.currentIndex == 4 ? Color(0xFFFF4572) : Colors.grey,
+                    widget.currentIndex == 3 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
                 'Members',
                 style: TextStyle(
-                  color: widget.currentIndex == 5
+                  color: widget.currentIndex == 3
+                      ? Color(0xFFFF6745)
+                      : Colors.grey,
+                ),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.userAlt,
+                color:
+                    widget.currentIndex == 4 ? Color(0xFFFF4572) : Colors.grey,
+              ),
+              title: Text(
+                'Profile',
+                style: TextStyle(
+                  color: widget.currentIndex == 4
                       ? Color(0xFFFF4572)
                       : Colors.grey,
                 ),
