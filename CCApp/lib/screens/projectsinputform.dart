@@ -10,7 +10,6 @@ class ProjectsInputForm extends StatefulWidget {
 }
 
 class _ProjectsInputFormState extends State<ProjectsInputForm> {
-  @override
   Map<String, String> _data = {};
   final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
