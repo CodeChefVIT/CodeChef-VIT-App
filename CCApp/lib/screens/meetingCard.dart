@@ -21,15 +21,6 @@ class MeetingCard extends StatelessWidget {
     @required this.sgcolor,
   });
 
-  List colors = [
-    0xFF459AFF,
-    0xFFFF6745,
-    0xFFFF4572,
-    0xFF7BB7FF,
-    0xFFFF967E,
-    0xFFFF6C90
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(

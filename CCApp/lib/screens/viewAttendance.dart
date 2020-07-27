@@ -1,9 +1,7 @@
 import 'package:CCApp/providers/meeting.dart';
-import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/attendanceCard.dart';
 import 'package:CCApp/screens/homePage.dart';
-import 'package:CCApp/screens/meetings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

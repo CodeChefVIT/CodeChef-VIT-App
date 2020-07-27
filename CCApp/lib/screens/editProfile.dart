@@ -28,7 +28,7 @@ class EditProfileState extends State<EditProfile> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(
-            currentIndex: 3,
+            currentIndex: 4,
           ),
         ),
       );

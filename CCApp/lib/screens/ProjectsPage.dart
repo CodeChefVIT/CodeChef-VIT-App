@@ -272,7 +272,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                       margin: EdgeInsets.only(
                           left: 44, right: 44, bottom: 10, top: 10),
                       height: 52,
-                      width: 259,
+                      width: 260,
                       child: FlatButton(
                         onPressed: () {
                           showDialog(
@@ -301,10 +301,11 @@ class _ProjectsPageState extends State<ProjectsPage> {
                           ),
                           child: Container(
                               alignment: Alignment.center,
-                              child: Row(
+                              child: Stack(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(left: 15),
+                                    width: 260 / 4,
+                                    alignment: Alignment.center,
                                     child: Icon(
                                       Icons.add,
                                       color: Colors.white,
@@ -312,7 +313,6 @@ class _ProjectsPageState extends State<ProjectsPage> {
                                     ),
                                   ),
                                   Container(
-                                    margin: EdgeInsets.only(left: 20),
                                     alignment: Alignment.center,
                                     child: Text(
                                       "Add Project",

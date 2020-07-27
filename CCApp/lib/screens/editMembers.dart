@@ -149,7 +149,7 @@ class MemberFormState extends State<MemberForm> {
                         widget.uuid);
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => HomePage(
-                          currentIndex: 5,
+                          currentIndex: 3,
                         )));
               },
               shape: RoundedRectangleBorder(

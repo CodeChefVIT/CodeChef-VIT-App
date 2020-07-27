@@ -1,4 +1,3 @@
-import 'package:CCApp/providers/memberdata.dart';
 import 'package:CCApp/providers/projects.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:flutter/foundation.dart';
