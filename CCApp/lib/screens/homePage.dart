@@ -121,7 +121,7 @@ class HomePageState extends State<HomePage> {
               icon: FaIcon(
                 FontAwesomeIcons.users,
                 color:
-                widget.currentIndex == 5 ? Color(0xFFFF4572) : Colors.grey,
+                    widget.currentIndex == 5 ? Color(0xFFFF4572) : Colors.grey,
               ),
               title: Text(
                 'Members',
