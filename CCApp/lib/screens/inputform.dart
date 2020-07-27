@@ -16,7 +16,11 @@ class InputFormState extends State<InputForm> {
   bool timePicked = false;
   TimeOfDay time;
   String timeString;
+  bool datePicked = false;
+  DateTime date;
+  String dateString;
   void initState() {
+    date = DateTime.now();
     time = TimeOfDay.now();
     super.initState();
   }
@@ -29,6 +33,21 @@ class InputFormState extends State<InputForm> {
         time = t;
         timeString = '${time.hour}:${time.minute}:00';
         timePicked = true;
+      });
+  }
+
+  Future _pickDate(BuildContext context) async {
+    DateTime dateChosen = await showDatePicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+      initialDate: date,
+    );
+    if (dateChosen != null)
+      setState(() {
+        date = dateChosen;
+        dateString = '${date.year}-${date.month}-${date.day}';
+        datePicked = true;
       });
   }
 
@@ -178,49 +197,46 @@ class InputFormState extends State<InputForm> {
               SizedBox(
                 height: 5,
               ),
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.height * 5 / 896,
-                    right: 5),
-                width: MediaQuery.of(context).size.height * 137 / 896,
-                child: TextFormField(
-                  validator: (value) {
-                    if (value == '') {
-                      return 'This field is required.';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onSaved: (value) {
-                    _data['date'] = value;
-                  },
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Date',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
+              FlatButton(
+                onPressed: () async {
+                  await _pickDate(context);
+                  _data['date'] = dateString;
+                },
+                child: Container(
+                    height: MediaQuery.of(context).size.height * 60 / 896,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Color(0xff000000)),
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      color: Color(0xffffffff),
                     ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.height * 280 / 896,
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 260 / 4,
+                          alignment: Alignment.center,
+                          child: Icon(
+                            FontAwesomeIcons.calendarAlt,
+                            color: Colors.black,
+                            size: 28,
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            datePicked ? dateString : "Pick a date",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontFamily: 'SF Pro Display',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
               ),
               SizedBox(
                 height: 5,
