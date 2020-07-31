@@ -9,6 +9,7 @@ import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/providers/projects.dart';
 import 'loading_screen.dart';
 import './providers/memberdata.dart';
+import 'package:CCApp/providers/expenses.dart';
 
 void main() {
   runApp(
@@ -72,6 +73,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: Project(),
         ),
+        ChangeNotifierProvider.value(
+          value: Expense(),
+        )
       ],
       child: Consumer<Reg>(
         builder: (context, reg, _) => MaterialApp(
