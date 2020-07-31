@@ -511,7 +511,7 @@ class ProfilePageState extends State<ProfilePage> {
                               SizedBox(height: 10),
                               Row(
                                 children: <Widget>[
-                                  SizedBox(width: 120),
+                                  SizedBox(width: 90),
                                   Icon(
                                     Icons.phone,
                                     color: Colors.grey[600],
