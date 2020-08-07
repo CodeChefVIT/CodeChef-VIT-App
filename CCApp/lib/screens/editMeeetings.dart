@@ -132,98 +132,94 @@ class EditMeetingState extends State<EditMeeting> {
               SizedBox(
                 height: 5,
               ),
-              Row(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    width: 135,
-                    child: TextFormField(
-                      initialValue: widget.time,
-                      validator: (value) {
-                        if (value == '') {
-                          return 'This field is required.';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onChanged: (value) {
-                        _data['time'] = value;
-                      },
-                      decoration: new InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        hintText: 'Time',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFC7C7C7),
-                          fontSize: 18,
-                        ),
-                        enabledBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                            width: 2,
-                          ),
-                        ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(left: 5, right: 5),
+                width: 300,
+                child: TextFormField(
+                  initialValue: widget.time,
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onChanged: (value) {
+                    _data['time'] = value;
+                  },
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Time',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
+                    ),
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 2,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    width: 135,
-                    child: TextFormField(
-                      initialValue: widget.date,
-                      validator: (value) {
-                        if (value == '') {
-                          return 'This field is required.';
-                        } else {
-                          return null;
-                        }
-                      },
-                      onChanged: (value) {
-                        _data['date'] = value;
-                      },
-                      decoration: new InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        hintText: 'Date',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFC7C7C7),
-                          fontSize: 18,
-                        ),
-                        enabledBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: new OutlineInputBorder(
-                          borderRadius: const BorderRadius.all(
-                              const Radius.circular(27.5)),
-                          borderSide: BorderSide(
-                            color: Colors.blue,
-                            width: 2,
-                          ),
-                        ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(left: 5, right: 5),
+                width: 300,
+                child: TextFormField(
+                  initialValue: widget.date,
+                  validator: (value) {
+                    if (value == '') {
+                      return 'This field is required.';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onChanged: (value) {
+                    _data['date'] = value;
+                  },
+                  decoration: new InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    hintText: 'Date',
+                    hintStyle: TextStyle(
+                      color: Color(0xFFC7C7C7),
+                      fontSize: 18,
+                    ),
+                    enabledBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                    ),
+                    focusedBorder: new OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
               SizedBox(
                 height: 5,
