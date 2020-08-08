@@ -159,14 +159,14 @@ class InputFormState extends State<InputForm> {
                   _data['time'] = timeString;
                 },
                 child: Container(
-                    height: MediaQuery.of(context).size.height * 60 / 896,
+                    height: MediaQuery.of(context).size.height * 50 / 896,
                     decoration: BoxDecoration(
                       border: Border.all(width: 2, color: Color(0xff000000)),
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                       color: Color(0xffffffff),
                     ),
                     alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.height * 280 / 896,
+                    width: double.infinity,
                     child: Stack(
                       children: [
                         Container(
@@ -203,7 +203,7 @@ class InputFormState extends State<InputForm> {
                   _data['date'] = dateString;
                 },
                 child: Container(
-                    height: MediaQuery.of(context).size.height * 60 / 896,
+                    height: MediaQuery.of(context).size.height * 50 / 896,
                     decoration: BoxDecoration(
                       border: Border.all(width: 2, color: Color(0xff000000)),
                       borderRadius: BorderRadius.all(Radius.circular(30)),
