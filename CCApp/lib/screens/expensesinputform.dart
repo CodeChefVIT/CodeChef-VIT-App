@@ -15,21 +15,13 @@ class ExpensesInputForm extends StatefulWidget {
 }
 
 class _ExpensesInputFormState extends State<ExpensesInputForm> {
-  Future<File> imageFile;
-  String file_loc='';
-  String filePath='';
-  String path;
-  Future<void> _getImage() async {
-    filePath = await FilePicker.getFilePath(type: FileType.image);
-    setState(() {
-      file_loc = filePath;
-    });
-  }
-
-  String remarks,bill,status,comments;
-  int amount;
+  final GlobalKey<FormState> _formKey= GlobalKey();
+  String file_loc = '';
+  var filePath;
+  String remarks;
+  String amount;
+  String filep='';
   Map<String, String> _data = {};
-  final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
       return;
@@ -37,12 +29,15 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
     _formKey.currentState.save();
     try {
       await Provider.of<Expense>(context, listen: false)
-          .expenseAdd(_data, Provider.of<Reg>(context, listen: false).token);
+          .expenseAdd(_data, Provider
+          .of<Reg>(context, listen: false)
+          .token);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(
-            currentIndex: 2,
-          ),
+          builder: (ctx) =>
+              HomePage(
+                currentIndex: 2,
+              ),
         ),
       );
     } catch (error) {
@@ -55,15 +50,6 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
         ),
       );
     }
-    final multipartRequest =
-    new http.MultipartRequest('PUT', Uri.parse('https://codechef-vit-app.herokuapp.com/bill/new/'));
-    var multipartFile = await http.MultipartFile.fromPath('bill', filePath);
-    multipartRequest.files.add(multipartFile);
-    var response = await multipartRequest.send();
-    print("hello\n");
-    print(filePath);
-    print(response.statusCode);
-    print(await response.stream.bytesToString());
   }
   Widget build(BuildContext context) {
     return Container(
@@ -104,8 +90,8 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                       return null;
                     }
                   },
-                  onChanged: (String text) {
-                    _data['remarks'] = text;
+                  onChanged: (String text){
+                    remarks=text;
                   },
                   decoration: new InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
@@ -147,7 +133,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                     }
                   },
                   onChanged: (value){
-                    _data['amount'] = value;
+                    amount=value;
                   },
                   keyboardType: TextInputType.number,
                   decoration: new InputDecoration(
@@ -181,7 +167,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                 width: 330,
                 child: FlatButton(
                   onPressed: () async {
-                    (filePath!=''&&filePath!=null)
+                    (filep!=''&&filep!=null)
                         ?showDialog(
                         context: context,
                         builder: (context) {
@@ -189,7 +175,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24)),
                             elevation: 12,
-                            child: Image.file(File(filePath)),
+                            child: Image.file(File(filep)),
                           );
                         })
                         :showDialog(
@@ -273,7 +259,11 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                 width: 330,
                 child: FlatButton(
                   onPressed: () async {
-                    _getImage();
+                    filePath = await FilePicker.getFilePath(
+                        type: FileType.image,);
+                    setState(() {
+                      filep=filePath;
+                    });
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
@@ -327,9 +317,24 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                 width: 330,
                 child: FlatButton(
                   onPressed: () async {
-                    await _submit();
-                    print(_data);
-                    (_data['remarks']!=null&&_data['amount']!=null)
+                    await Provider.of<Expense>(context,
+                        listen: false)
+                        .dataUpload(
+                      filePath,
+                      remarks,
+                      amount,
+                      Provider.of<Reg>(context, listen: false)
+                          .token,
+                    );
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (ctx) =>
+                            HomePage(
+                              currentIndex: 2,
+                            ),
+                      ),
+                    );
+                    (remarks!=null&&amount!=null)
                         ?showDialog(
                         context: context,
                         builder: (context) {
@@ -368,7 +373,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                             ),
                           );
                         })
-                        :print(_data);
+                        :print("hello");
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),

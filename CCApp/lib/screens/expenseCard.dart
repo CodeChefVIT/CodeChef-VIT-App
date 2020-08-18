@@ -306,10 +306,10 @@ class ExpenseCardState extends State<ExpenseCard> {
                               color: Colors.red,
                             ),
                             margin: EdgeInsets.symmetric(horizontal: 0),
-                            height: (widget.comments)!=null&&(widget.status)=='Paid'
+                            height: (widget.comments)!=null&&((widget.status)=='Paid'||(widget.status)=='Rejected')
                                 ?MediaQuery.of(context).size.height * 50 / 896
                                 :0,
-                            width: (widget.comments)!=null&&(widget.status)=='Paid'
+                            width: (widget.comments)!=null&&((widget.status)=='Paid'||(widget.status)=='Rejected')
                                   ?192
                                   :0,
                             padding: EdgeInsets.all(8),

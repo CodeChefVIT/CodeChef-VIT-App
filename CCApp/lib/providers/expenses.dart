@@ -8,6 +8,28 @@ class Expense with ChangeNotifier {
   List<dynamic> get details {
     return _details;
   }
+  Future<void> dataUpload(filePath,remarks,amount,token) async {
+    try {
+      Map<String, String> headers = {
+        'Authorization': token
+      };
+      final apiUrl = 'https://codechef-vit-app.herokuapp.com/bill/new/';
+      final multipartRequest =
+      new http.MultipartRequest('POST', Uri.parse(apiUrl));
+      multipartRequest.headers.addAll(headers);
+      var multipartFile = await http.MultipartFile.fromPath('bill', filePath);
+      multipartRequest.files.add(multipartFile);
+      multipartRequest.fields['remarks']=remarks;
+      multipartRequest.fields['amount']=amount;
+      var response = await multipartRequest.send();
+      final respStr = await response.stream.bytesToString();
+      print((respStr));
+      print(token);
+      print(response.statusCode);
+    } catch (error) {
+      print(error);
+    }
+  }
   Future<void> expenseView(token) async {
     final url = 'https://codechef-vit-app.herokuapp.com/bill/view/';
     var response = await http.get(url,
