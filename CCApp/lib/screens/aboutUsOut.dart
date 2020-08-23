@@ -114,7 +114,8 @@ class OutsideAboutUs extends StatelessWidget {
             child: Text(
               'Codechef-VIT is one of the prestigious technical chapters of VIT Vellore. '
               'Our aim is to educate and enable the youth who will lead in various innovative endeavours. '
-              'We hope that together, each one of us may contribute to the chapter\'s countless accolades and leave a lasting mark. ',
+              'We hope that together, each one of us may contribute to the chapter\'s countless accolades and leave a lasting mark. '
+              'Check out our website at https://www.codechefvit.com/',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
