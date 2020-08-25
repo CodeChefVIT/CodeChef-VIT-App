@@ -1,3 +1,4 @@
+import 'package:CCApp/screens/aboutUsOut.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import './SignUpPage.dart';
@@ -64,14 +65,14 @@ class LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 80 / 896),
+                        height: MediaQuery.of(context).size.height * 40 / 896),
                     Container(
                       height: MediaQuery.of(context).size.height * 89 / 896,
                       width: double.infinity,
                       child: Image.asset('assets/images/fulllogo.png'),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 44 / 896,
+                      height: MediaQuery.of(context).size.height * 34 / 896,
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 44),
@@ -247,37 +248,73 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 20 / 896,
+                      height: MediaQuery.of(context).size.height * 5 / 896,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.height * 96 / 896,
-                        ),
-                        Text(
-                          "Don't have an account?",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'SF Pro Display',
-                            color: Colors.black,
+                    Container(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width:
+                                MediaQuery.of(context).size.height * 96 / 896,
                           ),
-                        ),
-                        FlatButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SignUpPage()));
-                          },
-                          child: Text(
-                            "Sign Up",
+                          Text(
+                            "Don't have an account?",
                             style: TextStyle(
                               fontSize: 14,
                               fontFamily: 'SF Pro Display',
-                              color: Color(0xFF1D59A1),
-                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
                             ),
                           ),
-                        )
-                      ],
+                          FlatButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => SignUpPage()));
+                            },
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'SF Pro Display',
+                                color: Color(0xFF1D59A1),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          horizontal:
+                              MediaQuery.of(context).size.width * 200 / 896),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Not a member?",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'SF Pro Display',
+                              color: Colors.black,
+                            ),
+                          ),
+                          FlatButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => OutsideAboutUs()));
+                            },
+                            child: Text(
+                              "Click Here",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'SF Pro Display',
+                                color: Color(0xFF1D59A1),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     Expanded(
                         child: SizedBox(
