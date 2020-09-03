@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
+import 'package:flip_card/flip_card.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -25,7 +26,90 @@ class ProfilePageState extends State<ProfilePage> {
       throw 'Could not launch $url';
     }
   }
-  int i;
+  List<String> project20=[
+    'codechef20.png',
+    'cookoff.png',
+    'codechefapp.png',
+    'cet.jpg',
+    'bookmarked.jpeg',
+    'interiAR.jpeg',
+    'ffcc.jpg',
+    'ffds.png',
+    'leoclub.png',
+  ];
+  List<String> projname20=[
+    'CodeChef-VIT\'20',
+    'Cook Off 6.0',
+    'CodeChef-VIT App',
+    'Common Entry Test',
+    'Bookmarked',
+    'InteriAR',
+    'FFCC',
+    'FFDS',
+    'LeoClub Website',
+  ];
+  List<String> projdes20=[
+    'Official website for CodeChef-VIT for 2020-21.',
+    'Official website for our flagship graVITas event for the year 2020.',
+    'All in one official app for CodeChef-VIT.',
+    'One stop solution to make club and chapter recruitments in VIT simpler and hassle free.',
+    'A one stop location for links, photos and videos you are interested in.',
+    'Interior designing app using Augmented Reality.',
+    'Fully Flexible Credit Companion which automates and simplifies making potential timetable for FFCS.',
+    'Find out users who share a free slot with you and connect with them in VIT.',
+    'Official website for the Leo Club VIT.',
+  ];
+  List<String> project19=[
+    'engage.png',
+    'recruitment.png',
+    'sms_app.png',
+    'devsoc.png',
+    'devsoc_admin.png',
+    'devsoc20app.jpg',
+    'freeslot.jpeg',
+    'seds1.png',
+    'goal.jpg',
+  ];
+  List<String> projname19=[
+    'Engagement Monitor',
+    'Recruitments Portal',
+    'SMS App',
+    'DEVSOC\'20',
+    'HackScore Admin',
+    'DEVSOC App',
+    'Free Slot Finder',
+    'SEDS-India',
+    'GOAL',
+  ];
+  List<String> projdes19=[
+    'A web application to help you analyse active or disinterested members of a WhatsApp group. ',
+    'Web portal for Recruitments\'19. ',
+    'App to send bulk messages to multiple contacts at same time. ',
+    'The official website for DEVSOC 2020 by CodeChef-VIT. ',
+    'This app was made to make the evaluation of participants in CodeChef-VIT\'s flagship event, DEVSOC 2020. This app gives functionality at different hierarchies. ',
+    'This is the app created for the hackathon DEVSOC\'20. It is used to provide general assistance to the people of attending the hackathon. ',
+    'Free Slot Finder is an assisitve technology that makes finding free slots from a time table easier.',
+    'SEDS India\'s official website for 2020. ',
+    'Official Web Portal for Going Online As Leaders in association with the Tribal Ministry of India, Facebook & JoshTalks. '
+  ];
+  List<String> project18=[
+    'devsoc_19.jpg',
+    'codechef.png',
+    'codecombat.png',
+    'githubapi.jpeg',
+  ];
+  List<String> projname18=[
+    'DEVSOC\'19 Website',
+    'CodeChef-VIT Website',
+    'Code Combat',
+    'Github Organisation API',
+  ];
+  List<String> projdes18=[
+    'The official website for DEVSOC 2019 by CodeChef-VIT. ',
+    'CodeChef-VIT\'s official website for 2019-20. ',
+    'Registration portal for Code Combat by CodeChef-VIT. ',
+    'GitHub organisation specific data for all members. ',
+  ];
   List<String> image=[
     'kunal.jpg',
     'rajat.jpg',
@@ -461,7 +545,7 @@ class ProfilePageState extends State<ProfilePage> {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  fontSize: 30,
+                  fontSize: 34,
                   fontFamily: 'SFProDisplay',
                 ),
               ),
@@ -515,7 +599,7 @@ class ProfilePageState extends State<ProfilePage> {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  fontSize: 30,
+                  fontSize: 34,
                   fontFamily: 'SFProDisplay',
                 ),
               ),
@@ -529,8 +613,8 @@ class ProfilePageState extends State<ProfilePage> {
                   itemBuilder: (context, index){
                     return  Center(
                       child: Container(
-                        height: 375,
-                        width:400,
+                        height: MediaQuery.of(context).size.height * 380 / 896,
+                        width:MediaQuery.of(context).size.height * 405 / 896,
                         child: Card(
                           child: Column(
                             children: <Widget>[
@@ -543,7 +627,7 @@ class ProfilePageState extends State<ProfilePage> {
                                   image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/Board/${image[index]}'),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
@@ -591,21 +675,21 @@ class ProfilePageState extends State<ProfilePage> {
                   }
                 ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Container(
               padding: EdgeInsets.only(left: 24),
               alignment: Alignment.centerLeft,
               child: Text(
-                'Events',
+                'Our Projects',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  fontSize: 30,
+                  fontSize: 34,
                   fontFamily: 'SFProDisplay',
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 20,),
             Container(
               padding: EdgeInsets.only(left: 24),
               alignment: Alignment.centerLeft,
@@ -620,25 +704,77 @@ class ProfilePageState extends State<ProfilePage> {
               ),
             ),
             SizedBox(height: 10,),
-            for(i=0;i<eventimage20.length;i++)
-                Card(
-                  semanticContainer: true,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: InkWell(
-                    onTap: (){
-                      print("tapped");
-                    },
-                    child: Image.asset(
-                      'assets/images/Events/${eventimage20[i]}',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  elevation: 5,
-                  margin: EdgeInsets.all(10),
-                ),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: project20.length,
+                  itemBuilder: (context, index){
+                    return IntrinsicWidth(
+                      child: FlipCard(
+                        direction: FlipDirection.HORIZONTAL,
+                        front: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/Projects/${project20[index]}',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
+                          margin: EdgeInsets.all(10),
+                        ),
+                        back: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.black,
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  child: Text(
+                                    projname20[index],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'SFProDisplay',
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 310,
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    projdes20[index],
+                                    style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontFamily: 'SFProDisplay',
+                                  ),
+                                ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
+                          margin: EdgeInsets.all(10),
+                        ),
+                      ),
+                    );
+                  }
+              ),
+            ),
             SizedBox(height: 10,),
             Container(
               padding: EdgeInsets.only(left: 24),
@@ -654,20 +790,77 @@ class ProfilePageState extends State<ProfilePage> {
               ),
             ),
             SizedBox(height: 10,),
-            for(i=0;i<eventimage19.length;i++)
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Image.asset(
-                  'assets/images/Events/${eventimage19[i]}',
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(10),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: project19.length,
+                  itemBuilder: (context, index){
+                    return IntrinsicWidth(
+                      child: FlipCard(
+                        direction: FlipDirection.HORIZONTAL,
+                        front: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/Projects/${project19[index]}',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
+                          margin: EdgeInsets.all(10),
+                        ),
+                        back: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.black,
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  child: Text(
+                                    projname19[index],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'SFProDisplay',
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 310,
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    projdes19[index],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontFamily: 'SFProDisplay',
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
+                          margin: EdgeInsets.all(10),
+                        ),
+                      ),
+                    );
+                  }
               ),
+            ),
             SizedBox(height: 10,),
             Container(
               padding: EdgeInsets.only(left: 24),
@@ -683,21 +876,206 @@ class ProfilePageState extends State<ProfilePage> {
               ),
             ),
             SizedBox(height: 10,),
-            for(i=0;i<eventimage18.length;i++)
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Image.asset(
-                  'assets/images/Events/${eventimage18[i]}',
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(10),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: project18.length,
+                  itemBuilder: (context, index){
+                    return IntrinsicWidth(
+                      child: FlipCard(
+                        direction: FlipDirection.HORIZONTAL,
+                        front: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/Projects/${project18[index]}',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
+                          margin: EdgeInsets.all(10),
+                        ),
+                        back: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.black,
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  child: Text(
+                                    projname18[index],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontFamily: 'SFProDisplay',
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 310,
+                                  padding: EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    projdes18[index],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontFamily: 'SFProDisplay',
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
+                          margin: EdgeInsets.all(10),
+                        ),
+                      ),
+                    );
+                  }
               ),
-            SizedBox(height: 10,),
+            ),
+            SizedBox(height:10),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Events',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 34,
+                  fontFamily: 'SFProDisplay',
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '2020',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                  fontFamily: 'SFProDisplay',
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: eventimage20.length,
+                  itemBuilder: (context, index){
+                    return  Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Image.asset(
+                        'assets/images/Events/${eventimage20[index]}',
+                        fit: BoxFit.fill,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: EdgeInsets.all(5),
+                    );
+                  }
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '2019',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                  fontFamily: 'SFProDisplay',
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: eventimage19.length,
+                  itemBuilder: (context, index){
+                    return  Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Image.asset(
+                        'assets/images/Events/${eventimage19[index]}',
+                        fit: BoxFit.fill,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: EdgeInsets.all(5),
+                    );
+                  }
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '2018',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                  fontFamily: 'SFProDisplay',
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: eventimage18.length,
+                  itemBuilder: (context, index){
+                    return Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Image.asset(
+                        'assets/images/Events/${eventimage18[index]}',
+                        fit: BoxFit.fill,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: EdgeInsets.all(5),
+                    );
+                  }
+              ),
+            ),
+            SizedBox(height: 20,),
             Container(
               padding: EdgeInsets.only(left: 24),
               alignment: Alignment.centerLeft,
@@ -711,21 +1089,30 @@ class ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
-            for(i=0;i<eventimage17.length;i++)
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Image.asset(
-                  'assets/images/Events/${eventimage17[i]}',
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(10),
+            SizedBox(height: 20,),
+            Container(
+              height: 350,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: eventimage17.length,
+                  itemBuilder: (context, index){
+                    return  Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Image.asset(
+                        'assets/images/Events/${eventimage17[index]}',
+                        fit: BoxFit.fill,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      elevation: 5,
+                      margin: EdgeInsets.all(5),
+                    );
+                  }
               ),
+            ),
             SizedBox(height: 10,),
           ],
         ),

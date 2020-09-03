@@ -299,7 +299,9 @@ class EditExpensesState extends State<EditExpenses> {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: 15),
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
+                                  18 /
+                                  896),
                               child: Icon(
                                 Icons.add,
                                 color: Colors.white,
@@ -307,7 +309,10 @@ class EditExpensesState extends State<EditExpenses> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 40),
+                              margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.height *
+                                      25 /
+                                      896),
                               alignment: Alignment.center,
                               child: Text(
                                 "Edit Expense",
