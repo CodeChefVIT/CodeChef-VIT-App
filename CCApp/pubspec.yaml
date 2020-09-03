@@ -34,6 +34,7 @@ dependencies:
   image_picker: ^0.6.7+4
   dio: ^3.0.9
   url_launcher: ^5.5.1
+  flip_card: ^0.4.4
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -87,6 +88,28 @@ flutter:
     - assets/images/Events/error404.jpg
     - assets/images/Events/data_analytics.jpg
     - assets/images/Events/blockchain.jpg
+    - assets/images/Projects/bookmarked.jpeg
+    - assets/images/Projects/cet.jpg
+    - assets/images/Projects/codechef20.png
+    - assets/images/Projects/codechefapp.png
+    - assets/images/Projects/cookoff.png
+    - assets/images/Projects/ffcc.jpg
+    - assets/images/Projects/ffds.png
+    - assets/images/Projects/interiAR.jpeg
+    - assets/images/Projects/leoclub.png
+    - assets/images/Projects/engage.png
+    - assets/images/Projects/recruitment.png
+    - assets/images/Projects/sms_app.png
+    - assets/images/Projects/devsoc.png
+    - assets/images/Projects/devsoc_admin.png
+    - assets/images/Projects/devsoc20app.jpg
+    - assets/images/Projects/freeslot.jpeg
+    - assets/images/Projects/seds1.png
+    - assets/images/Projects/goal.jpg
+    - assets/images/Projects/codechef.png
+    - assets/images/Projects/codecombat.png
+    - assets/images/Projects/devsoc_19.jpg
+    - assets/images/Projects/githubapi.jpeg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

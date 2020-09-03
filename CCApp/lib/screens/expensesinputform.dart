@@ -80,7 +80,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   validator: (value) {
@@ -122,7 +122,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   validator: (value) {
@@ -164,7 +164,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
               Container(
                 margin: EdgeInsets.only(left:5, right: 5, bottom:5, top: 5),
                 height: 50,
-                width: 330,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: FlatButton(
                   onPressed: () async {
                     (filep!=''&&filep!=null)
@@ -225,24 +225,27 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left:15),
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
+                                  18 /
+                                  896),
                               child: Icon(
                                 Icons.image,
                                 color: Colors.black,
                                 size: 28,
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(left: 12),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "View Selected Image",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontFamily: 'SF Pro Display',
-                                  fontWeight: FontWeight.w600,
+                            Flexible(
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "View Selected Image",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ),
@@ -284,7 +287,9 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left:15),
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
+                                  18 /
+                                  896),
                               child: Icon(
                                 Icons.camera_alt,
                                 color: Colors.white,
@@ -292,7 +297,9 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 40),
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
+                                  25 /
+                                  896),
                               alignment: Alignment.center,
                               child: Text(
                                 "Select Image",
@@ -389,7 +396,9 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left:15),
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
+                            18 /
+                            896),
                               child: Icon(
                                 Icons.add,
                                 color: Colors.white,
@@ -397,7 +406,10 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 40),
+                              margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.height *
+                                      25 /
+                                      896),
                               alignment: Alignment.center,
                               child: Text(
                                 "Add Expense",

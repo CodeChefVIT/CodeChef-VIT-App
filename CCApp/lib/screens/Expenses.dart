@@ -189,18 +189,21 @@ class _ExpensesState extends State<Expenses> {
                                         BorderRadius.circular(10)),
                                     elevation: 12,
                                     child: Container(
-                                      height: 105,
-                                      width: 330,
+                                      height: MediaQuery.of(context).size.height * 135 / 896,
+                                      width: MediaQuery.of(context).size.height * 200 / 896,
                                       child: Column(
                                         children: <Widget>[
-                                          SizedBox(height: 20,),
-                                          Text(
-                                            'Are you sure you want to delete this expenditure?',
+                                          SizedBox(height: MediaQuery.of(context).size.height * 18 / 896,),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: MediaQuery.of(context).size.height * 18 / 896,),
+                                            child: Text(
+                                              'Are you sure you want to delete this expenditure?',
+                                            ),
                                           ),
                                           SizedBox(height: 16,),
                                           Row(
                                             children: <Widget>[
-                                              SizedBox(width: 150,),
+                                              SizedBox(width: MediaQuery.of(context).size.height * 118 / 896,),
                                               FlatButton(
                                                 child: Text(
                                                   "Cancel",

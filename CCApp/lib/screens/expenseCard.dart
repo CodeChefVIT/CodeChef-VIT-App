@@ -52,7 +52,7 @@ class ExpenseCardState extends State<ExpenseCard> {
         width: 350,
         height: isPressed
             ? MediaQuery.of(context).size.height * 140 / 896 + height * 25 + 150
-            : 110,
+            : MediaQuery.of(context).size.height * 140 / 896,
         child: Column(
           children: [
             Row(
@@ -250,7 +250,7 @@ class ExpenseCardState extends State<ExpenseCard> {
                                 borderRadius: BorderRadius.circular(30.0)),
                             child: Container(
                               constraints:
-                              BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+                              BoxConstraints(maxWidth:MediaQuery.of(context).size.height * 285 / 896, minHeight:  MediaQuery.of(context).size.height * 50 / 896),
                               alignment: Alignment.center,
                               child: Center(
                                 child: Text(
@@ -280,12 +280,11 @@ class ExpenseCardState extends State<ExpenseCard> {
                                   ? Colors.green
                                   : ((widget.status)=='Rejected'?Colors.red:Colors.grey),
                             ),
-                            margin: EdgeInsets.symmetric(horizontal: 25),
+                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 30 / 896),
                             height: MediaQuery.of(context).size.height * 50 / 896,
                             width: (widget.status)=='Paid'||(widget.status)=='Rejected'
-                                ? 85
-                                : 125,
-                            padding: EdgeInsets.all(8),
+                                ? MediaQuery.of(context).size.height * 100 / 896
+                                : MediaQuery.of(context).size.height * 150 / 896,
                             child: Center(
                               child: Text(
                                 (widget.status)!='Paid'&&(widget.status)!='Rejected'
@@ -305,14 +304,13 @@ class ExpenseCardState extends State<ExpenseCard> {
                               borderRadius: BorderRadius.all(Radius.circular(20)),
                               color: Colors.red,
                             ),
-                            margin: EdgeInsets.symmetric(horizontal: 0),
+                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 10 / 896),
                             height: (widget.comments)!=null&&((widget.status)=='Paid'||(widget.status)=='Rejected')
                                 ?MediaQuery.of(context).size.height * 50 / 896
                                 :0,
                             width: (widget.comments)!=null&&((widget.status)=='Paid'||(widget.status)=='Rejected')
-                                  ?192
+                                  ?MediaQuery.of(context).size.height * 175 / 896
                                   :0,
-                            padding: EdgeInsets.all(8),
                             child: Center(
                               child: Text(
                                 (widget.comments),
