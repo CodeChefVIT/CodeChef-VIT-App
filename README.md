@@ -25,12 +25,18 @@
 
 
 ## Screenshots
-<img src="./Screenshots/login.png" alt="Project Screenshots">
-<img src="./Screenshots/meeting.png" alt="Project Screenshots">
-<img src="./Screenshots/Addmeeting.png" alt="Project Screenshots">
-<img src="./Screenshots/profile.png" alt="Project Screenshots">
-<img src="./Screenshots/members.png" alt="Project Screenshots">
 
+<p align="center">
+<img src="./Screenshots/login.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/meeting.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/Addmeeting.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/profile.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/members.png" alt="Project Screenshots" height="609" width="282">
+</p>
 ## Instructions to run
 
 ```
