@@ -2,6 +2,7 @@ import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class EditProfile extends StatefulWidget {
@@ -15,12 +16,20 @@ class EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     details = Provider.of<Profile>(context, listen: false).details;
+    dropdownValue = details[0]['gender'];
+    if (details[0]['gender'] == 'FEM') {
+      genderCheck = true;
+    } else {
+      genderCheck = false;
+    }
     super.initState();
   }
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   Map<String, String> _data = {};
   List<dynamic> details;
+  String dropdownValue;
+  bool genderCheck;
   Future<void> _submit() async {
     try {
       await Provider.of<Profile>(context, listen: false).profileEdit(_data,
@@ -104,7 +113,7 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.user,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Name',
@@ -153,7 +162,7 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.graduationCap,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Registeration Number',
@@ -202,7 +211,7 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.phone,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Phone',
@@ -251,7 +260,7 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.home,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Room',
@@ -300,7 +309,7 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.building,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Block',
@@ -330,6 +339,7 @@ class EditProfileState extends State<EditProfile> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 20 / 896,
             ),
+            /*
             Container(
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 44, right: 44),
@@ -349,7 +359,9 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    details[0]['gender'] == 'FEM'
+                        ? FontAwesomeIcons.female
+                        : FontAwesomeIcons.male,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Gender',
@@ -376,6 +388,60 @@ class EditProfileState extends State<EditProfile> {
                 ),
               ),
             ),
+            */
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(27.5),
+                border: Border.all(
+                  color: Color(0xFF1D59A1),
+                  width: 2,
+                ),
+              ),
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 44, right: 44),
+              width: 326,
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Icon(
+                      genderCheck
+                          ? FontAwesomeIcons.female
+                          : FontAwesomeIcons.male,
+                      color: Color(0xFF1D59A1),
+                    ),
+                  ),
+                  DropdownButton<String>(
+                    value: dropdownValue,
+                    iconSize: 24,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                    underline: Container(
+                      height: 0,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        dropdownValue = newValue;
+                        _data['gender'] = newValue;
+                        if (newValue == 'FEM') {
+                          genderCheck = true;
+                        } else {
+                          genderCheck = false;
+                        }
+                      });
+                    },
+                    items: <String>['MAL', 'FEM']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 20 / 896,
             ),
@@ -398,7 +464,7 @@ class EditProfileState extends State<EditProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.envelope,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Email',
