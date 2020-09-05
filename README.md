@@ -25,24 +25,18 @@
 
 
 ## Screenshots
-<div class="row">
-  <div class="column">
-    <img src="./Screenshots/login.png" alt="Project Screenshots" height="812" width="375">
-  </div>
-  <div class="column">
-    <img src="./Screenshots/meeting.png" alt="Project Screenshots" height="812" width="375">
-  </div>
-  <div class="column">
-    <img src="./Screenshots/Addmeeting.png" alt="Project Screenshots" height="812" width="375">
-  </div>
-  <div class="column">
-    <img src="./Screenshots/profile.png" alt="Project Screenshots" height="812" width="375">
-  </div>
-  <div class="column">
-    <img src="./Screenshots/members.png" alt="Project Screenshots" height="812" width="375">
-  </div>
-</div>
 
+<p align="center">
+<img src="./Screenshots/login.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/meeting.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/Addmeeting.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/profile.png" alt="Project Screenshots" height="609" width="282">
+
+<img src="./Screenshots/members.png" alt="Project Screenshots" height="609" width="282">
+</p>
 ## Instructions to run
 
 ```
