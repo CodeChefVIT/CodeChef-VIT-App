@@ -25,11 +25,24 @@
 
 
 ## Screenshots
-<img src="./Screenshots/login.png" alt="Project Screenshots">
-<img src="./Screenshots/meeting.png" alt="Project Screenshots">
-<img src="./Screenshots/Addmeeting.png" alt="Project Screenshots">
-<img src="./Screenshots/profile.png" alt="Project Screenshots">
-<img src="./Screenshots/members.png" alt="Project Screenshots">
+<div class="row">
+  <div class="column">
+    <img src="./Screenshots/login.png" alt="Project Screenshots" height="812" width="375">
+  </div>
+  <div class="column">
+    <img src="./Screenshots/meeting.png" alt="Project Screenshots" height="812" width="375">
+  </div>
+  <div class="column">
+    <img src="./Screenshots/Addmeeting.png" alt="Project Screenshots" height="812" width="375">
+  </div>
+  <div class="column">
+    <img src="./Screenshots/profile.png" alt="Project Screenshots" height="812" width="375">
+  </div>
+  <div class="column">
+    <img src="./Screenshots/members.png" alt="Project Screenshots" height="812" width="375">
+  </div>
+</div>
+
 
 ## Instructions to run
 
