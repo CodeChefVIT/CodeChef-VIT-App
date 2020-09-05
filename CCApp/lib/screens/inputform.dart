@@ -17,8 +17,10 @@ class InputFormState extends State<InputForm> {
   TimeOfDay time;
   String timeString;
   bool datePicked = false;
+  String dateDisplay;
   DateTime date;
   String dateString;
+  String timeDisplay;
   void initState() {
     date = DateTime.now();
     time = TimeOfDay.now();
@@ -32,8 +34,56 @@ class InputFormState extends State<InputForm> {
       setState(() {
         time = t;
         timeString = '${time.hour}:${time.minute}:00';
+        if (time.hour > 12) {
+          timeDisplay =
+              '${time.hour - 12}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+        } else {
+          timeDisplay =
+              '${time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} AM';
+        }
         timePicked = true;
       });
+  }
+
+  String getMonth(int month) {
+    if (month == 01) {
+      return "Jan";
+    }
+    if (month == 02) {
+      return "Feb";
+    }
+    if (month == 03) {
+      return "Mar";
+    }
+    if (month == 04) {
+      return "Apr";
+    }
+    if (month == 05) {
+      return "May";
+    }
+    if (month == 06) {
+      return "Jun";
+    }
+    if (month == 07) {
+      return "Jul";
+    }
+    if (month == 08) {
+      return "Aug";
+    }
+    if (month == 09) {
+      return "Sep";
+    }
+    if (month == 10) {
+      return "Oct";
+    }
+    if (month == 11) {
+      return "Nov";
+    }
+    if (month == 12) {
+      return "Dec";
+    } else {
+      return "";
+    }
   }
 
   Future _pickDate(BuildContext context) async {
@@ -47,6 +97,8 @@ class InputFormState extends State<InputForm> {
       setState(() {
         date = dateChosen;
         dateString = '${date.year}-${date.month}-${date.day}';
+        dateDisplay =
+            '${date.day} ' + '${getMonth(date.month)}' + ' ${date.year}';
         datePicked = true;
       });
   }
@@ -153,90 +205,92 @@ class InputFormState extends State<InputForm> {
               SizedBox(
                 height: 5,
               ),
-              FlatButton(
-                onPressed: () async {
-                  await _pickTime(context);
-                  _data['time'] = timeString;
-                },
-                child: Container(
-                    height: MediaQuery.of(context).size.height * 50 / 896,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Color(0xff000000)),
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      color: Color(0xffffffff),
-                    ),
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: 260 / 4,
-                          alignment: Alignment.center,
-                          child: Icon(
-                            FontAwesomeIcons.clock,
+              Container(
+                height: MediaQuery.of(context).size.height * 50 / 896,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: Color(0xff000000)),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Color(0xffffffff),
+                ),
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: FlatButton(
+                  onPressed: () async {
+                    await _pickTime(context);
+                    _data['time'] = timeString;
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          FontAwesomeIcons.clock,
+                          color: Colors.black,
+                          size: 28,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          timePicked ? timeDisplay : "Pick a time",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
                             color: Colors.black,
-                            size: 28,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            timePicked ? timeString : "Pick a time",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontFamily: 'SF Pro Display',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 height: 5,
               ),
-              FlatButton(
-                onPressed: () async {
-                  await _pickDate(context);
-                  _data['date'] = dateString;
-                },
-                child: Container(
-                    height: MediaQuery.of(context).size.height * 50 / 896,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Color(0xff000000)),
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      color: Color(0xffffffff),
-                    ),
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.height * 280 / 896,
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: 260 / 4,
-                          alignment: Alignment.center,
-                          child: Icon(
-                            FontAwesomeIcons.calendarAlt,
+              Container(
+                height: MediaQuery.of(context).size.height * 50 / 896,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: Color(0xff000000)),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Color(0xffffffff),
+                ),
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: FlatButton(
+                  onPressed: () async {
+                    await _pickDate(context);
+                    _data['date'] = dateString;
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          FontAwesomeIcons.calendarAlt,
+                          color: Colors.black,
+                          size: 28,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          datePicked ? dateDisplay : "Pick a date",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
                             color: Colors.black,
-                            size: 28,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            datePicked ? dateString : "Pick a date",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontFamily: 'SF Pro Display',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 height: 5,

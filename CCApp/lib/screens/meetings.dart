@@ -165,6 +165,7 @@ class MeetingsState extends State<Meetings> {
                                         Provider.of<MeetingData>(context,
                                                 listen: false)
                                             .meetingDetailsResp['longitude'];
+                                    print(meetingDetails);
                                     showDialog(
                                         context: context,
                                         builder: (context) {

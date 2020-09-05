@@ -26,7 +26,8 @@ class ProfilePageState extends State<ProfilePage> {
       throw 'Could not launch $url';
     }
   }
-  List<String> project20=[
+
+  List<String> project20 = [
     'codechef20.png',
     'cookoff.png',
     'codechefapp.png',
@@ -37,7 +38,7 @@ class ProfilePageState extends State<ProfilePage> {
     'ffds.png',
     'leoclub.png',
   ];
-  List<String> projname20=[
+  List<String> projname20 = [
     'CodeChef-VIT\'20',
     'Cook Off 6.0',
     'CodeChef-VIT App',
@@ -48,7 +49,7 @@ class ProfilePageState extends State<ProfilePage> {
     'FFDS',
     'LeoClub Website',
   ];
-  List<String> projdes20=[
+  List<String> projdes20 = [
     'Official website for CodeChef-VIT for 2020-21.',
     'Official website for our flagship graVITas event for the year 2020.',
     'All in one official app for CodeChef-VIT.',
@@ -59,7 +60,7 @@ class ProfilePageState extends State<ProfilePage> {
     'Find out users who share a free slot with you and connect with them in VIT.',
     'Official website for the Leo Club VIT.',
   ];
-  List<String> project19=[
+  List<String> project19 = [
     'engage.png',
     'recruitment.png',
     'sms_app.png',
@@ -70,7 +71,7 @@ class ProfilePageState extends State<ProfilePage> {
     'seds1.png',
     'goal.jpg',
   ];
-  List<String> projname19=[
+  List<String> projname19 = [
     'Engagement Monitor',
     'Recruitments Portal',
     'SMS App',
@@ -81,7 +82,7 @@ class ProfilePageState extends State<ProfilePage> {
     'SEDS-India',
     'GOAL',
   ];
-  List<String> projdes19=[
+  List<String> projdes19 = [
     'A web application to help you analyse active or disinterested members of a WhatsApp group. ',
     'Web portal for Recruitments\'19. ',
     'App to send bulk messages to multiple contacts at same time. ',
@@ -92,25 +93,25 @@ class ProfilePageState extends State<ProfilePage> {
     'SEDS India\'s official website for 2020. ',
     'Official Web Portal for Going Online As Leaders in association with the Tribal Ministry of India, Facebook & JoshTalks. '
   ];
-  List<String> project18=[
+  List<String> project18 = [
     'devsoc_19.jpg',
     'codechef.png',
     'codecombat.png',
     'githubapi.jpeg',
   ];
-  List<String> projname18=[
+  List<String> projname18 = [
     'DEVSOC\'19 Website',
     'CodeChef-VIT Website',
     'Code Combat',
     'Github Organisation API',
   ];
-  List<String> projdes18=[
+  List<String> projdes18 = [
     'The official website for DEVSOC 2019 by CodeChef-VIT. ',
     'CodeChef-VIT\'s official website for 2019-20. ',
     'Registration portal for Code Combat by CodeChef-VIT. ',
     'GitHub organisation specific data for all members. ',
   ];
-  List<String> image=[
+  List<String> image = [
     'kunal.jpg',
     'rajat.jpg',
     'akshat.jpg',
@@ -127,7 +128,7 @@ class ProfilePageState extends State<ProfilePage> {
     'anuj.jpg',
     'navyaa.jpg',
   ];
-  List<String> name=[
+  List<String> name = [
     'Kunal Chaudhary',
     'Rajat Sablok',
     'Akshat Gupta',
@@ -144,7 +145,7 @@ class ProfilePageState extends State<ProfilePage> {
     'Anuj Kapoor',
     'Navya Sharma',
   ];
-  List<String> pos=[
+  List<String> pos = [
     'President',
     'Vice President',
     'Technical Chair ',
@@ -178,10 +179,10 @@ class ProfilePageState extends State<ProfilePage> {
     '+91 6394577290',
     '+91 9315673060',
   ];
-  List<String> eventimage20=[
+  List<String> eventimage20 = [
     'devsoc20.jpg',
   ];
-  List<String> eventimage19=[
+  List<String> eventimage19 = [
     'devsoc19.jpg',
     'webapps.jpeg',
     'cook.jpeg',
@@ -190,7 +191,7 @@ class ProfilePageState extends State<ProfilePage> {
     'server.jpeg',
     'blitz.jpeg',
   ];
-  List<String> eventimage18=[
+  List<String> eventimage18 = [
     'blockchain.jpg',
     'data_analytics.jpg',
     'error404.jpg',
@@ -198,7 +199,7 @@ class ProfilePageState extends State<ProfilePage> {
     'who-breaks-first.jpeg',
     'seriesbuff.jpeg',
   ];
-  List<String> eventimage17=[
+  List<String> eventimage17 = [
     'insight17.jpeg',
     'bigdata.jpeg',
     'cookoff3.jpeg'
@@ -236,887 +237,959 @@ class ProfilePageState extends State<ProfilePage> {
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : prof.toString() == '[]'
-          ? SetupProfile()
-          : SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.fromLTRB(
-                      MediaQuery.of(context).size.width * 30 / 414,
-                      MediaQuery.of(context).size.height * 70 / 896,
-                      0,
-                      0),
-                  child: Text(
-                    'Profile',
-                    style: TextStyle(
-                        fontSize: 34, fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    width: 12,
-                    height: 1,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height *
-                          75 /
-                          896),
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (ctx) => EditProfile(),
+              ? SetupProfile()
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(
+                                MediaQuery.of(context).size.width * 30 / 414,
+                                MediaQuery.of(context).size.height * 70 / 896,
+                                0,
+                                0),
+                            child: Text(
+                              'Profile',
+                              style: TextStyle(
+                                  fontSize: 34, fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              width: 12,
+                              height: 1,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                                top: MediaQuery.of(context).size.height *
+                                    75 /
+                                    896),
+                            child: FlatButton(
+                              onPressed: () {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (ctx) => EditProfile(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Edit',
+                                style:
+                                    TextStyle(color: Colors.blue, fontSize: 16),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 30 / 896,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
+                            ),
+                          ],
                         ),
-                      );
-                    },
-                    child: Text(
-                      'Edit',
-                      style:
-                      TextStyle(color: Colors.blue, fontSize: 16),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 30 / 896,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 30 / 414,
-                ),
-                FaIcon(
-                  FontAwesomeIcons.userCircle,
-                  size: 28,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(
-                      MediaQuery.of(context).size.width * 10 / 414,
-                      0,
-                      0,
-                      0),
-                  child: Text(
-                    prof[0]['name'],
-                    style: TextStyle(
-                        fontSize: 28, fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 25 / 896,
-            ),
-            Row(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width *
-                          30 /
-                          414,
-                    ),
-                    FaIcon(
-                      FontAwesomeIcons.phone,
-                      size: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width *
-                              10 /
-                              414,
-                          0,
-                          0,
-                          0),
-                      child: Text(
-                        prof[0]['phone'],
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: Container(
-                    width: 12,
-                    height: 1,
-                  ),
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width *
-                          30 /
-                          414,
-                    ),
-                    FaIcon(
-                      prof[0]['gender'] == 'FEM'
-                          ? FontAwesomeIcons.venus
-                          : FontAwesomeIcons.mars,
-                      size: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(
-                        MediaQuery.of(context).size.width * 10 / 414,
-                        0,
-                        MediaQuery.of(context).size.width * 30 / 414,
-                        0,
-                      ),
-                      child: Text(
-                        prof[0]['gender'] == 'FEM'
-                            ? 'Female'
-                            : 'Male',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 10 / 896,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 30 / 414,
-                ),
-                FaIcon(
-                  FontAwesomeIcons.envelope,
-                  size: 20,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(
-                      MediaQuery.of(context).size.width * 10 / 414,
-                      0,
-                      0,
-                      0),
-                  child: Text(
-                    prof[0]['email'],
-                    style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 10 / 896,
-            ),
-            Row(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width *
-                          30 /
-                          414,
-                    ),
-                    FaIcon(
-                      FontAwesomeIcons.graduationCap,
-                      size: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width *
-                              10 /
-                              414,
-                          0,
-                          0,
-                          0),
-                      child: Text(
-                        prof[0]['regno'],
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: Container(
-                    width: 12,
-                    height: 1,
-                  ),
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width *
-                          30 /
-                          414,
-                    ),
-                    FaIcon(
-                      FontAwesomeIcons.building,
-                      size: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width *
-                              10 /
-                              414,
-                          0,
-                          0,
-                          0),
-                      child: Text(
-                        prof[0]['block'] + ' : ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width *
-                              30 /
-                              414),
-                      child: Text(
-                        prof[0]['room'],
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 50 / 896,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 44, right: 44),
-              height: MediaQuery.of(context).size.height * 56 / 896,
-              width: 326,
-              child: FlatButton(
-                onPressed: () async {
-                  await Provider.of<Reg>(context, listen: false)
-                      .logout();
-                  RestartWidget.restartApp(context);
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(33),
-                ),
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      Color(0xFF3BE0EB),
-                      Color(0xFF1D59A1)
-                    ]),
-                    borderRadius: BorderRadius.circular(33),
-                  ),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Log Out",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 28,
-                        color: Colors.white,
-                        fontFamily: 'SF Pro Display',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 42),
-            Container(
-              width: double.infinity,
-              height: 54,
-              alignment: Alignment.topCenter,
-              child: Image.asset('assets/images/fulllogo.png'),
-            ),
-            SizedBox(height: 14),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'About Us',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 34,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            Container(
-              padding: EdgeInsets.only(left: 24, right: 24),
-              alignment: Alignment.centerLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.black, fontSize: 16.0),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Codechef-VIT is one of the prestigious technical chapters of VIT Vellore. '
-                            'Our aim is to educate and enable the youth who will lead in various innovative endeavours. '
-                            'We hope that together, each one of us may contribute to the chapter\'s countless accolades and leave a lasting mark. '
-                            '\nCheck out our '
-                    ),
-                    TextSpan(
-                        text: 'website.',
-                        style: TextStyle(color: Colors.blue),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            const url = 'https://codechefvit.com';
-                            launchURL(url);
-                          }),
-                    TextSpan(
-                        text: '\nFollow us on '
-                    ),
-                    TextSpan(
-                        text: 'instagram ',
-                        style: TextStyle(color: Colors.blue),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            const url = 'https://www.instagram.com/codechefvit';
-                            launchURL(url);
-                          }),
-                    TextSpan(
-                        text: 'to stay updated on our activities.'
-                    ),
-                  ],
-                ),
-            ),
-            ),
-            SizedBox(height: 30),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Meet our Board',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 34,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: info.length,
-                  itemBuilder: (context, index){
-                    return  Center(
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 380 / 896,
-                        width:MediaQuery.of(context).size.height * 405 / 896,
-                        child: Card(
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(height: 30),
-                              Container(
-                                width: 140,
-                                height: 140,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Board/${image[index]}'),
-                                    fit: BoxFit.cover,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 5,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 5,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width *
+                                      30 /
+                                      414,
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.userCircle,
+                                  size: 28,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width *
+                                          10 /
+                                          414,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    prof[0]['name'],
+                                    style: TextStyle(
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
-                              ),
-                              SizedBox(height: 12),
-                              Center(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      name[index],
-                                      style: TextStyle(
-                                        color: Colors.grey[800],
-                                        letterSpacing: 1.0,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 24,
-                                        fontFamily: 'SFProDisplay',
-                                      ),
+                              ],
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 25 / 896,
+                            ),
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          30 /
+                                          414,
                                     ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      pos[index],
-                                      style: TextStyle(
-                                        color: Colors.grey[600],
-                                        letterSpacing: 1.0,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18,
-                                        fontFamily: 'SFProDisplay',
-                                      ),
+                                    FaIcon(
+                                      FontAwesomeIcons.phone,
+                                      size: 20,
                                     ),
-                                    SizedBox(height: 10,),
-                                    Text(
-                                      info[index],
-                                      style: TextStyle(
-                                          color: Colors.grey[600],
-                                          fontSize: 16,
-                                          letterSpacing: 1),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(
+                                          MediaQuery.of(context).size.width *
+                                              10 /
+                                              414,
+                                          0,
+                                          0,
+                                          0),
+                                      child: Text(
+                                        prof[0]['phone'],
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400),
+                                      ),
                                     ),
                                   ],
                                 ),
+                                Expanded(
+                                  child: Container(
+                                    width: 12,
+                                    height: 1,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          30 /
+                                          414,
+                                    ),
+                                    FaIcon(
+                                      prof[0]['gender'] == 'FEM'
+                                          ? FontAwesomeIcons.venus
+                                          : FontAwesomeIcons.mars,
+                                      size: 20,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(
+                                        MediaQuery.of(context).size.width *
+                                            10 /
+                                            414,
+                                        0,
+                                        MediaQuery.of(context).size.width *
+                                            30 /
+                                            414,
+                                        0,
+                                      ),
+                                      child: Text(
+                                        prof[0]['gender'] == 'FEM'
+                                            ? 'Female'
+                                            : 'Male',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 10 / 896,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width *
+                                      30 /
+                                      414,
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.envelope,
+                                  size: 20,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                      MediaQuery.of(context).size.width *
+                                          10 /
+                                          414,
+                                      0,
+                                      0,
+                                      0),
+                                  child: Text(
+                                    prof[0]['email'],
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 10 / 896,
+                            ),
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          30 /
+                                          414,
+                                    ),
+                                    FaIcon(
+                                      FontAwesomeIcons.graduationCap,
+                                      size: 20,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(
+                                          MediaQuery.of(context).size.width *
+                                              10 /
+                                              414,
+                                          0,
+                                          0,
+                                          0),
+                                      child: Text(
+                                        prof[0]['regno'],
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    width: 12,
+                                    height: 1,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          30 /
+                                          414,
+                                    ),
+                                    FaIcon(
+                                      FontAwesomeIcons.building,
+                                      size: 20,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(
+                                          MediaQuery.of(context).size.width *
+                                              10 /
+                                              414,
+                                          0,
+                                          0,
+                                          0),
+                                      child: Text(
+                                        prof[0]['block'] + ' : ',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                          right: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              30 /
+                                              414),
+                                      child: Text(
+                                        prof[0]['room'],
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 50 / 896,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 44, right: 44),
+                        height: MediaQuery.of(context).size.height * 56 / 896,
+                        width: 326,
+                        child: FlatButton(
+                          onPressed: () async {
+                            await Provider.of<Reg>(context, listen: false)
+                                .logout();
+                            RestartWidget.restartApp(context);
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(33),
+                          ),
+                          padding: EdgeInsets.all(0.0),
+                          child: Ink(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Color(0xFF3BE0EB),
+                                Color(0xFF1D59A1)
+                              ]),
+                              borderRadius: BorderRadius.circular(33),
+                            ),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Log Out",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  color: Colors.white,
+                                  fontFamily: 'SF Pro Display',
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 42),
+                      Container(
+                        width: double.infinity,
+                        height: 54,
+                        alignment: Alignment.topCenter,
+                        child: Image.asset('assets/images/fulllogo.png'),
+                      ),
+                      SizedBox(height: 14),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'About Us',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 34,
+                            fontFamily: 'SFProDisplay',
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        padding: EdgeInsets.only(left: 24, right: 24),
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16.0),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text:
+                                      'Codechef-VIT is one of the prestigious technical chapters of VIT Vellore. '
+                                      'Our aim is to educate and enable the youth who will lead in various innovative endeavours. '
+                                      'We hope that together, each one of us may contribute to the chapter\'s countless accolades and leave a lasting mark. '
+                                      '\nCheck out our '),
+                              TextSpan(
+                                  text: 'website.',
+                                  style: TextStyle(color: Colors.blue),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      const url = 'https://codechefvit.com';
+                                      launchURL(url);
+                                    }),
+                              TextSpan(text: '\nFollow us on '),
+                              TextSpan(
+                                  text: 'instagram ',
+                                  style: TextStyle(color: Colors.blue),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      const url =
+                                          'https://www.instagram.com/codechefvit';
+                                      launchURL(url);
+                                    }),
+                              TextSpan(
+                                  text: 'to stay updated on our activities.'),
                             ],
                           ),
                         ),
                       ),
-                    );
-                  }
-                ),
-            ),
-            SizedBox(height: 15),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Our Projects',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 34,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2020',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: project20.length,
-                  itemBuilder: (context, index){
-                    return IntrinsicWidth(
-                      child: FlipCard(
-                        direction: FlipDirection.HORIZONTAL,
-                        front: Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/Projects/${project20[index]}',
-                              fit: BoxFit.cover,
-                            ),
+                      SizedBox(height: 30),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Meet our Board',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 34,
+                            fontFamily: 'SFProDisplay',
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
                         ),
-                        back: Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.black,
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  child: Text(
-                                    projname20[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 28,
-                                      color: Colors.white,
-                                      fontFamily: 'SFProDisplay',
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: info.length,
+                            itemBuilder: (context, index) {
+                              return Center(
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      380 /
+                                      896,
+                                  width: MediaQuery.of(context).size.height *
+                                      405 /
+                                      896,
+                                  child: Card(
+                                    child: Column(
+                                      children: <Widget>[
+                                        SizedBox(height: 30),
+                                        Container(
+                                          width: 140,
+                                          height: 140,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/Board/${image[index]}'),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 12),
+                                        Center(
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                name[index],
+                                                style: TextStyle(
+                                                  color: Colors.grey[800],
+                                                  letterSpacing: 1.0,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 24,
+                                                  fontFamily: 'SFProDisplay',
+                                                ),
+                                              ),
+                                              SizedBox(height: 10),
+                                              Text(
+                                                pos[index],
+                                                style: TextStyle(
+                                                  color: Colors.grey[600],
+                                                  letterSpacing: 1.0,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 18,
+                                                  fontFamily: 'SFProDisplay',
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                info[index],
+                                                style: TextStyle(
+                                                    color: Colors.grey[600],
+                                                    fontSize: 16,
+                                                    letterSpacing: 1),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: 310,
-                                  padding: EdgeInsets.only(left: 15),
-                                  child: Text(
-                                    projdes20[index],
-                                    style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontFamily: 'SFProDisplay',
-                                  ),
-                                ),
-                                ),
-                              ],
-                            ),
+                              );
+                            }),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Our Projects',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 34,
+                            fontFamily: 'SFProDisplay',
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
                         ),
                       ),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2019',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: project19.length,
-                  itemBuilder: (context, index){
-                    return IntrinsicWidth(
-                      child: FlipCard(
-                        direction: FlipDirection.HORIZONTAL,
-                        front: Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/Projects/${project19[index]}',
-                              fit: BoxFit.cover,
-                            ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2020',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
                         ),
-                        back: Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.black,
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  child: Text(
-                                    projname19[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 28,
-                                      color: Colors.white,
-                                      fontFamily: 'SFProDisplay',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: project20.length,
+                            itemBuilder: (context, index) {
+                              return IntrinsicWidth(
+                                child: FlipCard(
+                                  direction: FlipDirection.HORIZONTAL,
+                                  front: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Container(
+                                      child: Image.asset(
+                                        'assets/images/Projects/${project20[index]}',
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  width: 310,
-                                  padding: EdgeInsets.only(left: 15),
-                                  child: Text(
-                                    projdes19[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontFamily: 'SFProDisplay',
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
+                                  ),
+                                  back: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: Colors.black,
+                                    child: Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              projname20[index],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 28,
+                                                color: Colors.white,
+                                                fontFamily: 'SFProDisplay',
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 310,
+                                            padding: EdgeInsets.only(left: 15),
+                                            child: Text(
+                                              projdes20[index],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 24,
+                                                color: Colors.white,
+                                                fontFamily: 'SFProDisplay',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
                                   ),
                                 ),
-                              ],
-                            ),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2019',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
                         ),
                       ),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2018',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: project18.length,
-                  itemBuilder: (context, index){
-                    return IntrinsicWidth(
-                      child: FlipCard(
-                        direction: FlipDirection.HORIZONTAL,
-                        front: Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/Projects/${project18[index]}',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
-                        ),
-                        back: Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Colors.black,
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  child: Text(
-                                    projname18[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 28,
-                                      color: Colors.white,
-                                      fontFamily: 'SFProDisplay',
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: project19.length,
+                            itemBuilder: (context, index) {
+                              return IntrinsicWidth(
+                                child: FlipCard(
+                                  direction: FlipDirection.HORIZONTAL,
+                                  front: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Container(
+                                      child: Image.asset(
+                                        'assets/images/Projects/${project19[index]}',
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
+                                  ),
+                                  back: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: Colors.black,
+                                    child: Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              projname19[index],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 28,
+                                                color: Colors.white,
+                                                fontFamily: 'SFProDisplay',
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 310,
+                                            padding: EdgeInsets.only(left: 15),
+                                            child: Text(
+                                              projdes19[index],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 24,
+                                                color: Colors.white,
+                                                fontFamily: 'SFProDisplay',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
                                   ),
                                 ),
-                                Container(
-                                  width: 310,
-                                  padding: EdgeInsets.only(left: 15),
-                                  child: Text(
-                                    projdes18[index],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontFamily: 'SFProDisplay',
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2018',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
                         ),
                       ),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height:10),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Events',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 34,
-                  fontFamily: 'SFProDisplay',
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: project18.length,
+                            itemBuilder: (context, index) {
+                              return IntrinsicWidth(
+                                child: FlipCard(
+                                  direction: FlipDirection.HORIZONTAL,
+                                  front: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Container(
+                                      child: Image.asset(
+                                        'assets/images/Projects/${project18[index]}',
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
+                                  ),
+                                  back: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: Colors.black,
+                                    child: Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              projname18[index],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 28,
+                                                color: Colors.white,
+                                                fontFamily: 'SFProDisplay',
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 310,
+                                            padding: EdgeInsets.only(left: 15),
+                                            child: Text(
+                                              projdes18[index],
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 24,
+                                                color: Colors.white,
+                                                fontFamily: 'SFProDisplay',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Events',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 34,
+                            fontFamily: 'SFProDisplay',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2020',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: eventimage20.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: Image.asset(
+                                  'assets/images/Events/${eventimage20[index]}',
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                elevation: 5,
+                                margin: EdgeInsets.all(5),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2019',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: eventimage19.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: Image.asset(
+                                  'assets/images/Events/${eventimage19[index]}',
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                elevation: 5,
+                                margin: EdgeInsets.all(5),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2018',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: eventimage18.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: Image.asset(
+                                  'assets/images/Events/${eventimage18[index]}',
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                elevation: 5,
+                                margin: EdgeInsets.all(5),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '2017',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 30,
+                            fontFamily: 'SFProDisplay',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 350,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: eventimage17.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: Image.asset(
+                                  'assets/images/Events/${eventimage17[index]}',
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                elevation: 5,
+                                margin: EdgeInsets.all(5),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2020',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: eventimage20.length,
-                  itemBuilder: (context, index){
-                    return  Card(
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Image.asset(
-                        'assets/images/Events/${eventimage20[index]}',
-                        fit: BoxFit.fill,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2019',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: eventimage19.length,
-                  itemBuilder: (context, index){
-                    return  Card(
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Image.asset(
-                        'assets/images/Events/${eventimage19[index]}',
-                        fit: BoxFit.fill,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2018',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: eventimage18.length,
-                  itemBuilder: (context, index){
-                    return Card(
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Image.asset(
-                        'assets/images/Events/${eventimage18[index]}',
-                        fit: BoxFit.fill,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '2017',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 30,
-                  fontFamily: 'SFProDisplay',
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-              height: 350,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: eventimage17.length,
-                  itemBuilder: (context, index){
-                    return  Card(
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Image.asset(
-                        'assets/images/Events/${eventimage17[index]}',
-                        fit: BoxFit.fill,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      elevation: 5,
-                      margin: EdgeInsets.all(5),
-                    );
-                  }
-              ),
-            ),
-            SizedBox(height: 10,),
-          ],
-        ),
-      ),
     );
   }
 }

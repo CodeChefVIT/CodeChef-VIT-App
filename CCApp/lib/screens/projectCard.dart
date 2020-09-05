@@ -134,13 +134,14 @@ class ProjectCardState extends State<ProjectCard> {
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
                     Flexible(
                       flex: 3,
+                      fit: FlexFit.loose,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           color: widget.sgcolor,
                         ),
-                        margin: EdgeInsets.symmetric(horizontal: 44),
-                        height: MediaQuery.of(context).size.height * 54 / 896,
+                        margin: EdgeInsets.symmetric(horizontal: 24),
+                        height: MediaQuery.of(context).size.height * 94 / 896,
                         width: 294,
                         padding: EdgeInsets.all(10),
                         child: SingleChildScrollView(

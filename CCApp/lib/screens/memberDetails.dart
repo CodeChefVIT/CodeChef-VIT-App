@@ -12,6 +12,24 @@ class MemberDetails extends StatelessWidget {
       @required this.category,
       @required this.color});
 
+  String getCategory(String value) {
+    if (value == '1') {
+      return 'Fresher';
+    }
+    if (value == '2') {
+      return 'Senior';
+    }
+    if (value == '3') {
+      return 'Board';
+    }
+    if (value == '4') {
+      return 'Ex Member';
+    }
+    if (value == '5') {
+      return 'President';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,55 +40,47 @@ class MemberDetails extends StatelessWidget {
         color: color,
       ),
       width: 350,
-      height: MediaQuery.of(context).size.height * 70 / 896,
-      child: Row(
+      height: MediaQuery.of(context).size.height * 80 / 896,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.fromLTRB(34,
-                    MediaQuery.of(context).size.height * 11 / 896 - 3, 0, 0),
-                child: Text(
-                  name,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 23 / 896,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.fromLTRB(34, 0, 0, 0),
-                child: Text(
-                  regno,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SF Pro Display',
-                    fontSize: MediaQuery.of(context).size.height * 18 / 896,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-              child: Container(
-            width: 10,
-          )),
           Container(
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.fromLTRB(0, 0, 34, 0),
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.fromLTRB(
+                34, MediaQuery.of(context).size.height * 11 / 896 - 3, 0, 0),
             child: Text(
-              category.toString(),
+              name,
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'SF Pro Display',
-                fontSize: MediaQuery.of(context).size.height * 30 / 896,
-                fontWeight: FontWeight.w600,
+                fontSize: MediaQuery.of(context).size.height * 23 / 896,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.fromLTRB(34, 0, 0, 0),
+            child: Text(
+              regno,
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'SF Pro Display',
+                fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.fromLTRB(34, 0, 0, 0),
+            child: Text(
+              getCategory(category.toString()),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'SF Pro Display',
+                fontSize: MediaQuery.of(context).size.height * 18 / 896,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),

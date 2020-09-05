@@ -252,11 +252,9 @@ class LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                       child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width:
-                                MediaQuery.of(context).size.height * 96 / 896,
-                          ),
                           Text(
                             "Don't have an account?",
                             style: TextStyle(
@@ -284,11 +282,9 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          horizontal:
-                              MediaQuery.of(context).size.width * 200 / 896),
                       child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "Not a member?",
