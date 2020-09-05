@@ -339,56 +339,6 @@ class EditProfileState extends State<EditProfile> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 20 / 896,
             ),
-            /*
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: 44, right: 44),
-              width: 326,
-              child: TextFormField(
-                initialValue: details[0]['gender'],
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  _data['gender'] = value;
-                },
-                decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10),
-                  prefixIcon: Icon(
-                    details[0]['gender'] == 'FEM'
-                        ? FontAwesomeIcons.female
-                        : FontAwesomeIcons.male,
-                    color: Color(0xFF1D59A1),
-                  ),
-                  hintText: 'Gender',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Color(0xFF1D59A1),
-                      width: 2,
-                    ),
-                  ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            */
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(27.5),
