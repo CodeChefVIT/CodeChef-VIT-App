@@ -1,8 +1,8 @@
 import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-
 import 'homePage.dart';
 
 class SetupProfile extends StatefulWidget {
@@ -22,6 +22,8 @@ class SetupProfileState extends State<SetupProfile> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   Map<String, String> _data = {};
   Map details;
+  bool genderCheck;
+  String dropdownValue = 'MAL';
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
       return;
@@ -100,7 +102,7 @@ class SetupProfileState extends State<SetupProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.user,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Name',
@@ -149,7 +151,7 @@ class SetupProfileState extends State<SetupProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.graduationCap,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Registeration Number',
@@ -197,7 +199,7 @@ class SetupProfileState extends State<SetupProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.phone,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Phone',
@@ -245,7 +247,7 @@ class SetupProfileState extends State<SetupProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.home,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Room',
@@ -293,7 +295,7 @@ class SetupProfileState extends State<SetupProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.building,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Block',
@@ -324,48 +326,56 @@ class SetupProfileState extends State<SetupProfile> {
               height: MediaQuery.of(context).size.height * 20 / 896,
             ),
             Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(27.5),
+                border: Border.all(
+                  color: Color(0xFF1D59A1),
+                  width: 2,
+                ),
+              ),
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 44, right: 44),
               width: 326,
-              child: TextFormField(
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onSaved: (value) {
-                  _data['gender'] = value;
-                },
-                decoration: new InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 10),
-                  prefixIcon: Icon(
-                    Icons.assignment_ind,
-                    color: Color(0xFF1D59A1),
-                  ),
-                  hintText: 'Gender',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Icon(
+                      genderCheck
+                          ? FontAwesomeIcons.female
+                          : FontAwesomeIcons.male,
                       color: Color(0xFF1D59A1),
-                      width: 2,
                     ),
                   ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
+                  DropdownButton<String>(
+                    value: dropdownValue,
+                    iconSize: 24,
+                    style: TextStyle(
+                      color: Colors.black,
                     ),
+                    underline: Container(
+                      height: 0,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        dropdownValue = newValue;
+                        _data['gender'] = newValue;
+                        if (newValue == 'FEM') {
+                          genderCheck = true;
+                        } else {
+                          genderCheck = false;
+                        }
+                      });
+                    },
+                    items: <String>['MAL', 'FEM']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
                   ),
-                ),
+                ],
               ),
             ),
             SizedBox(
@@ -390,7 +400,7 @@ class SetupProfileState extends State<SetupProfile> {
                 decoration: new InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10),
                   prefixIcon: Icon(
-                    Icons.assignment_ind,
+                    FontAwesomeIcons.envelope,
                     color: Color(0xFF1D59A1),
                   ),
                   hintText: 'Email',

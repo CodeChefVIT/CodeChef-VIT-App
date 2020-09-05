@@ -29,11 +29,18 @@ class EditProfileState extends State<EditProfile> {
   Map<String, String> _data = {};
   List<dynamic> details;
   String dropdownValue;
+  bool _isLoading = false;
   bool genderCheck;
   Future<void> _submit() async {
     try {
+      setState(() {
+        _isLoading = true;
+      });
       await Provider.of<Profile>(context, listen: false).profileEdit(_data,
           Provider.of<Reg>(context, listen: false).token, details[0]['uuid']);
+      setState(() {
+        _isLoading = false;
+      });
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (ctx) => HomePage(
