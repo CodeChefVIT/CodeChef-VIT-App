@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:CCApp/providers/expenses.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EditExpenses extends StatefulWidget {
   final String name;
@@ -110,7 +111,7 @@ class EditExpensesState extends State<EditExpenses> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.width * 70/100,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   initialValue: widget.remarks,
@@ -156,7 +157,7 @@ class EditExpensesState extends State<EditExpenses> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.width * 70/100,
                 child: TextFormField(
                   initialValue: (widget.amount).toString(),
                   textInputAction: TextInputAction.done,
@@ -229,7 +230,7 @@ class EditExpensesState extends State<EditExpenses> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.width * 70/100,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   initialValue: widget.comments,
@@ -275,7 +276,7 @@ class EditExpensesState extends State<EditExpenses> {
               Container(
                 margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
                 height: 50,
-                width: 300,
+                width: MediaQuery.of(context).size.width * 70/100,
                 child: FlatButton(
                   onPressed: () async {
                     await _submit();
@@ -296,23 +297,18 @@ class EditExpensesState extends State<EditExpenses> {
                     ),
                     child: Container(
                         alignment: Alignment.center,
-                        child: Row(
+                        child: Stack(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
-                                  18 /
-                                  896),
-                              child: Icon(
-                                Icons.add,
+                              width: 300 / 4,
+                              alignment: Alignment.center,
+                              child: FaIcon(
+                                FontAwesomeIcons.pencilAlt,
                                 color: Colors.white,
-                                size: 28,
-                              ),
+                              )
                             ),
                             Container(
-                              margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.height *
-                                      25 /
-                                      896),
+                              padding: EdgeInsets.only(left: 10),
                               alignment: Alignment.center,
                               child: Text(
                                 "Edit Expense",

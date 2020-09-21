@@ -56,8 +56,10 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
       ),
-      width: 400,
-      height: 400,
+      width: MediaQuery.of(context).size.width * 90/100,
+      height: (filep!=''&&filep!=null)
+          ?MediaQuery.of(context).size.height * 58/100
+          :MediaQuery.of(context).size.height * 50/100,
       padding: EdgeInsets.all(20),
       child: SingleChildScrollView(
         child: Form(
@@ -80,7 +82,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
+                width: MediaQuery.of(context).size.width * 70/100,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   validator: (value) {
@@ -122,7 +124,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
+                width: MediaQuery.of(context).size.width * 70/100,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   validator: (value) {
@@ -161,10 +163,11 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                 ),
               ),
               SizedBox(height: 10,),
-              Container(
+              (filep!=''&&filep!=null)
+              ?Container(
                 margin: EdgeInsets.only(left:5, right: 5, bottom:5, top: 5),
                 height: 50,
-                width: MediaQuery.of(context).size.height * 280 / 896,
+                width: MediaQuery.of(context).size.width * 70 / 100,
                 child: FlatButton(
                   onPressed: () async {
                     (filep!=''&&filep!=null)
@@ -225,8 +228,8 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
-                                  18 /
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.width *
+                                  30 /
                                   896),
                               child: Icon(
                                 Icons.image,
@@ -254,7 +257,8 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                     ),
                   ),
                 ),
-              ),
+              )
+              :Container(height: 0,width: 0,),
               SizedBox(height: 10,),
               Container(
                 margin: EdgeInsets.only(left:5, right: 5, bottom:10, top: 0),
@@ -284,12 +288,11 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                     ),
                     child: Container(
                         alignment: Alignment.center,
-                        child: Row(
+                        child: Stack(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
-                                  18 /
-                                  896),
+                              width: 300 / 4,
+                              alignment: Alignment.center,
                               child: Icon(
                                 Icons.camera_alt,
                                 color: Colors.white,
@@ -297,9 +300,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
-                                  25 /
-                                  896),
+                              padding: EdgeInsets.only(left: 10),
                               alignment: Alignment.center,
                               child: Text(
                                 "Select Image",
@@ -393,12 +394,11 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                     ),
                     child: Container(
                         alignment: Alignment.center,
-                        child: Row(
+                        child: Stack(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.height *
-                            18 /
-                            896),
+                              width: 300 / 4,
+                              alignment: Alignment.center,
                               child: Icon(
                                 Icons.add,
                                 color: Colors.white,
@@ -406,10 +406,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.height *
-                                      25 /
-                                      896),
+                              padding: EdgeInsets.only(left: 10),
                               alignment: Alignment.center,
                               child: Text(
                                 "Add Expense",
