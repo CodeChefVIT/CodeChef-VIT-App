@@ -11,6 +11,7 @@ class ProjectsInputForm extends StatefulWidget {
 
 class _ProjectsInputFormState extends State<ProjectsInputForm> {
   Map<String, String> _data = {};
+  int member = 1;
   final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
@@ -39,13 +40,17 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
     }
   }
 
+  void initState() {
+    super.initState();
+    member = 1;
+  }
+
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
       ),
       width: 400,
-      height: 700,
       padding: EdgeInsets.all(20),
       child: SingleChildScrollView(
         child: Form(
@@ -247,202 +252,239 @@ class _ProjectsInputFormState extends State<ProjectsInputForm> {
                   ),
                 ),
               ),
+              member >= 2
+                  ? SizedBox(
+                      height: 5,
+                    )
+                  : Container(),
+              member >= 2
+                  ? Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      width: MediaQuery.of(context).size.height * 280 / 896,
+                      child: TextFormField(
+                        onSaved: (value) {
+                          _data['member2'] = value;
+                        },
+                        decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          hintText: 'Member 2',
+                          hintStyle: TextStyle(
+                            color: Color(0xFFC7C7C7),
+                            fontSize: 18,
+                          ),
+                          enabledBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          focusedBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
+              member >= 3
+                  ? SizedBox(
+                      height: 5,
+                    )
+                  : Container(),
+              member >= 3
+                  ? Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      width: MediaQuery.of(context).size.height * 280 / 896,
+                      child: TextFormField(
+                        onSaved: (value) {
+                          _data['member3'] = value;
+                        },
+                        keyboardType: TextInputType.multiline,
+                        decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          hintText: 'Member 3',
+                          hintStyle: TextStyle(
+                            color: Color(0xFFC7C7C7),
+                            fontSize: 18,
+                          ),
+                          enabledBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          focusedBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
+              member >= 4
+                  ? SizedBox(
+                      height: 5,
+                    )
+                  : Container(),
+              member >= 4
+                  ? Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      width: MediaQuery.of(context).size.height * 280 / 896,
+                      child: TextFormField(
+                        onSaved: (value) {
+                          _data['member4'] = value;
+                        },
+                        keyboardType: TextInputType.multiline,
+                        decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          hintText: 'Member 4',
+                          hintStyle: TextStyle(
+                            color: Color(0xFFC7C7C7),
+                            fontSize: 18,
+                          ),
+                          enabledBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          focusedBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
+              member >= 5
+                  ? SizedBox(
+                      height: 5,
+                    )
+                  : Container(),
+              member >= 5
+                  ? Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      width: MediaQuery.of(context).size.height * 280 / 896,
+                      child: TextFormField(
+                        onSaved: (value) {
+                          _data['member5'] = value;
+                        },
+                        keyboardType: TextInputType.multiline,
+                        decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          hintText: 'Member 5',
+                          hintStyle: TextStyle(
+                            color: Color(0xFFC7C7C7),
+                            fontSize: 18,
+                          ),
+                          enabledBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          focusedBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
+              member >= 6
+                  ? SizedBox(
+                      height: 5,
+                    )
+                  : Container(),
+              member >= 6
+                  ? Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      width: MediaQuery.of(context).size.height * 280 / 896,
+                      child: TextFormField(
+                        onSaved: (value) {
+                          _data['member6'] = value;
+                        },
+                        keyboardType: TextInputType.multiline,
+                        decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          hintText: 'Member 6',
+                          hintStyle: TextStyle(
+                            color: Color(0xFFC7C7C7),
+                            fontSize: 18,
+                          ),
+                          enabledBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          focusedBorder: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                                const Radius.circular(27.5)),
+                            borderSide: BorderSide(
+                              color: Colors.blue,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
               SizedBox(
                 height: 5,
               ),
               Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
-                child: TextFormField(
-                  onSaved: (value) {
-                    _data['member2'] = value;
-                  },
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Member 2',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
-                child: TextFormField(
-                  onSaved: (value) {
-                    _data['member3'] = value;
-                  },
-                  keyboardType: TextInputType.multiline,
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Member 3',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
-                child: TextFormField(
-                  onSaved: (value) {
-                    _data['member4'] = value;
-                  },
-                  keyboardType: TextInputType.multiline,
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Member 4',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
-                child: TextFormField(
-                  onSaved: (value) {
-                    _data['member5'] = value;
-                  },
-                  keyboardType: TextInputType.multiline,
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Member 5',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.height * 280 / 896,
-                child: TextFormField(
-                  onSaved: (value) {
-                    _data['member6'] = value;
-                  },
-                  keyboardType: TextInputType.multiline,
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Member 6',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
+                child: member < 6
+                    ? FlatButton(
+                        child: Text(
+                          "Add Member",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            member += 1;
+                          });
+                        })
+                    : null,
               ),
               Container(
                 margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 20),
