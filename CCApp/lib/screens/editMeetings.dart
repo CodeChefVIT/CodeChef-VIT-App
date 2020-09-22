@@ -198,7 +198,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.name,
                   validator: (value) {
@@ -334,7 +334,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.venue,
                   validator: (value) {
@@ -381,7 +381,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.description,
                   validator: (value) {
@@ -429,7 +429,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.members,
                   validator: (value) {
