@@ -52,7 +52,7 @@ class ExpenseCardState extends State<ExpenseCard> {
         width: 350,
         height: isPressed
             ? MediaQuery.of(context).size.height * 140 / 896 + height * 25 + 150
-            : MediaQuery.of(context).size.height * 140 / 896,
+            : MediaQuery.of(context).size.height * 145 / 896,
         child: Column(
           children: [
             Row(
@@ -152,7 +152,6 @@ class ExpenseCardState extends State<ExpenseCard> {
                               width: 5,
                             ),
                           ),
-
                           Container(
                             alignment: Alignment.centerRight,
                             padding: EdgeInsets.fromLTRB(
@@ -250,7 +249,7 @@ class ExpenseCardState extends State<ExpenseCard> {
                                 borderRadius: BorderRadius.circular(30.0)),
                             child: Container(
                               constraints:
-                              BoxConstraints(maxWidth:MediaQuery.of(context).size.height * 285 / 896, minHeight:  MediaQuery.of(context).size.height * 50 / 896),
+                              BoxConstraints(maxWidth:MediaQuery.of(context).size.width * 72 / 100, minHeight:  MediaQuery.of(context).size.height * 50 / 896),
                               alignment: Alignment.center,
                               child: Center(
                                 child: Text(
@@ -272,6 +271,7 @@ class ExpenseCardState extends State<ExpenseCard> {
                     ),
                     Flexible(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
                             decoration: BoxDecoration(
@@ -280,11 +280,11 @@ class ExpenseCardState extends State<ExpenseCard> {
                                   ? Colors.green
                                   : ((widget.status)=='Rejected'?Colors.red:Colors.grey),
                             ),
-                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 30 / 896),
+                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 60 / 896),
                             height: MediaQuery.of(context).size.height * 50 / 896,
                             width: (widget.status)=='Paid'||(widget.status)=='Rejected'
-                                ? MediaQuery.of(context).size.height * 100 / 896
-                                : MediaQuery.of(context).size.height * 150 / 896,
+                                ? MediaQuery.of(context).size.width * 200 / 896
+                                : MediaQuery.of(context).size.width * 280 / 896,
                             child: Center(
                               child: Text(
                                 (widget.status)!='Paid'&&(widget.status)!='Rejected'
@@ -304,12 +304,12 @@ class ExpenseCardState extends State<ExpenseCard> {
                               borderRadius: BorderRadius.all(Radius.circular(20)),
                               color: Colors.red,
                             ),
-                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 10 / 896),
+                            margin: EdgeInsets.only(right: MediaQuery.of(context).size.height * 40 / 896),
                             height: (widget.comments)!=null&&((widget.status)=='Paid'||(widget.status)=='Rejected')
                                 ?MediaQuery.of(context).size.height * 50 / 896
                                 :0,
                             width: (widget.comments)!=null&&((widget.status)=='Paid'||(widget.status)=='Rejected')
-                                  ?MediaQuery.of(context).size.height * 175 / 896
+                                  ?MediaQuery.of(context).size.width * 40 / 100
                                   :0,
                             child: Center(
                               child: Text(
