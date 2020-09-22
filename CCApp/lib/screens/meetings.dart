@@ -1,8 +1,7 @@
 import 'dart:ui';
 import 'package:CCApp/providers/meeting.dart';
-import 'package:CCApp/providers/profile.dart';
 import 'package:CCApp/providers/reg.dart';
-import 'package:CCApp/screens/editMeeetings.dart';
+import 'package:CCApp/screens/editMeetings.dart';
 import 'package:CCApp/screens/viewAttendance.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,8 +22,6 @@ class Meetings extends StatefulWidget {
 class MeetingsState extends State<Meetings> {
   @override
   void initState() {
-    Provider.of<Profile>(context, listen: false)
-        .profileView(Provider.of<Reg>(context, listen: false).token);
     check = Provider.of<Reg>(context, listen: false).category;
     if (check == 5 || check == 3) {
       board = true;

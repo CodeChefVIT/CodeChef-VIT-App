@@ -3,6 +3,7 @@ import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class EditMeeting extends StatefulWidget {
@@ -30,6 +31,14 @@ class EditMeeting extends StatefulWidget {
 }
 
 class EditMeetingState extends State<EditMeeting> {
+  TimeOfDay time;
+  DateTime date;
+  bool timePicked = false;
+  String timeString;
+  bool datePicked = false;
+  String dateDisplay;
+  String dateString;
+  String timeDisplay;
   Map<String, String> _data = {};
   final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
@@ -56,6 +65,106 @@ class EditMeetingState extends State<EditMeeting> {
         ),
       );
     }
+  }
+
+  void initState() {
+    super.initState();
+    time = TimeOfDay(
+      hour: int.parse(widget.time.substring(0, 2)),
+      minute: int.parse(widget.time.substring(3, 5)),
+    );
+    date = DateTime.parse(widget.date);
+    if (time.hour > 12) {
+      timeDisplay =
+          '${time.hour - 12}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+    } else if (time.hour == 12) {
+      timeDisplay =
+          '${time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+    } else {
+      timeDisplay =
+          '${time.hour == 0 ? 12 : time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} AM';
+    }
+    dateDisplay = '${date.day} ' + '${getMonth(date.month)}' + ' ${date.year}';
+  }
+
+  Future _pickTime(BuildContext context) async {
+    print('entered');
+    TimeOfDay t = await showTimePicker(context: context, initialTime: time);
+    if (t != null && t != time)
+      setState(() {
+        time = t;
+        print(time);
+        timeString = '${time.hour}:${time.minute}:00';
+        if (time.hour > 12) {
+          timeDisplay =
+              '${time.hour - 12}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+        } else if (time.hour == 12) {
+          timeDisplay =
+              '${time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+        } else {
+          timeDisplay =
+              '${time.hour == 0 ? 12 : time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} AM';
+        }
+        timePicked = true;
+      });
+  }
+
+  String getMonth(int month) {
+    if (month == 01) {
+      return "Jan";
+    }
+    if (month == 02) {
+      return "Feb";
+    }
+    if (month == 03) {
+      return "Mar";
+    }
+    if (month == 04) {
+      return "Apr";
+    }
+    if (month == 05) {
+      return "May";
+    }
+    if (month == 06) {
+      return "Jun";
+    }
+    if (month == 07) {
+      return "Jul";
+    }
+    if (month == 08) {
+      return "Aug";
+    }
+    if (month == 09) {
+      return "Sep";
+    }
+    if (month == 10) {
+      return "Oct";
+    }
+    if (month == 11) {
+      return "Nov";
+    }
+    if (month == 12) {
+      return "Dec";
+    } else {
+      return "";
+    }
+  }
+
+  Future _pickDate(BuildContext context) async {
+    DateTime dateChosen = await showDatePicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+      initialDate: date,
+    );
+    if (dateChosen != null)
+      setState(() {
+        date = dateChosen;
+        dateString = '${date.year}-${date.month}-${date.day}';
+        dateDisplay =
+            '${date.day} ' + '${getMonth(date.month)}' + ' ${date.year}';
+        datePicked = true;
+      });
   }
 
   Widget build(BuildContext context) {
@@ -89,7 +198,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.name,
                   validator: (value) {
@@ -133,45 +242,89 @@ class EditMeetingState extends State<EditMeeting> {
                 height: 5,
               ),
               Container(
+                height: MediaQuery.of(context).size.height * 50 / 896,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: Color(0xff000000)),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Color(0xffffffff),
+                ),
                 alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
-                child: TextFormField(
-                  initialValue: widget.time,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'This field is required.';
-                    } else {
-                      return null;
-                    }
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: FlatButton(
+                  onPressed: () async {
+                    await _pickTime(context);
+                    _data['time'] = timeString;
                   },
-                  onChanged: (value) {
-                    _data['time'] = value;
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          FontAwesomeIcons.clock,
+                          color: Colors.black,
+                          size: 28,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          timeDisplay,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 50 / 896,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: Color(0xff000000)),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Color(0xffffffff),
+                ),
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.height * 280 / 896,
+                child: FlatButton(
+                  onPressed: () async {
+                    await _pickDate(context);
+                    _data['date'] = dateString;
                   },
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Time',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          FontAwesomeIcons.calendarAlt,
+                          color: Colors.black,
+                          size: 28,
+                        ),
                       ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          dateDisplay,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
@@ -181,53 +334,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
-                child: TextFormField(
-                  initialValue: widget.date,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'This field is required.';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onChanged: (value) {
-                    _data['date'] = value;
-                  },
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Date',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.venue,
                   validator: (value) {
@@ -274,7 +381,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.description,
                   validator: (value) {
@@ -322,7 +429,7 @@ class EditMeetingState extends State<EditMeeting> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: 300,
+                width: MediaQuery.of(context).size.height * 280 / 896,
                 child: TextFormField(
                   initialValue: widget.members,
                   validator: (value) {

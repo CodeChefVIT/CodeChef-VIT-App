@@ -33,13 +33,17 @@ class InputFormState extends State<InputForm> {
     if (t != null && t != time)
       setState(() {
         time = t;
+        print(time);
         timeString = '${time.hour}:${time.minute}:00';
         if (time.hour > 12) {
           timeDisplay =
               '${time.hour - 12}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+        } else if (time.hour == 12) {
+          timeDisplay =
+              '${time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
         } else {
           timeDisplay =
-              '${time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} AM';
+              '${time.hour == 0 ? 12 : time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} AM';
         }
         timePicked = true;
       });

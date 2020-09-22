@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MeetingCard extends StatelessWidget {
+class MeetingCard extends StatefulWidget {
   final String name;
   final String time;
   final String venue;
@@ -20,6 +20,76 @@ class MeetingCard extends StatelessWidget {
     @required this.bgcolor,
     @required this.sgcolor,
   });
+  @override
+  State<StatefulWidget> createState() {
+    return MeetingCardState();
+  }
+}
+
+class MeetingCardState extends State<MeetingCard> {
+  TimeOfDay time;
+  DateTime date;
+  String timeDisplay, dateDisplay;
+  String getMonth(int month) {
+    if (month == 01) {
+      return "Jan";
+    }
+    if (month == 02) {
+      return "Feb";
+    }
+    if (month == 03) {
+      return "Mar";
+    }
+    if (month == 04) {
+      return "Apr";
+    }
+    if (month == 05) {
+      return "May";
+    }
+    if (month == 06) {
+      return "Jun";
+    }
+    if (month == 07) {
+      return "Jul";
+    }
+    if (month == 08) {
+      return "Aug";
+    }
+    if (month == 09) {
+      return "Sep";
+    }
+    if (month == 10) {
+      return "Oct";
+    }
+    if (month == 11) {
+      return "Nov";
+    }
+    if (month == 12) {
+      return "Dec";
+    } else {
+      return "";
+    }
+  }
+
+  void initState() {
+    super.initState();
+    time = TimeOfDay(
+      hour: int.parse(widget.time.substring(0, 2)),
+      minute: int.parse(widget.time.substring(3, 5)),
+    );
+    date = DateTime.parse(widget.date);
+    if (time.hour > 12) {
+      timeDisplay =
+          '${time.hour - 12}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+    } else if (time.hour == 12) {
+      timeDisplay =
+          '${time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} PM';
+    } else {
+      timeDisplay =
+          '${time.hour == 0 ? 12 : time.hour}:${time.minute > 10 ? time.minute : "0" + time.minute.toString()} AM';
+    }
+    dateDisplay = '${date.day} ' + '${getMonth(date.month)}' + ' ${date.year}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +98,7 @@ class MeetingCard extends StatelessWidget {
           30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(24)),
-        color: bgcolor,
+        color: widget.bgcolor,
       ),
       width: 350,
       height: MediaQuery.of(context).size.height * 170 / 896,
@@ -41,7 +111,7 @@ class MeetingCard extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(34,
                     MediaQuery.of(context).size.height * 22 / 896 - 3, 0, 0),
                 child: Text(
-                  name,
+                  widget.name,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
@@ -59,7 +129,7 @@ class MeetingCard extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0,
                     MediaQuery.of(context).size.height * 22 / 896 - 3, 34, 0),
                 child: Text(
-                  time,
+                  timeDisplay,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
@@ -76,7 +146,7 @@ class MeetingCard extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(34, 0, 0, 5),
                 child: Text(
-                  venue,
+                  widget.venue,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
@@ -92,7 +162,7 @@ class MeetingCard extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.fromLTRB(0, 0, 34, 5),
                 child: Text(
-                  date,
+                  dateDisplay,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
@@ -105,14 +175,14 @@ class MeetingCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: sgcolor,
+              color: widget.sgcolor,
             ),
             margin: EdgeInsets.symmetric(horizontal: 34),
             height: MediaQuery.of(context).size.height * 54 / 896,
             width: 294,
             padding: EdgeInsets.all(10),
             child: Text(
-              description,
+              widget.description,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 12,
@@ -128,7 +198,7 @@ class MeetingCard extends StatelessWidget {
               Container(
                 padding: EdgeInsetsDirectional.only(start: 34),
                 child: Text(
-                  members,
+                  widget.members,
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SF Pro Display',
