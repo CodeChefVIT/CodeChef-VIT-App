@@ -307,6 +307,9 @@ class ProfilePageState extends State<ProfilePage> {
                         ),
                         child: Column(
                           children: [
+                            SizedBox(
+                              height: 10,
+                            ),
                             Row(
                               children: [
                                 SizedBox(
@@ -527,6 +530,9 @@ class ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ],
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                           ],
                         ),

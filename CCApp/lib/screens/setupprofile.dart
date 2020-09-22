@@ -22,7 +22,7 @@ class SetupProfileState extends State<SetupProfile> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   Map<String, String> _data = {};
   Map details;
-  bool genderCheck;
+  bool genderCheck = false;
   String dropdownValue = 'MAL';
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {

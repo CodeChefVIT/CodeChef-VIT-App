@@ -23,8 +23,8 @@ class Meetings extends StatefulWidget {
 class MeetingsState extends State<Meetings> {
   @override
   void initState() {
-    Provider.of<Profile>(context, listen: false)
-        .profileView(Provider.of<Reg>(context, listen: false).token);
+    // Provider.of<Profile>(context, listen: false)
+    //     .profileView(Provider.of<Reg>(context, listen: false).token);
     check = Provider.of<Reg>(context, listen: false).category;
     if (check == 5 || check == 3) {
       board = true;
