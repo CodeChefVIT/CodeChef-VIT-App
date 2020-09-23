@@ -14,6 +14,7 @@ class CreateMember extends StatefulWidget {
 
 class CreateMemberState extends State<CreateMember> {
   Map _data = {};
+  String dropdownValue = "1";
   final GlobalKey<FormState> _formKey = GlobalKey();
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
@@ -38,6 +39,23 @@ class CreateMemberState extends State<CreateMember> {
           content: Text('Profile Setup Failed'),
         ),
       );
+    }
+  }
+
+  String getPosition(String value) {
+    if (value == "1") {
+      return "Fresher";
+    }
+    if (value == "2") {
+      return "Senior";
+    }
+    if (value == "3") {
+      return "Board";
+    }
+    if (value == "4") {
+      return "Ex Member";
+    } else {
+      return "President";
     }
   }
 
@@ -116,45 +134,44 @@ class CreateMemberState extends State<CreateMember> {
                 height: 5,
               ),
               Container(
-                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(27.5),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2,
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                alignment: Alignment.centerLeft,
                 margin: EdgeInsets.only(left: 5, right: 5),
                 width: 300,
-                child: TextFormField(
-                  validator: (value) {
-                    if (value == '') {
-                      return 'This field is required.';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onSaved: (value) {
-                    _data['category'] = int.parse(value);
-                  },
-                  decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    hintText: 'Category',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
+                child: DropdownButton<String>(
+                  value: dropdownValue,
+                  iconSize: 24,
+                  style: TextStyle(
+                    color: Colors.black,
                   ),
+                  underline: Container(
+                    height: 0,
+                  ),
+                  onChanged: (String newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                      _data['category'] = int.parse(newValue);
+                    });
+                  },
+                  items: <String>['1', '2', '3', '4', '5']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        getPosition(value),
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
               ),
               SizedBox(
