@@ -21,6 +21,29 @@ class MemberForm extends StatefulWidget {
 
 class MemberFormState extends State<MemberForm> {
   Map _data = {};
+  String dropdownValue;
+  void initState() {
+    super.initState();
+    dropdownValue = widget.category.toString();
+  }
+
+  String getPosition(String value) {
+    if (value == "1") {
+      return "Fresher";
+    }
+    if (value == "2") {
+      return "Senior";
+    }
+    if (value == "3") {
+      return "Board";
+    }
+    if (value == "4") {
+      return "Ex Member";
+    } else {
+      return "President";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -95,46 +118,44 @@ class MemberFormState extends State<MemberForm> {
               height: 5,
             ),
             Container(
-              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(27.5),
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 5, right: 5),
               width: 300,
-              child: TextFormField(
-                initialValue: widget.category.toString(),
-                validator: (value) {
-                  if (value == '') {
-                    return 'This field is required.';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  _data['category'] = int.parse(value);
-                },
-                decoration: new InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  hintText: 'Category',
-                  hintStyle: TextStyle(
-                    color: Color(0xFFC7C7C7),
-                    fontSize: 18,
-                  ),
-                  enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      width: 2,
-                    ),
-                  ),
-                  focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
-                    ),
-                  ),
+              child: DropdownButton<String>(
+                value: dropdownValue,
+                iconSize: 24,
+                style: TextStyle(
+                  color: Colors.black,
                 ),
+                underline: Container(
+                  height: 0,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    dropdownValue = newValue;
+                    _data['category'] = int.parse(newValue);
+                  });
+                },
+                items: <String>['1', '2', '3', '4', '5']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      getPosition(value),
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  );
+                }).toList(),
               ),
             ),
             SizedBox(
@@ -168,9 +189,10 @@ class MemberFormState extends State<MemberForm> {
                 child: Container(
                     height: 50,
                     alignment: Alignment.center,
-                    child: Row(
+                    child: Stack(
                       children: [
                         Container(
+                          alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(left: 15),
                           child: Icon(
                             Icons.add,
@@ -179,7 +201,6 @@ class MemberFormState extends State<MemberForm> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 40),
                           alignment: Alignment.center,
                           child: Text(
                             "Update Details",

@@ -197,9 +197,10 @@ class CreateMemberState extends State<CreateMember> {
                   child: Container(
                       height: 50,
                       alignment: Alignment.center,
-                      child: Row(
+                      child: Stack(
                         children: [
                           Container(
+                            alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(left: 15),
                             child: Icon(
                               Icons.add,
@@ -208,10 +209,9 @@ class CreateMemberState extends State<CreateMember> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 40),
                             alignment: Alignment.center,
                             child: Text(
-                              "Add Member",
+                              "Update Details",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 20,

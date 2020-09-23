@@ -49,7 +49,7 @@ class MemberDetails extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(
                 34, MediaQuery.of(context).size.height * 11 / 896 - 3, 0, 0),
             child: Text(
-              name,
+              name == "Profile does not exist" ? "Profile Incomplete" : name,
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'SF Pro Display',
