@@ -67,6 +67,14 @@ class EditProfileState extends State<EditProfile> {
             builder: (BuildContext context) => HomePage(currentIndex: 4)));
   }
 
+  String getGender(String value) {
+    if (value == "MAL") {
+      return "Male";
+    } else {
+      return "Female";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -407,7 +415,7 @@ class EditProfileState extends State<EditProfile> {
                               ].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(value),
+                                  child: Text(getGender(value)),
                                 );
                               }).toList(),
                             ),
