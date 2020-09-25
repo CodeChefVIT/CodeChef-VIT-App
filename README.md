@@ -37,20 +37,21 @@
 
 <img src="./Screenshots/members.png" alt="Project Screenshots" height="609" width="282">
 </p>
+
 ## Instructions to run
 
 ```
-Clone the Project
+$ git clone https://github.com/CodeChefVIT/CodeChef-VIT-App
+$ cd CodeChef-VIT-App
+``` 
 
-Instructions for Android:
+**Instructions for Android:**
 - Go to CCApp//build/app/outputs/apk/release/app-release.apk
 - Install APK on your Android device
 
-Instructions for iOS:
+**Instructions for iOS:**
 - Open the project file in XCode
 - Run the App to Install
-
-```
 
 ## Contributors
 - <a href="https://github.com/44t4nk1">Siddharth Singh</a>
