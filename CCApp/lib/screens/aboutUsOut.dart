@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flip_card/flip_card.dart';
+
 class OutsideAboutUs extends StatelessWidget {
   launchURL(String url) async {
     if (await canLaunch(url)) {
@@ -11,8 +12,9 @@ class OutsideAboutUs extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
+
   int i;
-  List<String> project20=[
+  final List<String> project20 = [
     'codechef20.png',
     'cookoff.png',
     'codechefapp.png',
@@ -23,7 +25,7 @@ class OutsideAboutUs extends StatelessWidget {
     'ffds.png',
     'leoclub.png',
   ];
-  List<String> projname20=[
+  final List<String> projname20 = [
     'CodeChef-VIT\'20',
     'Cook Off 6.0',
     'CodeChef-VIT App',
@@ -34,7 +36,7 @@ class OutsideAboutUs extends StatelessWidget {
     'FFDS',
     'LeoClub Website',
   ];
-  List<String> projdes20=[
+  final List<String> projdes20 = [
     'Official website for CodeChef-VIT for 2020-21.',
     'Official website for our flagship graVITas event for the year 2020.',
     'All in one official app for CodeChef-VIT.',
@@ -45,7 +47,7 @@ class OutsideAboutUs extends StatelessWidget {
     'Find out users who share a free slot with you and connect with them in VIT.',
     'Official website for the Leo Club VIT.',
   ];
-  List<String> project19=[
+  final List<String> project19 = [
     'engage.png',
     'recruitment.png',
     'sms_app.png',
@@ -56,7 +58,7 @@ class OutsideAboutUs extends StatelessWidget {
     'seds1.png',
     'goal.jpg',
   ];
-  List<String> projname19=[
+  final List<String> projname19 = [
     'Engagement Monitor',
     'Recruitments Portal',
     'SMS App',
@@ -67,7 +69,7 @@ class OutsideAboutUs extends StatelessWidget {
     'SEDS-India',
     'GOAL',
   ];
-  List<String> projdes19=[
+  final List<String> projdes19 = [
     'A web application to help you analyse active or disinterested members of a WhatsApp group. ',
     'Web portal for Recruitments\'19. ',
     'App to send bulk messages to multiple contacts at same time. ',
@@ -78,25 +80,25 @@ class OutsideAboutUs extends StatelessWidget {
     'SEDS India\'s official website for 2020. ',
     'Official Web Portal for Going Online As Leaders in association with the Tribal Ministry of India, Facebook & JoshTalks. '
   ];
-  List<String> project18=[
+  final List<String> project18 = [
     'devsoc_19.jpg',
     'codechef.png',
     'codecombat.png',
     'githubapi.jpeg',
   ];
-  List<String> projname18=[
+  final List<String> projname18 = [
     'DEVSOC\'19 Website',
     'CodeChef-VIT Website',
     'Code Combat',
     'Github Organisation API',
   ];
-  List<String> projdes18=[
+  final List<String> projdes18 = [
     'The official website for DEVSOC 2019 by CodeChef-VIT. ',
     'CodeChef-VIT\'s official website for 2019-20. ',
     'Registration portal for Code Combat by CodeChef-VIT. ',
     'GitHub organisation specific data for all members. ',
   ];
-  List<String> image=[
+  final List<String> image = [
     'kunal.jpg',
     'rajat.jpg',
     'akshat.jpg',
@@ -113,7 +115,7 @@ class OutsideAboutUs extends StatelessWidget {
     'anuj.jpg',
     'navyaa.jpg',
   ];
-  List<String> name=[
+  final List<String> name = [
     'Kunal Chaudhary',
     'Rajat Sablok',
     'Akshat Gupta',
@@ -130,7 +132,7 @@ class OutsideAboutUs extends StatelessWidget {
     'Anuj Kapoor',
     'Navya Sharma',
   ];
-  List<String> pos=[
+  final List<String> pos = [
     'President',
     'Vice President',
     'Technical Chair ',
@@ -147,7 +149,7 @@ class OutsideAboutUs extends StatelessWidget {
     'App lead',
     'Web Master',
   ];
-  List<String> info = [
+  final List<String> info = [
     '+91 7014531554',
     '+91 9926817645',
     '+91 9600093179',
@@ -164,10 +166,10 @@ class OutsideAboutUs extends StatelessWidget {
     '+91 6394577290',
     '+91 9315673060',
   ];
-  List<String> eventimage20=[
+  final List<String> eventimage20 = [
     'devsoc20.jpg',
   ];
-  List<String> eventimage19=[
+  final List<String> eventimage19 = [
     'devsoc19.jpg',
     'webapps.jpeg',
     'cook.jpeg',
@@ -176,7 +178,7 @@ class OutsideAboutUs extends StatelessWidget {
     'server.jpeg',
     'blitz.jpeg',
   ];
-  List<String> eventimage18=[
+  final List<String> eventimage18 = [
     'blockchain.jpg',
     'data_analytics.jpg',
     'error404.jpg',
@@ -184,7 +186,7 @@ class OutsideAboutUs extends StatelessWidget {
     'who-breaks-first.jpeg',
     'seriesbuff.jpeg',
   ];
-  List<String> eventimage17=[
+  final List<String> eventimage17 = [
     'insight17.jpeg',
     'bigdata.jpeg',
     'cookoff3.jpeg'
@@ -235,11 +237,11 @@ class OutsideAboutUs extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: 16.0),
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Codechef-VIT is one of the prestigious technical chapters of VIT Vellore. '
+                      text:
+                          'Codechef-VIT is one of the prestigious technical chapters of VIT Vellore. '
                           'Our aim is to educate and enable the youth who will lead in various innovative endeavours. '
                           'We hope that together, each one of us may contribute to the chapter\'s countless accolades and leave a lasting mark. '
-                          '\nCheck out our '
-                  ),
+                          '\nCheck out our '),
                   TextSpan(
                       text: 'website.',
                       style: TextStyle(color: Colors.blue),
@@ -248,9 +250,7 @@ class OutsideAboutUs extends StatelessWidget {
                           const url = 'https://codechefvit.com';
                           launchURL(url);
                         }),
-                  TextSpan(
-                      text: '\nFollow us on '
-                  ),
+                  TextSpan(text: '\nFollow us on '),
                   TextSpan(
                       text: 'instagram ',
                       style: TextStyle(color: Colors.blue),
@@ -259,9 +259,7 @@ class OutsideAboutUs extends StatelessWidget {
                           const url = 'https://www.instagram.com/codechefvit';
                           launchURL(url);
                         }),
-                  TextSpan(
-                      text: 'to stay updated on our activities.'
-                  ),
+                  TextSpan(text: 'to stay updated on our activities.'),
                 ],
               ),
             ),
@@ -286,11 +284,11 @@ class OutsideAboutUs extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: info.length,
-                itemBuilder: (context, index){
-                  return  Center(
+                itemBuilder: (context, index) {
+                  return Center(
                     child: Container(
                       height: MediaQuery.of(context).size.height * 380 / 896,
-                      width:MediaQuery.of(context).size.height * 405 / 896,
+                      width: MediaQuery.of(context).size.height * 405 / 896,
                       child: Card(
                         child: Column(
                           children: <Widget>[
@@ -332,7 +330,9 @@ class OutsideAboutUs extends StatelessWidget {
                                       fontFamily: 'SFProDisplay',
                                     ),
                                   ),
-                                  SizedBox(height: 10,),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
                                   Text(
                                     info[index],
                                     style: TextStyle(
@@ -348,8 +348,7 @@ class OutsideAboutUs extends StatelessWidget {
                       ),
                     ),
                   );
-                }
-            ),
+                }),
           ),
           SizedBox(height: 15),
           Container(
@@ -365,7 +364,9 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -379,14 +380,16 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: project20.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return IntrinsicWidth(
                     child: FlipCard(
                       direction: FlipDirection.HORIZONTAL,
@@ -448,10 +451,11 @@ class OutsideAboutUs extends StatelessWidget {
                       ),
                     ),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -465,14 +469,16 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: project19.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return IntrinsicWidth(
                     child: FlipCard(
                       direction: FlipDirection.HORIZONTAL,
@@ -534,10 +540,11 @@ class OutsideAboutUs extends StatelessWidget {
                       ),
                     ),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -551,14 +558,16 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: project18.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return IntrinsicWidth(
                     child: FlipCard(
                       direction: FlipDirection.HORIZONTAL,
@@ -620,10 +629,9 @@ class OutsideAboutUs extends StatelessWidget {
                       ),
                     ),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height:10),
+          SizedBox(height: 10),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -637,7 +645,9 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -651,15 +661,17 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: eventimage20.length,
-                itemBuilder: (context, index){
-                  return  Card(
+                itemBuilder: (context, index) {
+                  return Card(
                     semanticContainer: true,
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image.asset(
@@ -672,10 +684,11 @@ class OutsideAboutUs extends StatelessWidget {
                     elevation: 5,
                     margin: EdgeInsets.all(5),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -689,15 +702,17 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: eventimage19.length,
-                itemBuilder: (context, index){
-                  return  Card(
+                itemBuilder: (context, index) {
+                  return Card(
                     semanticContainer: true,
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image.asset(
@@ -710,10 +725,11 @@ class OutsideAboutUs extends StatelessWidget {
                     elevation: 5,
                     margin: EdgeInsets.all(5),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -727,14 +743,16 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: eventimage18.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return Card(
                     semanticContainer: true,
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -748,10 +766,11 @@ class OutsideAboutUs extends StatelessWidget {
                     elevation: 5,
                     margin: EdgeInsets.all(5),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.only(left: 24),
             alignment: Alignment.centerLeft,
@@ -765,15 +784,17 @@ class OutsideAboutUs extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             height: 350,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: eventimage17.length,
-                itemBuilder: (context, index){
-                  return  Card(
+                itemBuilder: (context, index) {
+                  return Card(
                     semanticContainer: true,
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: Image.asset(
@@ -786,10 +807,11 @@ class OutsideAboutUs extends StatelessWidget {
                     elevation: 5,
                     margin: EdgeInsets.all(5),
                   );
-                }
-            ),
+                }),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
         ]),
       ),
     );

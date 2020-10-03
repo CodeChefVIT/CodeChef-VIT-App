@@ -27,6 +27,8 @@ class MemberDetails extends StatelessWidget {
     }
     if (value == '5') {
       return 'President';
+    } else {
+      return null;
     }
   }
 

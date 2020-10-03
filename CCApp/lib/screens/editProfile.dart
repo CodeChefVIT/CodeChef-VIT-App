@@ -80,6 +80,7 @@ class EditProfileState extends State<EditProfile> {
     return WillPopScope(
       onWillPop: () {
         _moveBack(context);
+        return null;
       },
       child: _isLoading
           ? Scaffold(body: Center(child: CircularProgressIndicator()))

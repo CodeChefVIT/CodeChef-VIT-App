@@ -4,6 +4,7 @@ import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/cupertino.dart';
 
 class InputForm extends StatefulWidget {
   @override
@@ -28,7 +29,6 @@ class InputFormState extends State<InputForm> {
   }
 
   Future _pickTime(BuildContext context) async {
-    print('entered');
     TimeOfDay t = await showTimePicker(context: context, initialTime: time);
     if (t != null && t != time)
       setState(() {
