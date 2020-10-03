@@ -2,7 +2,6 @@ import 'package:CCApp/providers/meeting.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:CCApp/screens/attendanceCard.dart';
 import 'package:CCApp/screens/homePage.dart';
-import 'package:CCApp/screens/meetings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -58,6 +57,7 @@ class _ViewAttendanceState extends State<ViewAttendance> {
     return WillPopScope(
       onWillPop: () {
         _moveBack(context);
+        return null;
       },
       child: _isLoading
           ? Scaffold(body: Center(child: CircularProgressIndicator()))

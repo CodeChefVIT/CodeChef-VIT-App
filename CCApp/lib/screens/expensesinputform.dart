@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:CCApp/providers/expenses.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:CCApp/providers/reg.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 
@@ -15,12 +13,12 @@ class ExpensesInputForm extends StatefulWidget {
 }
 
 class _ExpensesInputFormState extends State<ExpensesInputForm> {
-  final GlobalKey<FormState> _formKey= GlobalKey();
-  String file_loc = '';
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  String fileLoc = '';
   var filePath;
   String remarks;
   String amount;
-  String filep='';
+  String filep = '';
   Map<String, String> _data = {};
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
@@ -29,15 +27,12 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
     _formKey.currentState.save();
     try {
       await Provider.of<Expense>(context, listen: false)
-          .expenseAdd(_data, Provider
-          .of<Reg>(context, listen: false)
-          .token);
+          .expenseAdd(_data, Provider.of<Reg>(context, listen: false).token);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) =>
-              HomePage(
-                currentIndex: 2,
-              ),
+          builder: (ctx) => HomePage(
+            currentIndex: 2,
+          ),
         ),
       );
     } catch (error) {
@@ -51,24 +46,25 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
       );
     }
   }
+
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
       ),
-      width: MediaQuery.of(context).size.width * 90/100,
-      height: (filep!=''&&filep!=null)
-          ?MediaQuery.of(context).size.height * 58/100
-          :MediaQuery.of(context).size.height * 50/100,
+      width: MediaQuery.of(context).size.width * 90 / 100,
+      height: (filep != '' && filep != null)
+          ? MediaQuery.of(context).size.height * 58 / 100
+          : MediaQuery.of(context).size.height * 50 / 100,
       padding: EdgeInsets.all(20),
       child: SingleChildScrollView(
         child: Form(
-          key:_formKey,
+          key: _formKey,
           child: Column(
             children: [
               Container(
                 alignment: Alignment.bottomLeft,
-                margin: EdgeInsets.only(left:7),
+                margin: EdgeInsets.only(left: 7),
                 child: Text(
                   'Add an Expense',
                   style: TextStyle(
@@ -82,7 +78,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.width * 70/100,
+                width: MediaQuery.of(context).size.width * 70 / 100,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   validator: (value) {
@@ -92,25 +88,28 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                       return null;
                     }
                   },
-                  onChanged: (String text){
-                    remarks=text;
+                  onChanged: (String text) {
+                    remarks = text;
                   },
                   decoration: new InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     hintText: 'Reason for Expenditure',
                     hintStyle: TextStyle(
                       color: Color(0xFFC7C7C7),
                       fontSize: 18,
                     ),
                     enabledBorder: new OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.black,
                         width: 2,
                       ),
                     ),
                     focusedBorder: new OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.blue,
                         width: 2,
@@ -119,12 +118,11 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                   ),
                 ),
               ),
-
               SizedBox(height: 10),
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(left: 5, right: 5),
-                width: MediaQuery.of(context).size.width * 70/100,
+                width: MediaQuery.of(context).size.width * 70 / 100,
                 child: TextFormField(
                   textInputAction: TextInputAction.done,
                   validator: (value) {
@@ -134,26 +132,29 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                       return null;
                     }
                   },
-                  onChanged: (value){
-                    amount=value;
+                  onChanged: (value) {
+                    amount = value;
                   },
                   keyboardType: TextInputType.number,
                   decoration: new InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     hintText: 'Amount',
                     hintStyle: TextStyle(
                       color: Color(0xFFC7C7C7),
                       fontSize: 18,
                     ),
                     enabledBorder: new OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.black,
                         width: 2,
                       ),
                     ),
                     focusedBorder: new OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius:
+                          const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.blue,
                         width: 2,
@@ -162,114 +163,125 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                   ),
                 ),
               ),
-              SizedBox(height: 10,),
-              (filep!=''&&filep!=null)
-              ?Container(
-                margin: EdgeInsets.only(left:5, right: 5, bottom:5, top: 5),
-                height: 50,
-                width: MediaQuery.of(context).size.width * 70 / 100,
-                child: FlatButton(
-                  onPressed: () async {
-                    (filep!=''&&filep!=null)
-                        ?showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24)),
-                            elevation: 12,
-                            child: Image.file(File(filep)),
-                          );
-                        })
-                        :showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24)),
-                            elevation: 12,
-                            child: Container(
-                                height: 100,
-                                width:120,
-                                child: Row(
-                                  children: <Widget>[
-                                    SizedBox(width:25),
-                                    Icon(
-                                      Icons.close,
-                                      color: Colors.red,
-                                      size: 40,
+              SizedBox(
+                height: 10,
+              ),
+              (filep != '' && filep != null)
+                  ? Container(
+                      margin:
+                          EdgeInsets.only(left: 5, right: 5, bottom: 5, top: 5),
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 70 / 100,
+                      child: FlatButton(
+                        onPressed: () async {
+                          (filep != '' && filep != null)
+                              ? showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(24)),
+                                      elevation: 12,
+                                      child: Image.file(File(filep)),
+                                    );
+                                  })
+                              : showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(24)),
+                                      elevation: 12,
+                                      child: Container(
+                                          height: 100,
+                                          width: 120,
+                                          child: Row(
+                                            children: <Widget>[
+                                              SizedBox(width: 25),
+                                              Icon(
+                                                Icons.close,
+                                                color: Colors.red,
+                                                size: 40,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                'No image selected',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          )),
+                                    );
+                                  });
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        padding: EdgeInsets.all(0.0),
+                        child: Ink(
+                          decoration: BoxDecoration(
+                            color: Colors.white10,
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: Container(
+                              alignment: Alignment.center,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left:
+                                            MediaQuery.of(context).size.width *
+                                                30 /
+                                                896),
+                                    child: Icon(
+                                      Icons.image,
+                                      color: Colors.black,
+                                      size: 28,
                                     ),
-                                    SizedBox(width:10),
-                                    Text(
-                                      'No image selected',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        color: Colors.black,
+                                  ),
+                                  Flexible(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "View Selected Image",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontFamily: 'SF Pro Display',
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
-                                  ],
-                                )
-                            ),
-                          );
-                        });
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  padding: EdgeInsets.all(0.0),
-                  child: Ink(
-                    decoration: BoxDecoration(
-                      color: Colors.white10,
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: Container(
-                        alignment: Alignment.center,
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.width *
-                                  30 /
-                                  896),
-                              child: Icon(
-                                Icons.image,
-                                color: Colors.black,
-                                size: 28,
-                              ),
-                            ),
-                            Flexible(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "View Selected Image",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
                                   ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
+                                ],
+                              )),
+                        ),
+                      ),
+                    )
+                  : Container(
+                      height: 0,
+                      width: 0,
                     ),
-                  ),
-                ),
-              )
-              :Container(height: 0,width: 0,),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Container(
-                margin: EdgeInsets.only(left:5, right: 5, bottom:10, top: 0),
+                margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 0),
                 height: 50,
                 width: 330,
                 child: FlatButton(
                   onPressed: () async {
                     filePath = await FilePicker.getFilePath(
-                        type: FileType.image,);
+                      type: FileType.image,
+                    );
                     setState(() {
-                      filep=filePath;
+                      filep = filePath;
                     });
                   },
                   shape: RoundedRectangleBorder(
@@ -279,11 +291,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                   child: Ink(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                          colors: [
-                            Color(0xFF3BE0EB),
-                            Color(0xFF1D59A1)
-                          ]
-                      ),
+                          colors: [Color(0xFF3BE0EB), Color(0xFF1D59A1)]),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Container(
@@ -314,74 +322,73 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                               ),
                             ),
                           ],
-                        )
-                    ),
+                        )),
                   ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left:5, right: 5, bottom:10, top: 5),
+                margin: EdgeInsets.only(left: 5, right: 5, bottom: 10, top: 5),
                 height: 50,
                 width: 330,
                 child: FlatButton(
                   onPressed: () async {
-                    await Provider.of<Expense>(context,
-                        listen: false)
+                    await Provider.of<Expense>(context, listen: false)
                         .dataUpload(
                       filePath,
                       remarks,
                       amount,
-                      Provider.of<Reg>(context, listen: false)
-                          .token,
+                      Provider.of<Reg>(context, listen: false).token,
                     );
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (ctx) =>
-                            HomePage(
-                              currentIndex: 2,
-                            ),
+                        builder: (ctx) => HomePage(
+                          currentIndex: 2,
+                        ),
                       ),
                     );
-                    (remarks!=null&&amount!=null)
-                        ?showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                BorderRadius.circular(10)),
-                            elevation: 12,
-                            child: Container(
-                              height: 105,
-                              width: 300,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SizedBox(height: 20,),
-                                  Center(
-                                    child: Text(
-                                      'Expense submitted for review',
-                                    ),
-                                  ),
-                                  SizedBox(height: 20,),
-                                  Center(
-                                    child: FlatButton(
-                                      child: Text(
-                                        "OK",
-                                        style: TextStyle(
-                                            color: Colors.black),
+                    (remarks != null && amount != null)
+                        ? showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                elevation: 12,
+                                child: Container(
+                                  height: 105,
+                                  width: 300,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: 20,
                                       ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
+                                      Center(
+                                        child: Text(
+                                          'Expense submitted for review',
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Center(
+                                        child: FlatButton(
+                                          child: Text(
+                                            "OK",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ),
-                          );
-                        })
-                        :print("hello");
+                                ),
+                              );
+                            })
+                        : print("hello");
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
@@ -389,7 +396,11 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                   padding: EdgeInsets.all(0.0),
                   child: Ink(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [Color(0xFF459AFF), Color(0xFFFF6745),Color(0xFFFF4572)]),
+                      gradient: LinearGradient(colors: [
+                        Color(0xFF459AFF),
+                        Color(0xFFFF6745),
+                        Color(0xFFFF4572)
+                      ]),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Container(
@@ -420,8 +431,7 @@ class _ExpensesInputFormState extends State<ExpensesInputForm> {
                               ),
                             ),
                           ],
-                        )
-                    ),
+                        )),
                   ),
                 ),
               )
