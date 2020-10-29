@@ -205,10 +205,10 @@ class _ExpensesState extends State<Expenses> {
                                                     'Are you sure you want to delete this expenditure?',
                                                   ),
                                                 ),
-                                                SizedBox(height: 16,),
+                                                SizedBox(height: MediaQuery.of(context).size.height * 20 / 896,),
                                                 Row(
                                                   children: <Widget>[
-                                                    SizedBox(width: MediaQuery.of(context).size.height * 118 / 896,),
+                                                    SizedBox(width: MediaQuery.of(context).size.width * 190 / 896,),
                                                     FlatButton(
                                                       child: Text(
                                                         "Cancel",
