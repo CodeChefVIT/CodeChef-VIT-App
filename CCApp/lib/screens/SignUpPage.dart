@@ -42,7 +42,7 @@ class SignUpPageState extends State<SignUpPage> {
         context: context,
         child: AlertDialog(
           title: Text('Error'),
-          content: Text('Signup Could not be completed.'),
+          content: Text('The user isn\'t a member of CodeChef-VIT'),
         ),
       );
     }
