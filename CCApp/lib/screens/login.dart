@@ -1,4 +1,5 @@
 import 'package:CCApp/screens/aboutUsOut.dart';
+import 'package:CCApp/screens/forgotPasswordscreen.dart';
 import 'package:CCApp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import './SignUpPage.dart';
@@ -64,10 +65,9 @@ class LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 40 / 896),
+                    SizedBox(height: MediaQuery.of(context).size.height * 40 / 896),
                     Container(
-                      height: MediaQuery.of(context).size.height * 89 / 896,
+                      height: MediaQuery.of(context).size.height * 69 / 896,
                       width: double.infinity,
                       child: Image.asset('assets/images/fulllogo.png'),
                     ),
@@ -99,7 +99,7 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 45 / 896,
+                      height: MediaQuery.of(context).size.height * 40 / 896,
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
@@ -129,16 +129,16 @@ class LoginScreenState extends State<LoginScreen> {
                             fontSize: 18,
                           ),
                           enabledBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Color(0xFF1D59A1),
                               width: 2,
                             ),
                           ),
                           focusedBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Colors.blue,
                               width: 2,
@@ -191,16 +191,16 @@ class LoginScreenState extends State<LoginScreen> {
                             fontSize: 18,
                           ),
                           enabledBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Color(0xFF1D59A1),
                               width: 2,
                             ),
                           ),
                           focusedBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Colors.blue,
                               width: 2,
@@ -210,8 +210,7 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height:
-                          MediaQuery.of(context).size.height * 57 / 896 - 22,
+                      height: MediaQuery.of(context).size.height * 57 / 896 - 22,
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 44, right: 44),
@@ -265,8 +264,8 @@ class LoginScreenState extends State<LoginScreen> {
                           ),
                           FlatButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SignUpPage()));
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => SignUpPage()));
                             },
                             child: Text(
                               "Sign Up",
@@ -298,6 +297,37 @@ class LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => OutsideAboutUs()));
+                            },
+                            child: Text(
+                              "Click Here",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'SF Pro Display',
+                                color: Color(0xFF1D59A1),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'SF Pro Display',
+                              color: Colors.black,
+                            ),
+                          ),
+                          FlatButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ForgotPassword()));
                             },
                             child: Text(
                               "Click Here",
