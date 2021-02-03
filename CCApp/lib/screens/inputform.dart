@@ -101,8 +101,7 @@ class InputFormState extends State<InputForm> {
       setState(() {
         date = dateChosen;
         dateString = '${date.year}-${date.month}-${date.day}';
-        dateDisplay =
-            '${date.day} ' + '${getMonth(date.month)}' + ' ${date.year}';
+        dateDisplay = '${date.day} ' + '${getMonth(date.month)}' + ' ${date.year}';
         datePicked = true;
       });
   }
@@ -115,6 +114,7 @@ class InputFormState extends State<InputForm> {
     }
     _formKey.currentState.save();
     try {
+      print(_data);
       await Provider.of<MeetingData>(context, listen: false)
           .meetingCreate(_data, Provider.of<Reg>(context, listen: false).token);
       Navigator.of(context).pushReplacement(
@@ -180,24 +180,21 @@ class InputFormState extends State<InputForm> {
                     _data['name'] = value;
                   },
                   decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     hintText: 'Title',
                     hintStyle: TextStyle(
                       color: Color(0xFFC7C7C7),
                       fontSize: 18,
                     ),
                     enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.black,
                         width: 2,
                       ),
                     ),
                     focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.blue,
                         width: 2,
@@ -316,24 +313,21 @@ class InputFormState extends State<InputForm> {
                   },
                   keyboardType: TextInputType.multiline,
                   decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     hintText: 'Venue',
                     hintStyle: TextStyle(
                       color: Color(0xFFC7C7C7),
                       fontSize: 18,
                     ),
                     enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.black,
                         width: 2,
                       ),
                     ),
                     focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.blue,
                         width: 2,
@@ -363,24 +357,21 @@ class InputFormState extends State<InputForm> {
                   keyboardType: TextInputType.multiline,
                   maxLines: 10,
                   decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     hintText: 'Description',
                     hintStyle: TextStyle(
                       color: Color(0xFFC7C7C7),
                       fontSize: 18,
                     ),
                     enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.black,
                         width: 2,
                       ),
                     ),
                     focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.blue,
                         width: 2,
@@ -409,24 +400,21 @@ class InputFormState extends State<InputForm> {
                   },
                   keyboardType: TextInputType.multiline,
                   decoration: new InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     hintText: 'Members',
                     hintStyle: TextStyle(
                       color: Color(0xFFC7C7C7),
                       fontSize: 18,
                     ),
                     enabledBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.black,
                         width: 2,
                       ),
                     ),
                     focusedBorder: new OutlineInputBorder(
-                      borderRadius:
-                          const BorderRadius.all(const Radius.circular(27.5)),
+                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                       borderSide: BorderSide(
                         color: Colors.blue,
                         width: 2,

@@ -9,6 +9,7 @@ class MeetingData with ChangeNotifier {
   List<dynamic> _attendance = [];
   bool _marked = false;
   List<String> fcmTokens = [];
+  Map<String, dynamic> notifData = {};
 
   List<dynamic> get details {
     return _details;
@@ -37,21 +38,17 @@ class MeetingData with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> sendNotification(String venue, String members) async {
+  Future<void> sendNotification(Map<String, dynamic> data) async {
     final url = "https://fcm.googleapis.com/fcm/send";
     try {
-      await http.post(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'key=' +
-            'AAAAgLXUOH0:APA91bGG9qNLNtNXry8M2XrGenjC-vI93yIlJIZW689NOlyIFzB_xXRaWD8W7nLL0s4Z4jyTJl3ijTfe9Eu4caBtBZ-tFHsjsBq1GKP8aWHrUXVk5CvOUrDCkGBDH8i13oIyfLMtGRRI'
-      }, body: {
-        'registration_ids': fcmTokens,
-        "collapse_key": "type_a",
-        "notification": {
-          "body": "New Meeting",
-          "title": "New meeting at " + venue + " for " + members
-        }
-      });
+      await http.post(url,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'key=' +
+                'AAAAgLXUOH0:APA91bGG9qNLNtNXry8M2XrGenjC-vI93yIlJIZW689NOlyIFzB_xXRaWD8W7nLL0s4Z4jyTJl3ijTfe9Eu4caBtBZ-tFHsjsBq1GKP8aWHrUXVk5CvOUrDCkGBDH8i13oIyfLMtGRRI'
+          },
+          body: json.encode(data));
+      fcmTokens.clear();
     } catch (error) {
       throw error;
     }
@@ -65,12 +62,19 @@ class MeetingData with ChangeNotifier {
           body: json.encode(data));
       var res = json.decode(response.body);
       var members = res['members'];
-      await for (var i in members) {
+      for (var i in members) {
         if (i['fcm'] != null) {
           fcmTokens.add(i['fcm']);
         }
       }
-      await sendNotification(data['venue'], data['members']);
+      print(fcmTokens);
+      notifData['registration_ids'] = fcmTokens;
+      notifData['collapse_key'] = "type_a";
+      notifData['notification'] = {
+        "body": "New Meeting",
+        "title": "New meeting at " + data['venue'] + " for " + data['members']
+      };
+      await sendNotification(notifData);
     } catch (error) {
       throw error;
     }
