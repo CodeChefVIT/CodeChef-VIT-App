@@ -6,6 +6,9 @@ import './SignUpPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -19,7 +22,33 @@ class LoginScreenState extends State<LoginScreen> {
   Map<String, String> _data = {};
 
   bool visiblePassword = false;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   bool _isLoading = false;
+  String _message = '';
+
+  void initState() {
+    super.initState();
+    getToken();
+    getMessage();
+  }
+
+  void getMessage() {
+    _firebaseMessaging.configure(onMessage: (Map<String, dynamic> message) async {
+      print('on message $message');
+      setState(() => _message = message["notification"]["title"]);
+    }, onResume: (Map<String, dynamic> message) async {
+      print('on resume $message');
+      setState(() => _message = message["notification"]["title"]);
+    }, onLaunch: (Map<String, dynamic> message) async {
+      print('on launch $message');
+      setState(() => _message = message["notification"]["title"]);
+    });
+  }
+
+  Future<String> getToken() async {
+    var token = await _firebaseMessaging.getToken();
+    print(token);
+  }
 
   Future<void> _submit() async {
     setState(() {
