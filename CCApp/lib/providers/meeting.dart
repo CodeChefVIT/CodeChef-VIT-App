@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:CCApp/utils/key.dart' as k;
 
 class MeetingData with ChangeNotifier {
   List<dynamic> _details = [];
@@ -44,8 +45,7 @@ class MeetingData with ChangeNotifier {
       await http.post(url,
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'key=' +
-                'AAAAgLXUOH0:APA91bGG9qNLNtNXry8M2XrGenjC-vI93yIlJIZW689NOlyIFzB_xXRaWD8W7nLL0s4Z4jyTJl3ijTfe9Eu4caBtBZ-tFHsjsBq1GKP8aWHrUXVk5CvOUrDCkGBDH8i13oIyfLMtGRRI'
+            'Authorization': 'key=' + k.serverkey
           },
           body: json.encode(data));
       fcmTokens.clear();
