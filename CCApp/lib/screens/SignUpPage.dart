@@ -1,4 +1,5 @@
 import 'package:CCApp/screens/login.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
@@ -15,6 +16,7 @@ class SignUpPage extends StatefulWidget {
 class SignUpPageState extends State<SignUpPage> {
   bool visiblePassword = false;
   bool _isLoading = false;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   Map<String, String> _data = {};
@@ -27,6 +29,7 @@ class SignUpPageState extends State<SignUpPage> {
       return;
     }
     _formKey.currentState.save();
+    _data['fcm'] = await _firebaseMessaging.getToken();
     print(_data);
     try {
       await Provider.of<Reg>(context, listen: false).signup(_data);
@@ -62,14 +65,13 @@ class SignUpPageState extends State<SignUpPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 70 / 896),
+                    SizedBox(height: MediaQuery.of(context).size.height * 70 / 896),
                     IconButton(
                       icon: FaIcon(FontAwesomeIcons.arrowLeft),
                       color: Color(0xFF1D59A1),
                       onPressed: () {
-                        Navigator.of(context).pop(MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
+                        Navigator.of(context)
+                            .pop(MaterialPageRoute(builder: (context) => LoginScreen()));
                       },
                     ),
                     Container(
@@ -123,16 +125,16 @@ class SignUpPageState extends State<SignUpPage> {
                             fontSize: 18,
                           ),
                           enabledBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Color(0xFF1D59A1),
                               width: 2,
                             ),
                           ),
                           focusedBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Colors.blue,
                               width: 2,
@@ -172,16 +174,16 @@ class SignUpPageState extends State<SignUpPage> {
                             fontSize: 18,
                           ),
                           enabledBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Color(0xFF1D59A1),
                               width: 2,
                             ),
                           ),
                           focusedBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Colors.blue,
                               width: 2,
@@ -233,16 +235,16 @@ class SignUpPageState extends State<SignUpPage> {
                             fontSize: 18,
                           ),
                           enabledBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Color(0xFF1D59A1),
                               width: 2,
                             ),
                           ),
                           focusedBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Colors.blue,
                               width: 2,
@@ -281,16 +283,16 @@ class SignUpPageState extends State<SignUpPage> {
                             fontSize: 18,
                           ),
                           enabledBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Color(0xFF1D59A1),
                               width: 2,
                             ),
                           ),
                           focusedBorder: new OutlineInputBorder(
-                            borderRadius: const BorderRadius.all(
-                                const Radius.circular(27.5)),
+                            borderRadius:
+                                const BorderRadius.all(const Radius.circular(27.5)),
                             borderSide: BorderSide(
                               color: Colors.blue,
                               width: 2,
@@ -303,8 +305,7 @@ class SignUpPageState extends State<SignUpPage> {
                       height: MediaQuery.of(context).size.height * 20 / 896,
                     ),
                     SizedBox(
-                      height:
-                          MediaQuery.of(context).size.height * 57 / 896 - 12,
+                      height: MediaQuery.of(context).size.height * 57 / 896 - 12,
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 44, right: 44),

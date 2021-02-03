@@ -8,6 +8,7 @@ class MeetingData with ChangeNotifier {
   List<dynamic> _details = [];
   List<dynamic> _attendance = [];
   bool _marked = false;
+  List<String> fcmTokens = [];
 
   List<dynamic> get details {
     return _details;
@@ -36,12 +37,40 @@ class MeetingData with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> sendNotification(String venue, String members) async {
+    final url = "https://fcm.googleapis.com/fcm/send";
+    try {
+      await http.post(url, headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'key=' +
+            'AAAAgLXUOH0:APA91bGG9qNLNtNXry8M2XrGenjC-vI93yIlJIZW689NOlyIFzB_xXRaWD8W7nLL0s4Z4jyTJl3ijTfe9Eu4caBtBZ-tFHsjsBq1GKP8aWHrUXVk5CvOUrDCkGBDH8i13oIyfLMtGRRI'
+      }, body: {
+        'registration_ids': fcmTokens,
+        "collapse_key": "type_a",
+        "notification": {
+          "body": "New Meeting",
+          "title": "New meeting at " + venue + " for " + members
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   Future<void> meetingCreate(Map<String, String> data, token) async {
     final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/';
     try {
-      await http.post(url,
+      var response = await http.post(url,
           headers: {'Content-Type': 'application/json', 'Authorization': token},
           body: json.encode(data));
+      var res = json.decode(response.body);
+      var members = res['members'];
+      await for (var i in members) {
+        if (i['fcm'] != null) {
+          fcmTokens.add(i['fcm']);
+        }
+      }
+      await sendNotification(data['venue'], data['members']);
     } catch (error) {
       throw error;
     }
@@ -62,10 +91,8 @@ class MeetingData with ChangeNotifier {
   Future<void> meetingDelete(token, uuid) async {
     try {
       final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/$uuid/';
-      final Response response = await delete(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      });
+      final Response response = await delete(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token});
       print(response.statusCode);
     } catch (error) {
       throw error;
@@ -75,8 +102,8 @@ class MeetingData with ChangeNotifier {
   Future<bool> startAttendance(token, uuid) async {
     Map<String, String> _meetingDetailsExtra = {};
     final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/$uuid/';
-    Position position = await Geolocator().getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.bestForNavigation);
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
     _meetingDetailsExtra['latitude'] = position.latitude.toString();
     _meetingDetailsExtra['longitude'] = position.longitude.toString();
     var time = DateTime.now();
@@ -102,13 +129,10 @@ class MeetingData with ChangeNotifier {
   }
 
   Future<void> markAttendance(token, meetuuid) async {
-    var url =
-        'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid';
+    var url = 'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid';
     try {
-      var response = await http.get(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      });
+      var response = await http.get(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token});
       var res = json.decode(response.body);
       print(res);
     } catch (error) {
@@ -117,13 +141,10 @@ class MeetingData with ChangeNotifier {
   }
 
   Future<void> viewAttendance(token, meetuuid) async {
-    var url =
-        'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid';
+    var url = 'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid';
     try {
-      var response = await http.get(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      });
+      var response = await http.get(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token});
       print(response.statusCode);
       var res = json.decode(response.body);
       _attendance = res['attendance'];
