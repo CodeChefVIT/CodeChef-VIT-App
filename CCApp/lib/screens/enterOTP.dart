@@ -38,7 +38,7 @@ class _OTPScreenState extends State<OTPScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Forgot Password'),
-        backgroundColor: Color(0xFF459AFF),
+        backgroundColor: Color(0xFF1D59A1),
       ),
       body: Column(
         children: [
@@ -72,17 +72,17 @@ class _OTPScreenState extends State<OTPScreen> {
             height: 40,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            width: MediaQuery.of(context).size.width * 9 / 10,
             child: PinCodeTextField(
               appContext: context,
-              length: 6,
+              length: 8,
               obscureText: false,
               animationType: AnimationType.fade,
               pinTheme: PinTheme(
                 shape: PinCodeFieldShape.box,
                 borderRadius: BorderRadius.circular(12),
                 fieldHeight: 60,
-                fieldWidth: 50,
+                fieldWidth: MediaQuery.of(context).size.width * 1 / 10,
                 inactiveColor: Colors.black,
                 inactiveFillColor: Colors.pink,
                 selectedColor: Color(0xFF459AFF),
@@ -91,7 +91,7 @@ class _OTPScreenState extends State<OTPScreen> {
               animationDuration: Duration(milliseconds: 300),
               controller: textEditingController,
               onCompleted: (v) {
-                print("Completed");
+                print(v);
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => ResetPassword()));
               },

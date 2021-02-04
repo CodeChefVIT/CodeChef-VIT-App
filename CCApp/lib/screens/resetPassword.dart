@@ -1,4 +1,6 @@
+import 'package:CCApp/providers/reg.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ResetPassword extends StatefulWidget {
   @override
@@ -7,6 +9,12 @@ class ResetPassword extends StatefulWidget {
 
 class _ResetPasswordState extends State<ResetPassword> {
   final GlobalKey<FormState> _formKey = GlobalKey();
+  String email;
+  void initState() {
+    super.initState();
+    email = Provider.of<Reg>(context, listen: false).resetEmail;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +25,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 40 / 896),
+              SizedBox(height: MediaQuery.of(context).size.height * 50 / 896),
               Container(
                 height: MediaQuery.of(context).size.height * 69 / 896,
                 width: double.infinity,
@@ -27,7 +35,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               Container(
                 margin: EdgeInsets.only(left: 44),
                 child: Text(
-                  'Enter your email and new \npassword!',
+                  'Enter your password!',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -38,51 +46,6 @@ class _ResetPasswordState extends State<ResetPassword> {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 40 / 896,
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 44, right: 44),
-                width: 326,
-                child: TextFormField(
-                  onSaved: (value) {},
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == '') {
-                      return 'This field is empty';
-                    } else {
-                      return null;
-                    }
-                  },
-                  decoration: new InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 10),
-                    prefixIcon: Icon(
-                      Icons.email,
-                      color: Color(0xFF1D59A1),
-                    ),
-                    hintText: 'Email',
-                    hintStyle: TextStyle(
-                      color: Color(0xFFC7C7C7),
-                      fontSize: 18,
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1D59A1),
-                        width: 2,
-                      ),
-                    ),
-                    focusedBorder: new OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 23 / 896,
               ),
               Container(
                 alignment: Alignment.centerLeft,

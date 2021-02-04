@@ -9,6 +9,7 @@ class Reg with ChangeNotifier {
   String _token;
   String _email;
   int _category;
+  String _resetEmail;
 
   Map _userDetails = {};
 
@@ -18,6 +19,10 @@ class Reg with ChangeNotifier {
 
   String get token {
     return _token;
+  }
+
+  String get resetEmail {
+    return _resetEmail;
   }
 
   String get email {
@@ -61,7 +66,6 @@ class Reg with ChangeNotifier {
   Future<void> sendOTP(Map<String, String> data) async {
     final url = 'https://codechef-vit-app.herokuapp.com/Accounts/resetPassword';
     try {
-      print("hello");
       final response = await http.post(url,
           headers: {
             'Content-Type': 'application/json',
