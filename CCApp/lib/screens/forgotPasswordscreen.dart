@@ -10,104 +10,100 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
-  var onTapRecognizer;
-
-  TextEditingController textEditingController = TextEditingController();
-
-  bool hasError = false;
-  String currentText = "";
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    onTapRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-        Navigator.pop(context);
-      };
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  TextEditingController email = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey();
 
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Forgot Password'),
-        backgroundColor: Color(0xFF459AFF),
+        backgroundColor: Color(0xFF1D59A1),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              'An OTP has been sent to your registered email address.',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
+      body: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * 2 / 100,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 1),
+              child: Text(
+                'Enter Email address',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              'Enter OTP',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
+            SizedBox(
+              height: size.height * 2 / 100,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: TextFormField(
+                controller: email,
+                validator: (value) {
+                  if (value == '') {
+                    return 'This field is empty';
+                  } else {
+                    return null;
+                  }
+                },
+                decoration: new InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(vertical: 10),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Color(0xFF1D59A1),
+                  ),
+                  hintText: 'Email',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFC7C7C7),
+                    fontSize: 18,
+                  ),
+                  enabledBorder: new OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Color(0xFF1D59A1),
+                      width: 2,
+                    ),
+                  ),
+                  focusedBorder: new OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: PinCodeTextField(
-              appContext: context,
-              length: 6,
-              obscureText: false,
-              animationType: AnimationType.fade,
-              pinTheme: PinTheme(
-                shape: PinCodeFieldShape.box,
-                borderRadius: BorderRadius.circular(12),
-                fieldHeight: 60,
-                fieldWidth: 50,
-                inactiveColor: Colors.black,
-                inactiveFillColor: Colors.pink,
-                selectedColor: Color(0xFF459AFF),
-                activeColor: Colors.black,
-              ),
-              animationDuration: Duration(milliseconds: 300),
-              controller: textEditingController,
-              onCompleted: (v) {
-                print("Completed");
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => ResetPassword()));
-              },
-              onChanged: (value) {
-                print(value);
-                setState(() {
-                  currentText = value;
-                });
-              },
-              beforeTextPaste: (text) {
-                print("Allowing to paste $text");
-                return true;
-              },
+            SizedBox(
+              height: size.height * 4 / 100,
             ),
-          ),
-        ],
+            FlatButton(
+              onPressed: () {},
+              child: Container(
+                height: 60,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), color: Color(0xFF1D59A1)),
+                width: size.width * 7 / 10,
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
