@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "552806398077",
+    "project_id": "codechef-vit",
+    "storage_bucket": "codechef-vit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552806398077:android:d59f8e0b5a4dea324ad914",
+        "android_client_info": {
+          "package_name": "com.example.CCApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552806398077-ko1i2mmklan9vbcnq03dpejg21solnll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.CCApp",
+            "certificate_hash": "647f72e857c6d99dae941028f80b5458c03e20c1"
+          }
+        },
+        {
+          "client_id": "552806398077-7hko9loidcjgj5d8n1qpi9pe9ekf9ga9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJGahg5rGq3cLi5ebPw39vp2PuIAVN9G4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552806398077-7hko9loidcjgj5d8n1qpi9pe9ekf9ga9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 import 'package:CCApp/screens/meetings.dart';
 import 'package:CCApp/screens/profile.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:CCApp/screens/ProjectsPage.dart';
@@ -22,13 +23,22 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final tabs = [
-    Meetings(),
-    ProjectsPage(),
-    Expenses(),
-    Members(),
-    ProfilePage()
-  ];
+  final tabs = [Meetings(), ProjectsPage(), Expenses(), Members(), ProfilePage()];
+  String _message = '';
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  void getMessage() {
+    _firebaseMessaging.configure(onMessage: (Map<String, dynamic> message) async {
+      print('on message $message');
+      setState(() => _message = message["notification"]["title"]);
+    }, onResume: (Map<String, dynamic> message) async {
+      print('on resume $message');
+      setState(() => _message = message["notification"]["title"]);
+    }, onLaunch: (Map<String, dynamic> message) async {
+      print('on launch $message');
+      setState(() => _message = message["notification"]["title"]);
+    });
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,75 +54,60 @@ class HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.users,
-                color:
-                    widget.currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
+                color: widget.currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
               ),
               title: Text(
                 'Meetings',
                 style: TextStyle(
-                  color: widget.currentIndex == 0
-                      ? Color(0xFF459AFF)
-                      : Colors.grey,
+                  color: widget.currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.tasks,
-                color:
-                    widget.currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
+                color: widget.currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
                 'Projects',
                 style: TextStyle(
-                  color: widget.currentIndex == 1
-                      ? Color(0xFFFF6745)
-                      : Colors.grey,
+                  color: widget.currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.moneyBillWave,
-                color:
-                    widget.currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
+                color: widget.currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
               ),
               title: Text(
                 'Expenses',
                 style: TextStyle(
-                  color: widget.currentIndex == 2
-                      ? Color(0xFF459AFF)
-                      : Colors.grey,
+                  color: widget.currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.users,
-                color:
-                    widget.currentIndex == 3 ? Color(0xFFFF6745) : Colors.grey,
+                color: widget.currentIndex == 3 ? Color(0xFFFF6745) : Colors.grey,
               ),
               title: Text(
                 'Members',
                 style: TextStyle(
-                  color: widget.currentIndex == 3
-                      ? Color(0xFFFF6745)
-                      : Colors.grey,
+                  color: widget.currentIndex == 3 ? Color(0xFFFF6745) : Colors.grey,
                 ),
               ),
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.userAlt,
-                color:
-                    widget.currentIndex == 4 ? Color(0xFFFF4572) : Colors.grey,
+                color: widget.currentIndex == 4 ? Color(0xFFFF4572) : Colors.grey,
               ),
               title: Text(
                 'Profile',
                 style: TextStyle(
-                  color: widget.currentIndex == 4
-                      ? Color(0xFFFF4572)
-                      : Colors.grey,
+                  color: widget.currentIndex == 4 ? Color(0xFFFF4572) : Colors.grey,
                 ),
               ),
             ),

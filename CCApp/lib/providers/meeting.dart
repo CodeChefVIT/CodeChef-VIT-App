@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:CCApp/utils/key.dart' as k;
 
 class MeetingData with ChangeNotifier {
   List<dynamic> _details = [];
   List<dynamic> _attendance = [];
   bool _marked = false;
+  List<String> fcmTokens = [];
+  Map<String, dynamic> notifData = {};
 
   List<dynamic> get details {
     return _details;
@@ -36,12 +39,42 @@ class MeetingData with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> sendNotification(Map<String, dynamic> data) async {
+    final url = "https://fcm.googleapis.com/fcm/send";
+    try {
+      await http.post(url,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'key=' + k.serverkey
+          },
+          body: json.encode(data));
+      fcmTokens.clear();
+    } catch (error) {
+      throw error;
+    }
+  }
+
   Future<void> meetingCreate(Map<String, String> data, token) async {
     final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/';
     try {
-      await http.post(url,
+      var response = await http.post(url,
           headers: {'Content-Type': 'application/json', 'Authorization': token},
           body: json.encode(data));
+      var res = json.decode(response.body);
+      var members = res['members'];
+      for (var i in members) {
+        if (i['fcm'] != null) {
+          fcmTokens.add(i['fcm']);
+        }
+      }
+      print(fcmTokens);
+      notifData['registration_ids'] = fcmTokens;
+      notifData['collapse_key'] = "type_a";
+      notifData['notification'] = {
+        "body": "New Meeting",
+        "title": "New meeting at " + data['venue'] + " for " + data['members']
+      };
+      await sendNotification(notifData);
     } catch (error) {
       throw error;
     }
@@ -62,10 +95,8 @@ class MeetingData with ChangeNotifier {
   Future<void> meetingDelete(token, uuid) async {
     try {
       final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/$uuid/';
-      final Response response = await delete(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      });
+      final Response response = await delete(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token});
       print(response.statusCode);
     } catch (error) {
       throw error;
@@ -75,8 +106,8 @@ class MeetingData with ChangeNotifier {
   Future<bool> startAttendance(token, uuid) async {
     Map<String, String> _meetingDetailsExtra = {};
     final url = 'https://codechef-vit-app.herokuapp.com/meeting/new/$uuid/';
-    Position position = await Geolocator().getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.bestForNavigation);
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
     _meetingDetailsExtra['latitude'] = position.latitude.toString();
     _meetingDetailsExtra['longitude'] = position.longitude.toString();
     var time = DateTime.now();
@@ -102,13 +133,10 @@ class MeetingData with ChangeNotifier {
   }
 
   Future<void> markAttendance(token, meetuuid) async {
-    var url =
-        'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid';
+    var url = 'https://codechef-vit-app.herokuapp.com/meeting/mark/?meeting=$meetuuid';
     try {
-      var response = await http.get(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      });
+      var response = await http.get(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token});
       var res = json.decode(response.body);
       print(res);
     } catch (error) {
@@ -117,13 +145,10 @@ class MeetingData with ChangeNotifier {
   }
 
   Future<void> viewAttendance(token, meetuuid) async {
-    var url =
-        'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid';
+    var url = 'https://codechef-vit-app.herokuapp.com/meeting/view/?meeting=$meetuuid';
     try {
-      var response = await http.get(url, headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      });
+      var response = await http.get(url,
+          headers: {'Content-Type': 'application/json', 'Authorization': token});
       print(response.statusCode);
       var res = json.decode(response.body);
       _attendance = res['attendance'];

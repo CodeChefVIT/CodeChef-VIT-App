@@ -6,6 +6,9 @@ import './SignUpPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:CCApp/providers/reg.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 class LoginScreen extends StatefulWidget {
   @override
