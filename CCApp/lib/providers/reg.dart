@@ -46,13 +46,28 @@ class Reg with ChangeNotifier {
         _token = 'Token ' + resBody["token"];
         _category = resBody["category"];
         final prefs = await SharedPreferences.getInstance();
-        final _prefsData = jsonEncode(
-            {'token': _token, 'email': _email, 'category': _category});
+        final _prefsData =
+            jsonEncode({'token': _token, 'email': _email, 'category': _category});
         await prefs.setString('userData', _prefsData);
         notifyListeners();
       } else {
         throw HttpException('Login Failed');
       }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  Future<void> sendOTP(Map<String, String> data) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/Accounts/resetPassword';
+    try {
+      print("hello");
+      final response = await http.post(url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: json.encode(data));
+      print(response.statusCode);
     } catch (error) {
       throw error;
     }
@@ -76,8 +91,8 @@ class Reg with ChangeNotifier {
         _category = resBody["category"];
         print(_userDetails);
         final prefs = await SharedPreferences.getInstance();
-        final _prefsData = jsonEncode(
-            {'token': _token, 'email': _email, 'category': _category});
+        final _prefsData =
+            jsonEncode({'token': _token, 'email': _email, 'category': _category});
         await prefs.setString('userData', _prefsData);
         notifyListeners();
       } else {
