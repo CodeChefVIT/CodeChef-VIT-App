@@ -92,8 +92,13 @@ class _OTPScreenState extends State<OTPScreen> {
               controller: textEditingController,
               onCompleted: (v) {
                 print(v);
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => ResetPassword()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ResetPassword(
+                      otp: v,
+                    ),
+                  ),
+                );
               },
               onChanged: (value) {
                 print(value);

@@ -71,7 +71,22 @@ class Reg with ChangeNotifier {
             'Content-Type': 'application/json',
           },
           body: json.encode(data));
+      _resetEmail = data['email'];
       print(response.statusCode);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  Future<void> resetPassword(Map<String, String> data) async {
+    final url = 'https://codechef-vit-app.herokuapp.com/Accounts/checkOTP';
+    try {
+      final response = await http.post(url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: json.encode(data));
+      print(response.body);
     } catch (error) {
       throw error;
     }
