@@ -35,8 +35,8 @@ class MemberDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(
-          30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
+      margin:
+          EdgeInsets.fromLTRB(30, 0, 30, MediaQuery.of(context).size.height * 20 / 896),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(24)),
         color: color,

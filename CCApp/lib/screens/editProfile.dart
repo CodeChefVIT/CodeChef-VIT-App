@@ -15,14 +15,15 @@ class EditProfile extends StatefulWidget {
 class EditProfileState extends State<EditProfile> {
   @override
   void initState() {
+    super.initState();
     details = Provider.of<Profile>(context, listen: false).details;
+    print(details);
     dropdownValue = details[0]['gender'];
     if (details[0]['gender'] == 'FEM') {
       genderCheck = true;
     } else {
       genderCheck = false;
     }
-    super.initState();
   }
 
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -36,8 +37,8 @@ class EditProfileState extends State<EditProfile> {
       setState(() {
         _isLoading = true;
       });
-      await Provider.of<Profile>(context, listen: false).profileEdit(_data,
-          Provider.of<Reg>(context, listen: false).token, details[0]['uuid']);
+      await Provider.of<Profile>(context, listen: false).profileEdit(
+          _data, Provider.of<Reg>(context, listen: false).token, details[0]['uuid']);
       setState(() {
         _isLoading = false;
       });
@@ -61,10 +62,8 @@ class EditProfileState extends State<EditProfile> {
   }
 
   void _moveBack(BuildContext context) {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => HomePage(currentIndex: 4)));
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (BuildContext context) => HomePage(currentIndex: 4)));
   }
 
   String getGender(String value) {
@@ -151,16 +150,16 @@ class EditProfileState extends State<EditProfile> {
                               fontSize: 18,
                             ),
                             enabledBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Color(0xFF1D59A1),
                                 width: 2,
                               ),
                             ),
                             focusedBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Colors.blue,
                                 width: 2,
@@ -200,16 +199,16 @@ class EditProfileState extends State<EditProfile> {
                               fontSize: 18,
                             ),
                             enabledBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Color(0xFF1D59A1),
                                 width: 2,
                               ),
                             ),
                             focusedBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Colors.blue,
                                 width: 2,
@@ -249,16 +248,16 @@ class EditProfileState extends State<EditProfile> {
                               fontSize: 18,
                             ),
                             enabledBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Color(0xFF1D59A1),
                                 width: 2,
                               ),
                             ),
                             focusedBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Colors.blue,
                                 width: 2,
@@ -298,16 +297,16 @@ class EditProfileState extends State<EditProfile> {
                               fontSize: 18,
                             ),
                             enabledBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Color(0xFF1D59A1),
                                 width: 2,
                               ),
                             ),
                             focusedBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Colors.blue,
                                 width: 2,
@@ -347,16 +346,16 @@ class EditProfileState extends State<EditProfile> {
                               fontSize: 18,
                             ),
                             enabledBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Color(0xFF1D59A1),
                                 width: 2,
                               ),
                             ),
                             focusedBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Colors.blue,
                                 width: 2,
@@ -410,10 +409,8 @@ class EditProfileState extends State<EditProfile> {
                                   }
                                 });
                               },
-                              items: <String>[
-                                'MAL',
-                                'FEM'
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              items: <String>['MAL', 'FEM']
+                                  .map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(getGender(value)),
@@ -454,16 +451,16 @@ class EditProfileState extends State<EditProfile> {
                               fontSize: 18,
                             ),
                             enabledBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Color(0xFF1D59A1),
                                 width: 2,
                               ),
                             ),
                             focusedBorder: new OutlineInputBorder(
-                              borderRadius: const BorderRadius.all(
-                                  const Radius.circular(27.5)),
+                              borderRadius:
+                                  const BorderRadius.all(const Radius.circular(27.5)),
                               borderSide: BorderSide(
                                 color: Colors.blue,
                                 width: 2,
@@ -492,10 +489,8 @@ class EditProfileState extends State<EditProfile> {
                           padding: EdgeInsets.all(0.0),
                           child: Ink(
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Color(0xFF3BE0EB),
-                                Color(0xFF1D59A1)
-                              ]),
+                              gradient: LinearGradient(
+                                  colors: [Color(0xFF3BE0EB), Color(0xFF1D59A1)]),
                               borderRadius: BorderRadius.circular(33),
                             ),
                             child: Container(

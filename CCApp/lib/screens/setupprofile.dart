@@ -16,6 +16,7 @@ class SetupProfileState extends State<SetupProfile> {
   @override
   void initState() {
     details = Provider.of<Reg>(context, listen: false).userDetails;
+    _data['gender'] = dropdownValue;
     super.initState();
   }
 
@@ -70,8 +71,8 @@ class SetupProfileState extends State<SetupProfile> {
               height: MediaQuery.of(context).size.height * 34 / 896,
             ),
             Container(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 29 / 414),
+              padding:
+                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 29 / 414),
               child: Text(
                 "Finish your Profile...",
                 style: TextStyle(
@@ -111,16 +112,14 @@ class SetupProfileState extends State<SetupProfile> {
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Color(0xFF1D59A1),
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -160,16 +159,14 @@ class SetupProfileState extends State<SetupProfile> {
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Color(0xFF1D59A1),
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -208,16 +205,14 @@ class SetupProfileState extends State<SetupProfile> {
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Color(0xFF1D59A1),
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -256,16 +251,14 @@ class SetupProfileState extends State<SetupProfile> {
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Color(0xFF1D59A1),
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -304,16 +297,14 @@ class SetupProfileState extends State<SetupProfile> {
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Color(0xFF1D59A1),
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -341,9 +332,7 @@ class SetupProfileState extends State<SetupProfile> {
                   Container(
                     margin: EdgeInsets.all(10),
                     child: Icon(
-                      genderCheck
-                          ? FontAwesomeIcons.female
-                          : FontAwesomeIcons.male,
+                      genderCheck ? FontAwesomeIcons.female : FontAwesomeIcons.male,
                       color: Color(0xFF1D59A1),
                     ),
                   ),
@@ -409,16 +398,14 @@ class SetupProfileState extends State<SetupProfile> {
                     fontSize: 18,
                   ),
                   enabledBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Color(0xFF1D59A1),
                       width: 2,
                     ),
                   ),
                   focusedBorder: new OutlineInputBorder(
-                    borderRadius:
-                        const BorderRadius.all(const Radius.circular(27.5)),
+                    borderRadius: const BorderRadius.all(const Radius.circular(27.5)),
                     borderSide: BorderSide(
                       color: Colors.blue,
                       width: 2,
@@ -447,8 +434,8 @@ class SetupProfileState extends State<SetupProfile> {
                 padding: EdgeInsets.all(0.0),
                 child: Ink(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Color(0xFF3BE0EB), Color(0xFF1D59A1)]),
+                    gradient:
+                        LinearGradient(colors: [Color(0xFF3BE0EB), Color(0xFF1D59A1)]),
                     borderRadius: BorderRadius.circular(33),
                   ),
                   child: Container(
