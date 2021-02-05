@@ -78,7 +78,7 @@ class Reg with ChangeNotifier {
     }
   }
 
-  Future<void> resetPassword(Map<String, String> data) async {
+  Future<int> resetPassword(Map<String, String> data) async {
     final url = 'https://codechef-vit-app.herokuapp.com/Accounts/checkOTP';
     try {
       final response = await http.post(url,
@@ -87,6 +87,7 @@ class Reg with ChangeNotifier {
           },
           body: json.encode(data));
       print(response.body);
+      return response.statusCode;
     } catch (error) {
       throw error;
     }

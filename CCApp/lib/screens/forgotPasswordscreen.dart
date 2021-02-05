@@ -49,10 +49,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Forgot Password'),
-        backgroundColor: Color(0xFF1D59A1),
-      ),
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(),
@@ -62,14 +58,31 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: size.height * 2 / 100,
+                    height: 50,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 1),
+                    padding: EdgeInsets.only(left: 20),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Forgot Password',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontFamily: 'SF Pro Display',
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 4 / 100,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    alignment: Alignment.centerLeft,
                     child: Text(
                       'Enter Email address',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

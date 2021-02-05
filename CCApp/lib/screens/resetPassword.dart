@@ -30,12 +30,22 @@ class _ResetPasswordState extends State<ResetPassword> {
       _formKey.currentState.save();
       try {
         print(_data);
-        await Provider.of<Reg>(context, listen: false).resetPassword(_data);
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (ctx) => LoginScreen(),
-          ),
-        );
+        int code = await Provider.of<Reg>(context, listen: false).resetPassword(_data);
+        if (code == 200) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (ctx) => LoginScreen(),
+            ),
+          );
+        } else {
+          await showDialog(
+            context: context,
+            child: AlertDialog(
+              title: Text('Error'),
+              content: Text('Incorrect OTP'),
+            ),
+          );
+        }
       } catch (error) {
         await showDialog(
           context: context,

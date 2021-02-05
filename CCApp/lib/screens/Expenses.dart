@@ -82,15 +82,19 @@ class _ExpensesState extends State<Expenses> {
                 SizedBox(
                   height: 14,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'You do not have any expenses!',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontFamily: 'SF Pro Display',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'Looks like we’re saving money. No bills submitted for reimbursements 😇',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'SF Pro Display',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                 ),

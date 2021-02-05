@@ -81,15 +81,19 @@ class _ProjectsPageState extends State<ProjectsPage> {
                 SizedBox(
                   height: 14,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'You do not have any projects!',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontFamily: 'SF Pro Display',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'We are working on something cool for you guys!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'SF Pro Display',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                 ),
