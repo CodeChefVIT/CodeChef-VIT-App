@@ -96,18 +96,86 @@ class MeetingsState extends State<Meetings> {
                 SizedBox(
                   height: 14,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'You do not have any meetings!',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontFamily: 'SF Pro Display',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'You do not have any meetings!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'SF Pro Display',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ),
                   ),
                 ),
+                board
+                    ? Container(
+                        margin: EdgeInsets.only(left: 44, right: 44, bottom: 10, top: 10),
+                        height: 52,
+                        width: 260,
+                        child: FlatButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24)),
+                                    elevation: 12,
+                                    child: InputForm(),
+                                  );
+                                });
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          padding: EdgeInsets.all(0.0),
+                          child: Ink(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Color(0xFF459AFF),
+                                Color(0xFFFF6745),
+                                Color(0xFFFF4572)
+                              ]),
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            child: Container(
+                                alignment: Alignment.center,
+                                width: double.infinity,
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      width: 260 / 4,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 28,
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Add Meeting",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.white,
+                                          fontFamily: 'SF Pro Display',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        ),
+                      )
+                    : Container()
               ])
             : board
                 ? Stack(children: [

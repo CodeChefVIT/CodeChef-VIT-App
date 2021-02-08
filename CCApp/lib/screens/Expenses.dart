@@ -98,6 +98,62 @@ class _ExpensesState extends State<Expenses> {
                     ),
                   ),
                 ),
+                Container(
+                  height: 50.0,
+                  child: RaisedButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24)),
+                              elevation: 12,
+                              child: ExpensesInputForm(),
+                            );
+                          });
+                    },
+                    shape:
+                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                    padding: EdgeInsets.all(0.0),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.blueAccent,
+                              Colors.deepOrangeAccent,
+                              Colors.pinkAccent
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(30.0)),
+                      child: Container(
+                        constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+                        alignment: Alignment.center,
+                        child: Row(
+                          children: <Widget>[
+                            SizedBox(width: 20),
+                            Icon(
+                              Icons.add_circle_outline,
+                              color: Colors.white,
+                            ),
+                            SizedBox(width: 50),
+                            Text(
+                              "Add Expense",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 19,
+                                  fontFamily: 'SFProDisplay'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16),
               ])
             : board
                 ? Stack(
