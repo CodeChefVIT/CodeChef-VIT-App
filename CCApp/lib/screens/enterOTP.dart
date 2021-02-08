@@ -34,14 +34,30 @@ class _OTPScreenState extends State<OTPScreen> {
   }
 
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Forgot Password'),
-        backgroundColor: Color(0xFF1D59A1),
-      ),
       body: Column(
         children: [
+          SizedBox(
+            height: 50,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Forgot Password',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontFamily: 'SF Pro Display',
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: size.height * 4 / 100,
+          ),
           SizedBox(
             height: 20,
           ),
@@ -65,6 +81,7 @@ class _OTPScreenState extends State<OTPScreen> {
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
+                color: Color(0xFF1D59A1),
               ),
             ),
           ),
@@ -85,7 +102,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 fieldWidth: MediaQuery.of(context).size.width * 1 / 10,
                 inactiveColor: Colors.black,
                 inactiveFillColor: Colors.pink,
-                selectedColor: Color(0xFF459AFF),
+                selectedColor: Color(0xFF1D59A1),
                 activeColor: Colors.black,
               ),
               animationDuration: Duration(milliseconds: 300),
